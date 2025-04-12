@@ -66,19 +66,25 @@ const ProjectCard = ({ project }: { project: Project }) => {
         <div className="space-y-2">
           <CardTitle>{project.title}</CardTitle>
           <CardDescription>{project.description}</CardDescription>
-          <Badge className="text-xs px-3 py-1 mt-3">{project.category}</Badge>
-        </div>
-        <div className="flex gap-2 items-center">
-          {project.liveUrl && (
-            <Link href={project.liveUrl} className="hover:cursor-pointer">
-              <ExternalLink size={18} />
-            </Link>
-          )}
-          {project.githubUrl && (
-            <Link href={project.githubUrl} className="hover:cursor-pointer">
-              <FaGithub size={18} />
-            </Link>
-          )}
+          <div className="flex gap-4 items-center mt-4">
+            <Badge className="text-xs p-3">{project.category}</Badge>
+            <div className="flex gap-2">
+              {project.liveUrl && (
+                <Link href={project.liveUrl}>
+                  <Button variant={"outline"} className="hover:cursor-pointer">
+                    <ExternalLink size={18} />
+                  </Button>
+                </Link>
+              )}
+              {project.githubUrl && (
+                <Link href={project.githubUrl} className="hover:cursor-pointer">
+                  <Button variant={"outline"} className="hover:cursor-pointer">
+                    <FaGithub size={18} />
+                  </Button>
+                </Link>
+              )}
+            </div>
+          </div>
         </div>
       </CardHeader>
 
@@ -114,6 +120,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
           <div className="flex justify-between items-center">
             <Button
               variant="outline"
+              className="hover:cursor-pointer"
               onClick={handlePrev}
               disabled={step === 0}
             >
@@ -136,6 +143,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
             <Button
               variant="outline"
               onClick={handleNext}
+              className="hover:cursor-pointer"
               disabled={step === totalSteps - 1}
             >
               Next <ArrowRight className="ml-2" size={16} />

@@ -17,7 +17,7 @@ const Projects = () => {
   const renderProjectCards = (apps: Project[]) => {
     if (!apps || apps?.length === 0) return null;
     return (
-      <div className="max-w-7xl mx-2 mt-10">
+      <div className="mt-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {apps.map((project: Project, index: number) => (
             <ProjectCard key={index} project={project} />
@@ -37,42 +37,46 @@ const Projects = () => {
           Here are some of my featured projects that highlight my expertise and
           passion for development.
         </p>
-        <Tabs defaultValue="tab-1" className="mt-10" orientation="horizontal">
-          <ScrollArea>
-            <TabsList className="mb-3 gap-1 bg-transparent">
-              <TabsTrigger
-                value="tab-1"
-                className="rounded-full hover:cursor-pointer data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-none"
-              >
-                <House
-                  className="-ms-0.5 me-1.5 opacity-60"
-                  size={16}
-                  strokeWidth={2}
-                  aria-hidden="true"
-                />
-                Web Apps
-              </TabsTrigger>
-              <TabsTrigger
-                value="tab-2"
-                className="rounded-full hover:cursor-pointer data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-none"
-              >
-                <PanelsTopLeft
-                  className="-ms-0.5 me-1.5 opacity-60"
-                  size={16}
-                  strokeWidth={2}
-                  aria-hidden="true"
-                />
-                Mobile Apps
-              </TabsTrigger>
-            </TabsList>
-            <ScrollBar orientation="horizontal" />
-          </ScrollArea>
-          <TabsContent value="tab-1">{renderProjectCards(WebApps)}</TabsContent>
-          <TabsContent value="tab-2">
-            {renderProjectCards(MobileApps)}
-          </TabsContent>
-        </Tabs>
       </div>
+      <Tabs
+        defaultValue="tab-1"
+        className="my-4 mx-12"
+        orientation="horizontal"
+      >
+        <ScrollArea>
+          <TabsList className="mb-3 gap-1 bg-transparent">
+            <TabsTrigger
+              value="tab-1"
+              className="rounded-full hover:cursor-pointer data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-none"
+            >
+              <House
+                className="-ms-0.5 me-1.5 opacity-60"
+                size={16}
+                strokeWidth={2}
+                aria-hidden="true"
+              />
+              Web Apps
+            </TabsTrigger>
+            <TabsTrigger
+              value="tab-2"
+              className="rounded-full hover:cursor-pointer data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-none"
+            >
+              <PanelsTopLeft
+                className="-ms-0.5 me-1.5 opacity-60"
+                size={16}
+                strokeWidth={2}
+                aria-hidden="true"
+              />
+              Mobile Apps
+            </TabsTrigger>
+          </TabsList>
+          <ScrollBar orientation="horizontal" />
+        </ScrollArea>
+        <TabsContent value="tab-1">{renderProjectCards(WebApps)}</TabsContent>
+        <TabsContent value="tab-2">
+          {renderProjectCards(MobileApps)}
+        </TabsContent>
+      </Tabs>
     </section>
   );
 };

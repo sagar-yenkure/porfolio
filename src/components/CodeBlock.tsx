@@ -33,7 +33,7 @@ export default function CodeBlock({
   };
 
   return (
-    <div className="relative rounded-lg overflow-hidden shadow-xl bg-[#181818] mt-6 p-4 border border-transparent hover:border-gray-700 transition-all">
+    <div className="relative rounded-lg overflow-hidden shadow-xl bg-black mt-6 p-4 border border-transparent hover:border-gray-700 transition-all">
       <div className="absolute top-4 right-4 z-10">
         <Button
           variant="ghost"
@@ -53,7 +53,7 @@ export default function CodeBlock({
         language={language}
         style={dracula}
         customStyle={{
-          backgroundColor: "#181818",
+          backgroundColor: "black",
           borderRadius: "8px",
           padding: "20px",
           fontSize: "14px",

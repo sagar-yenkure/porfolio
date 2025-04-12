@@ -83,7 +83,7 @@ export default async function BlogPageWrapper({
   const { slug } = await params;
 
   return (
-    <section className="py-24">
+    <section className="py-28">
       <BlogPage slug={slug} />
     </section>
   );

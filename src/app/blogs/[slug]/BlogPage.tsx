@@ -30,7 +30,7 @@ const BlogPage = ({ slug }: BlogPageProps) => {
 
   return (
     <>
-      <section className="max-w-6xl mx-auto px-3 md:px-4 lg:px-0 flex flex-col md:flex-row gap-10">
+      <section className="max-w-7xl mx-auto px-3 md:px-4 lg:px-0 flex flex-col md:flex-row gap-10">
         <article className="w-full lg:w-2/3">
           {/* Hero Section */}
           <div className="relative w-full h-[400px] mb-10 rounded-xl overflow-hidden shadow-lg">

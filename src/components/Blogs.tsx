@@ -15,7 +15,7 @@ const Blogs = () => {
 
   return (
     <section className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
-      <div className="my-6">
+      <div className="my-12">
         <h2 className="text-2xl md:text-4xl mb-4 text-black dark:text-white max-w-4xl">
           Latest Tech Blogs & Insights
         </h2>
@@ -24,7 +24,7 @@ const Blogs = () => {
           insights, tutorials, and best practices in the tech world.
         </p>
       </div>
-      <div className="grid gap-y-10 sm:grid-cols-12 sm:gap-y-8 md:gap-y-12 lg:gap-y-16">
+      <div className="grid gap-y-10 mt-12 sm:grid-cols-12 sm:gap-y-8 md:gap-y-12 lg:gap-y-16">
         {blog?.length > 0 &&
           sliceBlog.map((post: Article) => (
             <BlogCard key={post.id} post={post} />
