@@ -1,7 +1,6 @@
 "use server";
 
 import { getEmailComponent } from "@/email/getEmailComponent";
-import { redis } from "@/lib/redis";
 import { Resend } from "resend";
 
 const sendmail = async (
