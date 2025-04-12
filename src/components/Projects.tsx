@@ -40,7 +40,7 @@ const Projects = () => {
       </div>
       <Tabs
         defaultValue="tab-1"
-        className="my-4 mx-12"
+        className="my-4 mx-4 md:mx-12"
         orientation="horizontal"
       >
         <ScrollArea>

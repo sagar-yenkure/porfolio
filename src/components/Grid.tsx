@@ -7,7 +7,7 @@ import items from "./GridItems";
 
 const Grid = () => {
   return (
-    <BentoGrid className="max-w-[89rem] py-20  md:auto-rows-[22rem]">
+    <BentoGrid className="max-w-[89rem] py-20 md:auto-rows-[22rem]">
       {items.map((item, i) => (
         <BentoGridItem
           key={i}
