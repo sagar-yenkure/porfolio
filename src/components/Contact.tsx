@@ -55,6 +55,13 @@ export default function Contact() {
         "Thanks for contacting me!",
         "contactUs"
       );
+      // Send email to the admin
+      await sendmail(
+        values,
+        "yenkuresagar2104@gmail.com",
+        "New message from contact form",
+        "contactUsAdmin"
+      );
 
       toast("Message Sent", {
         description:

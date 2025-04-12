@@ -8,6 +8,7 @@ import { Button } from "./ui/button";
 import sendmail from "@/actions/sendmail";
 import { Loader } from "lucide-react";
 import { toast } from "sonner";
+import subscribe from "@/actions/subscribe";
 
 const NewsletterSignup: React.FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -16,8 +17,7 @@ const NewsletterSignup: React.FC = () => {
   const subscribeHandle = async () => {
     setLoading(true);
     try {
-      await sendmail({}, email, "Thanks for subscribing", "subscription");
-
+      await subscribe(email);
       toast("Subscription Successful", {
         description:
           "You're now subscribed! Check your inbox for confirmation.",
