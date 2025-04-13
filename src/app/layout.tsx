@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/Footer";
 import info from "@/constants/info";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "Sagar Yenkure - a passionate Software Engineer",
@@ -63,6 +64,7 @@ export default function RootLayout({
       <html lang="en" suppressHydrationWarning>
         <head />
         <body>
+          <Analytics />
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
