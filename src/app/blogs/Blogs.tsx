@@ -35,7 +35,6 @@ const BlogsSection = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   const blogs = getAllBlogsFetch();
-  if (!blogs) return <ServerErrorPage />;
 
   useEffect(() => {
     const filtered = blogs
@@ -60,6 +59,8 @@ const BlogsSection = () => {
 
     setFilteredBlogs(filtered);
   }, [searchQuery, selectedCategory, blogs]);
+
+  if (!blogs) return <ServerErrorPage />;
 
   const featuredBlog = blogs[0];
 

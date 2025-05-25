@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Download, Braces } from "lucide-react";
 import CodeTerminal from "./CodeTerminal";
+import useDownloadResume from "@/hooks/useDownloadResume";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -26,6 +27,8 @@ const staggerContainer = {
 };
 
 const HeroSection = () => {
+  const url = process.env.NEXT_PUBLIC_RESUME_URL as string;
+  const { downloadResume, isLoading } = useDownloadResume(url);
   return (
     <div className="relative min-h-screen overflow-hidden bg-gray-950 font-sans pt-12">
       {/* Animated background grid with subtle gradient overlay */}
@@ -53,7 +56,7 @@ const HeroSection = () => {
               <div className="flex items-center mb-4">
                 <Braces className="mr-3 h-6 w-6 text-purple-400" />
                 <p className="text-lg font-semibold uppercase tracking-wide text-purple-400">
-                  Hello, I'm
+                  Hello, I&apos;m
                 </p>
               </div>
             </motion.div>
@@ -81,13 +84,15 @@ const HeroSection = () => {
 
             <motion.div className="flex flex-wrap gap-5" variants={fadeIn}>
               <motion.button
+                onClick={downloadResume}
+                disabled={isLoading}
                 className="group flex items-center justify-center gap-3 rounded-lg bg-black px-6 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:shadow-gray-500/50 active:scale-90"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 aria-label="Download Resume"
               >
                 <Download className="h-5 w-5 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
-                Download Resume
+                {isLoading ? "Downloading..." : "Download Resume"}
               </motion.button>
             </motion.div>
           </motion.div>

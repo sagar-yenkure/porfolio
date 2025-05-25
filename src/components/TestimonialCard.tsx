@@ -13,13 +13,7 @@ interface TestimonialCardProps {
   variant: "primary" | "secondary";
 }
 
-const TestimonialCard = ({
-  testimonial,
-  index,
-  variant,
-}: TestimonialCardProps) => {
-  const isSecondary = variant === "secondary";
-
+const TestimonialCard = ({ testimonial, index }: TestimonialCardProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}

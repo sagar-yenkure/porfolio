@@ -4,9 +4,6 @@ import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import TestimonialCard from "./TestimonialCard";
 import { Testimonial, testimonials } from "@/constants/testimonials";
-import Link from "next/link";
-import { Button } from "./ui/button";
-import { ArrowRight } from "lucide-react";
 
 const Testimonials = () => {
   const containerRef = useRef<HTMLDivElement>(null);

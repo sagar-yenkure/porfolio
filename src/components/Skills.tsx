@@ -46,6 +46,7 @@ import {
 import { FaAmazon, FaJava } from "react-icons/fa";
 import { IconBrandSuperhuman, IconBrandVscode } from "@tabler/icons-react";
 import { Shield } from "lucide-react";
+import { IconType } from "react-icons/lib";
 
 const SkillCard = ({
   name,
@@ -53,7 +54,7 @@ const SkillCard = ({
   color,
 }: {
   name: string;
-  icon: any;
+  icon: IconType;
   color?: string;
 }) => {
   return (

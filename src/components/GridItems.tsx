@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
 import { useAnimate } from "framer-motion";
 import { buttonVariants } from "@/components/ui/button";
 
@@ -11,8 +10,6 @@ import {
   HighlightGroup,
   Particles,
 } from "@/components/ui/highlighter";
-
-import { IconBrandGithub } from "@tabler/icons-react";
 
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
