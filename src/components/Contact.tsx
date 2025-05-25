@@ -87,9 +87,9 @@ export default function Contact() {
   return (
     <div
       id="contact"
-      className="min-h-screen flex items-center justify-center py-24 px-4 bg-gradient-to-b from-background to-background/80"
+      className="flex items-center justify-center bg-gradient-to-b from-background to-background/80"
     >
-      <div className="w-full max-w-5xl mx-auto">
+      <div className="w-full py-24 px-8 mx-auto">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -133,7 +133,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.5 }}
-            className="dark:bg-zinc-900 border border-border/40 rounded-lg p-8 shadow-sm"
+            className="bg-white/5 border border-border/40 rounded-lg p-8 shadow-sm"
           >
             <Form {...form}>
               <form

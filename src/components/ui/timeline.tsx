@@ -34,20 +34,25 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
   return (
     <div
       id="experience"
-      className="w-full bg-white dark:bg-neutral-950 font-sans md:px-10"
+      className="w-full bg-white/5 font-sans md:px-10 rounded-2xl"
       ref={containerRef}
     >
-      <div className="max-w-7xl mx-auto py-16 px-4 md:px-8 lg:px-10">
-        <h2 className="text-2xl md:text-4xl mb-4 text-black dark:text-white max-w-4xl">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="space-y-4 py-6"
+      >
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
           Changelog from my journey
         </h2>
-        <p className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base max-w-sm">
+        <p className="text-xl text-muted-foreground max-w-3xl">
           I&apos;ve been working for the past{" "}
           {years > 0 ? `${years} years` : ""}{" "}
-          {months > 0 ? `${months} months` : ""}. Here&apos;s a timeline of my
-          journey.
+          {months > 0 ? `${months + 1} months` : ""}. Here&apos;s a timeline of
+          my journey.
         </p>
-      </div>
+      </motion.div>
 
       <div ref={ref} className="relative max-w-7xl mx-auto pb-12">
         {data.map((item, index) => (
@@ -76,7 +81,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
           style={{
             height: height + "px",
           }}
-          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-neutral-200 dark:via-neutral-700 to-transparent to-[99%]  [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] "
+          className="absolute text-3xl md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-neutral-200 dark:via-neutral-700 to-transparent to-[99%]  [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] "
         >
           <motion.div
             style={{

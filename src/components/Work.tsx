@@ -5,7 +5,7 @@ import { workData } from "@/constants";
 
 const Work = () => {
   return (
-    <section className="min-h-screen">
+    <section className="min-h-screen py-8 px-8 ">
       <Timeline data={workData} />
     </section>
   );

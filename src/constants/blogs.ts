@@ -8,5 +8,7 @@ export interface Article {
   author: string;
   published: string;
   image: string;
+  readTime?: number;
+  views?: number;
   tags: string[];
 }

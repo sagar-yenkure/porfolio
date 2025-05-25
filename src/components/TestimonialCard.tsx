@@ -5,61 +5,59 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { Testimonial } from "@/constants/testimonials";
+import { QuoteIcon } from "lucide-react";
+
+interface TestimonialCardProps {
+  testimonial: Testimonial;
+  index: number;
+  variant: "primary" | "secondary";
+}
 
 const TestimonialCard = ({
   testimonial,
   index,
-}: {
-  testimonial: Testimonial;
-  index: number;
-}) => {
+  variant,
+}: TestimonialCardProps) => {
+  const isSecondary = variant === "secondary";
+
   return (
     <motion.div
-      key={testimonial.id}
-      initial={{ opacity: 0, y: 50, rotate: -2 }}
-      animate={{ opacity: 1, y: 0, rotate: 0 }}
-      transition={{
-        duration: 0.5,
-        delay: index * 0.2,
-        ease: "easeOut",
-      }}
-      whileHover={{ scale: 1.05 }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      viewport={{ once: true }}
+      whileHover={{ y: -5 }}
+      className="w-[300px] md:w-[390px] flex-shrink-0"
     >
-      <Card className="shadow-lg dark:bg-zinc-900 p-6">
-        <CardContent className="flex flex-col items-center text-center space-y-4">
-          {/* Avatar with Animation */}
-          <motion.div
-            whileHover={{ scale: 1.1, rotate: 2 }}
-            transition={{ type: "spring", stiffness: 200 }}
-            className="w-24 h-24 rounded-full overflow-hidden"
-          >
-            <Image
-              src={testimonial.url}
-              alt={testimonial.name}
-              width={96}
-              height={96}
-              className="w-full h-full object-cover"
-            />
-          </motion.div>
+      <Card className="h-full overflow-hidden backdrop-blur-sm bg-white/5 border-border/80">
+        <CardContent className="p-6">
+          {/* Quote Icon */}
+          <QuoteIcon className="w-8 h-8 mb-4 text-primary opacity-20" />
 
-          {/* Name & Role */}
-          <div className="mt-3">
-            <span className="text-md font-semibold text-black dark:text-white">
-              {testimonial.name}
-            </span>
-            <p className="text-sm text-primary">{testimonial.role}</p>
-          </div>
-
-          {/* Message / Feedback */}
-          <motion.p className="text-sm text-gray-600 dark:text-gray-300 italic px-4">
+          {/* Message */}
+          <p className="text-sm md:text-base mb-6 text-foreground/80">
             &quot;{testimonial.message}&quot;
-          </motion.p>
+          </p>
 
-          {/* Company & Designation */}
-          <div>
-            <span className="text-xs text-neutral-600">
-              {testimonial.company}
-            </span>
+          {/* Author Info */}
+          <div className="flex items-center gap-4">
+            <div className="relative w-12 h-12 rounded-full overflow-hidden ring-2 ring-offset-2 ring-offset-background ring-border">
+              <Image
+                src={testimonial.url}
+                alt={testimonial.name}
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground">
+                {testimonial.name}
+              </h4>
+              <div className="flex flex-col text-sm">
+                <span>{testimonial.role}</span>
+                <span>{testimonial.company}</span>
+              </div>
+            </div>
           </div>
         </CardContent>
       </Card>

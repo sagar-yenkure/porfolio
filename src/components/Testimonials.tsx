@@ -1,29 +1,90 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import TestimonialCard from "./TestimonialCard";
 import { Testimonial, testimonials } from "@/constants/testimonials";
+import Link from "next/link";
+import { Button } from "./ui/button";
+import { ArrowRight } from "lucide-react";
 
 const Testimonials = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Split testimonials into two groups
+  const firstHalf = testimonials.slice(0, Math.ceil(testimonials.length / 2));
+  const secondHalf = testimonials.slice(Math.ceil(testimonials.length / 2));
+
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
+
   return (
-    <section>
-      <div className="max-w-7xl mx-auto py-24 px-4 md:px-8 lg:px-10">
-        <h2 className="text-2xl md:text-4xl mb-4 text-black dark:text-white max-w-4xl">
+    <section ref={containerRef} className="py-8 px-8 overflow-hidden">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="space-y-4 py-6"
+      >
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
           What People Are Saying
         </h2>
-        <p className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base max-w-sm">
+        <p className="text-xl text-muted-foreground max-w-3xl">
           Hear from those who have worked with me and experienced my expertise
           first-hand.
         </p>
+      </motion.div>
+
+      {/* First Row - Scrolling Left */}
+      <div className="mb-8">
+        <motion.div style={{ x }} className="flex gap-6 w-fit">
+          {firstHalf.map((testimonial: Testimonial, index: number) => (
+            <TestimonialCard
+              key={index}
+              testimonial={testimonial}
+              index={index}
+              variant="primary"
+            />
+          ))}
+          {/* Duplicate first half for infinite scroll effect */}
+          {firstHalf.map((testimonial: Testimonial, index: number) => (
+            <TestimonialCard
+              key={`duplicate-${index}`}
+              testimonial={testimonial}
+              index={index}
+              variant="primary"
+            />
+          ))}
+        </motion.div>
       </div>
 
-      {/* Testimonial Cards */}
-      <div className="mx-4 md:mx-12">
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
-          {testimonials.map((testimonial: Testimonial, index: number) => (
-            <div key={index} className="break-inside-avoid">
-              <TestimonialCard index={index} testimonial={testimonial} />
-            </div>
+      {/* Second Row - Scrolling Right */}
+      <div>
+        <motion.div
+          style={{ x: useTransform(scrollYProgress, [0, 1], ["-50%", "0%"]) }}
+          className="flex gap-6 w-fit"
+        >
+          {secondHalf.map((testimonial: Testimonial, index: number) => (
+            <TestimonialCard
+              key={index}
+              testimonial={testimonial}
+              index={index}
+              variant="secondary"
+            />
           ))}
-        </div>
+          {/* Duplicate second half for infinite scroll effect */}
+          {secondHalf.map((testimonial: Testimonial, index: number) => (
+            <TestimonialCard
+              key={`duplicate-${index}`}
+              testimonial={testimonial}
+              index={index}
+              variant="secondary"
+            />
+          ))}
+        </motion.div>
       </div>
     </section>
   );

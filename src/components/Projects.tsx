@@ -1,8 +1,6 @@
 "use client";
 
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { House, PanelsTopLeft } from "lucide-react";
+import { motion } from "framer-motion";
 import ProjectCard from "./ProjectCard";
 import { Project, projectsList } from "@/constants/Projects";
 
@@ -10,75 +8,69 @@ const Projects = () => {
   const WebApps = projectsList.filter(
     (project) => project.category === "Web Application"
   );
-  const MobileApps = projectsList.filter(
-    (project) => project.category === "Mobile Application"
-  );
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
 
   const renderProjectCards = (apps: Project[]) => {
     if (!apps || apps?.length === 0) return null;
     return (
-      <div className="mt-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <motion.div
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {apps.map((project: Project, index: number) => (
-            <ProjectCard key={index} project={project} />
+            <motion.div
+              key={index}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                show: { opacity: 1, y: 0 },
+              }}
+            >
+              <ProjectCard project={project} />
+            </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     );
   };
 
   return (
-    <section id="projects">
-      <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
-        <h2 className="text-2xl md:text-4xl mb-4 text-black dark:text-white max-w-4xl">
+    <motion.section
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      id="projects"
+      className="relative py-8 px-8"
+    >
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="space-y-4 py-6"
+      >
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
           I&apos;ve been building a lot of things
         </h2>
-        <p className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base max-w-sm">
+        <p className="text-xl text-muted-foreground max-w-3xl">
           Here are some of my featured projects that highlight my expertise and
           passion for development.
         </p>
-      </div>
-      <Tabs
-        defaultValue="tab-1"
-        className="my-4 mx-4 md:mx-12"
-        orientation="horizontal"
-      >
-        <ScrollArea>
-          <TabsList className="mb-3 gap-1 bg-transparent">
-            <TabsTrigger
-              value="tab-1"
-              className="rounded-full hover:cursor-pointer data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-none"
-            >
-              <House
-                className="-ms-0.5 me-1.5 opacity-60"
-                size={16}
-                strokeWidth={2}
-                aria-hidden="true"
-              />
-              Web Apps
-            </TabsTrigger>
-            <TabsTrigger
-              value="tab-2"
-              className="rounded-full hover:cursor-pointer data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-none"
-            >
-              <PanelsTopLeft
-                className="-ms-0.5 me-1.5 opacity-60"
-                size={16}
-                strokeWidth={2}
-                aria-hidden="true"
-              />
-              Mobile Apps
-            </TabsTrigger>
-          </TabsList>
-          <ScrollBar orientation="horizontal" />
-        </ScrollArea>
-        <TabsContent value="tab-1">{renderProjectCards(WebApps)}</TabsContent>
-        <TabsContent value="tab-2">
-          {renderProjectCards(MobileApps)}
-        </TabsContent>
-      </Tabs>
-    </section>
+      </motion.div>
+
+      {renderProjectCards(WebApps)}
+    </motion.section>
   );
 };
-
 export default Projects;

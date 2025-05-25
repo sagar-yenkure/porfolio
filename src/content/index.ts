@@ -13,6 +13,8 @@ export interface Article {
   author: string;
   published: string;
   image: string;
+  readTime: number; // in minutes
+  views: number;
   tags: string[];
 }
 
@@ -21,6 +23,7 @@ const ContentList = [
   {
     id: "4",
     title: "tRPC + Next.js: From Zero to Fullstack Hero",
+
     summary:
       "Go from zero to fullstack with tRPC and Next.js. Learn how to create typesafe APIs without REST or GraphQL using tRPC, Zod, and React Query.",
     label: "Fullstack",
@@ -28,8 +31,10 @@ const ContentList = [
     author: "Sagar Yenkure",
     published: "2025-04-12",
     image: "/trpc.jpg",
-    tags: ["tRPC", "Next.js", "Zod", "React Query", "Fullstack", "TypeScript"],
+    tags: ["tRPC", "Next.js", "TypeScript", "Tutorial"],
     content: trpc_nextjs_from_zero_to_fullstack_hero,
+    views: 1373,
+    readTime: 10,
   },
   // How to Use Bun with Hono
   {
@@ -42,8 +47,10 @@ const ContentList = [
     author: "Sagar Yenkure",
     published: "2025-03-28",
     image: "/hono.webp",
-    tags: ["Bun", "Hono", "Web Framework", "API", "Backend", "JavaScript"],
+    tags: ["Bun", "Hono", "API", "JavaScript", "Tutorial"],
     content: how_to_use_bun_with_hono,
+    views: 1843,
+    readTime: 10,
   },
   // How to use Redux in Next.js with TypeScript
   {
@@ -56,8 +63,10 @@ const ContentList = [
     author: "Sagar Yenkure",
     published: "2025-03-13",
     image: "/redux_nextjs.webp",
-    tags: ["Next.js", "Redux", "TypeScript", "State Management", "Tutorial"],
+    tags: ["Next.js", "Redux", "TypeScript", "Tutorial"],
     content: how_to_use_redux_in_nextjs_with_typescript,
+    views: 1473,
+    readTime: 10,
   },
   // How to Initialize a React Project Using Vite and shadcn/ui
   {
@@ -70,9 +79,21 @@ const ContentList = [
     author: "Sagar Yenkure",
     published: "2025-02-26",
     image: "/shadcn_nextjs.png",
-    tags: ["React", "Vite", "shadcn/ui", "TypeScript", "Tutorial"],
+    tags: ["React", "Vite", "shadcn/ui"],
     content: how_to_initialize_shadcn_in_react,
+    views: 1297,
+    readTime: 10,
   },
+];
+
+export const categories = [
+  { name: "All", value: "all" },
+  { name: "Next.js", value: "nextjs" },
+  { name: "React", value: "react" },
+  { name: "TypeScript", value: "typescript" },
+  { name: "JavaScript", value: "javascript" },
+  { name: "Fullstack", value: "fullstack" },
+  { name: "Tutorial", value: "tutorial" },
 ];
 
 export default ContentList;
