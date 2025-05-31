@@ -11,7 +11,7 @@ const fadeIn = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6 },
+    transition: { duration: 0.2 },
   },
 };
 
@@ -20,8 +20,8 @@ const staggerContainer = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3,
+      staggerChildren: 0.1,
+      delayChildren: 0.1,
     },
   },
 };
@@ -102,7 +102,7 @@ const HeroSection = () => {
             className="flex items-center justify-center"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.3 }}
+            transition={{ duration: 1, delay: 0.2 }}
           >
             <div className="w-full max-w-[620px] shadow-2xl rounded-xl border border-gray-800 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
               <CodeTerminal />

@@ -75,7 +75,7 @@ const CodeTerminal = () => {
       className="rounded-b-xl font-mono text-sm w-full"
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
+      transition={{ duration: 0.3 }}
     >
       {/* Terminal header */}
       <div className="flex items-center justify-between px-4 py-2 bg-gray-850 border-b border-gray-700 rounded-t-xl">
