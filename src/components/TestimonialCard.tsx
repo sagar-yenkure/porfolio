@@ -44,9 +44,9 @@ const TestimonialCard = ({ testimonial, index }: TestimonialCardProps) => {
               />
             </div>
             <div>
-              <h4 className="font-semibold text-foreground">
+              <span className="font-semibold text-foreground">
                 {testimonial.name}
-              </h4>
+              </span>
               <div className="flex flex-col text-sm">
                 <span>{testimonial.role}</span>
                 <span>{testimonial.company}</span>

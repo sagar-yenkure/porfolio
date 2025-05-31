@@ -14,7 +14,9 @@ const ServerErrorPage = () => {
       </p>
       <div className="mt-6 flex gap-4">
         <Link href="/" className="hover:cursor-pointer">
-          <Button variant="outline">Go Home</Button>
+          <Button aria-label="Go Home" variant="outline">
+            Go Home
+          </Button>
         </Link>
       </div>
     </div>

@@ -44,9 +44,10 @@ export function Footer({
             <span className="font-bold text-xl">{brandName}</span>
           </Link>
           <ul className="flex list-none mt-6 md:mt-0 space-x-3">
-            {socialLinks.map((link, i) => (
+            {socialLinks.map((link, i, label) => (
               <li key={i}>
                 <Button
+                  aria-label={`${link.label} Social Link`}
                   variant="secondary"
                   size="icon"
                   className="h-10 w-10 rounded-full"

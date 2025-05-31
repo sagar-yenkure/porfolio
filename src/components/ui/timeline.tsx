@@ -1,6 +1,5 @@
 "use client";
 
-import useCalculateExperience from "@/hooks/useCalculateExperience";
 import { useScroll, useTransform, motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 
@@ -29,31 +28,12 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
   const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
   const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
-  const { months, years } = useCalculateExperience(2, 2024);
-
   return (
     <div
       id="experience"
       className="w-full bg-white/5 font-sans md:px-10 rounded-2xl"
       ref={containerRef}
     >
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="space-y-4 py-6"
-      >
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
-          Changelog from my journey
-        </h2>
-        <p className="text-xl text-muted-foreground max-w-3xl">
-          I&apos;ve been working for the past{" "}
-          {years > 0 ? `${years} years` : ""}{" "}
-          {months > 0 ? `${months + 1} months` : ""}. Here&apos;s a timeline of
-          my journey.
-        </p>
-      </motion.div>
-
       <div ref={ref} className="relative max-w-7xl mx-auto pb-12">
         {data.map((item, index) => (
           <div

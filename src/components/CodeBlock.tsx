@@ -21,8 +21,7 @@ export default function CodeBlock({
       await navigator.clipboard.writeText(code);
       setCopiedCode(code);
       setTimeout(() => setCopiedCode(null), 1000);
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
       toast("Error while copying code, please try again.", {
         style: {
           background: "red",
@@ -36,6 +35,7 @@ export default function CodeBlock({
     <div className="relative rounded-lg overflow-hidden shadow-xl bg-black mt-6 p-4 border border-transparent hover:border-gray-700 transition-all">
       <div className="absolute top-4 right-4 z-10">
         <Button
+          aria-label="Copy Code"
           variant="ghost"
           size="icon"
           onClick={handleCopyCode}

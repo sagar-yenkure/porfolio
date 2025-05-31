@@ -111,6 +111,7 @@ export function BackgroundPaths({
           <div className="flex items-center justify-center">
             <div className="relative group">
               <button
+                aria-label="Download Resume"
                 onClick={downloadResume}
                 disabled={isLoading}
                 className="relative inline-block p-px font-semibold leading-6 text-white bg-gray-800 shadow-2xl cursor-pointer rounded-xl shadow-zinc-900 transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95"

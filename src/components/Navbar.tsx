@@ -59,6 +59,8 @@ const Navbar = () => {
           <div className="md:hidden flex items-center gap-4 ">
             {/* <ThemeToggle /> */}
             <Button
+              id="toggle-menu"
+              aria-label="Toggle Menu"
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(!isOpen)}
@@ -88,7 +90,12 @@ const Navbar = () => {
           >
             <div className="px-4 pt-20 pb-6 space-y-6 flex flex-col">
               {link.map(({ href, label }) => (
-                <Button variant="ghost" key={label} onClick={handleLinkClick}>
+                <Button
+                  aria-label={`${label} NavBar`}
+                  variant="ghost"
+                  key={label}
+                  onClick={handleLinkClick}
+                >
                   <Link className="text-xl" href={href}>
                     {label}
                   </Link>

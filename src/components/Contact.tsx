@@ -70,7 +70,6 @@ export default function Contact() {
 
       form.reset();
     } catch (error) {
-      console.error(error);
       toast("Something went wrong", {
         description:
           "Oops! Failed to send your message. Please try again in a moment.",
@@ -201,6 +200,7 @@ export default function Contact() {
                 />
 
                 <Button
+                  aria-label="Send Message"
                   type="submit"
                   className="w-full mt-2 group transition-all duration-300"
                   disabled={loading}

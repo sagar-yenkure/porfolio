@@ -39,7 +39,6 @@ const sendBatchmail = async (
 
     return result;
   } catch (error) {
-    console.error("Batch email sending failed:", error);
     throw error;
   }
 };

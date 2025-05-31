@@ -14,6 +14,7 @@ const BookingCal = () => {
   return (
     <section className="w-fit h-full">
       <Button
+        aria-label="Book a Meeting"
         className="hover:cursor-pointer"
         variant="default"
         data-cal-namespace="sagar-yenkure"

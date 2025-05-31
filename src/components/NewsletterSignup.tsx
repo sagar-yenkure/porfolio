@@ -24,7 +24,6 @@ const NewsletterSignup: React.FC = () => {
 
       setEmail("");
     } catch (error: any) {
-      console.error(error);
       toast(error.message, {
         style: {
           background: "red",
@@ -52,6 +51,7 @@ const NewsletterSignup: React.FC = () => {
         className="w-full px-3 py-2 mt-3 text-sm border rounded-md dark:bg-gray-800 dark:text-gray-200"
       />
       <Button
+        aria-label="Subscribe"
         disabled={!email || loading}
         onClick={subscribeHandle}
         className="mt-3 w-full flex items-center justify-center gap-2 hover:cursor-pointer"

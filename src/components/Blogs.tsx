@@ -51,6 +51,7 @@ const BlogsSection = () => {
           >
             <Link href="/blogs">
               <Button
+                aria-label="View All Blogs"
                 variant="default"
                 size="lg"
                 className="group font-medium text-base"

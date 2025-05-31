@@ -9,6 +9,7 @@ const BackButton = () => {
 
   return (
     <Button
+      aria-label="Go back"
       className="m-4 flex justify-around items-center gap-4"
       onClick={() => router.back()}
     >

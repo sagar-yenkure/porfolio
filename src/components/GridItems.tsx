@@ -18,6 +18,7 @@ import { Mail } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import info from "@/constants/info";
 import BookingCal from "./BookingCal";
+import { FaXTwitter } from "react-icons/fa6";
 
 const SkeletonFour = () => {
   const [scope, animate] = useAnimate();
@@ -143,6 +144,7 @@ const SkeletonFour = () => {
                     <div className="flex flex-wrap gap-2">
                       <BookingCal />
                       <Link
+                        aria-label="Connect via Mail"
                         href={`mailto:${info.mail}`}
                         target="_blank"
                         className={cn(
@@ -157,6 +159,7 @@ const SkeletonFour = () => {
                         </span>
                       </Link>
                       <Link
+                        aria-label="Connect via WhatsApp"
                         href={`https://wa.me/${info.whatsApp}`}
                         target="_blank"
                         className={cn(
@@ -171,6 +174,7 @@ const SkeletonFour = () => {
                         </span>
                       </Link>
                       <Link
+                        aria-label="Connect via X"
                         href={`https://wa.me/${info.twitter}`}
                         target="_blank"
                         className={cn(
@@ -181,10 +185,11 @@ const SkeletonFour = () => {
                         )}
                       >
                         <span className="flex items-center gap-1">
-                          <FaTwitter className="h-6 w-6" />
+                          <FaXTwitter className="h-6 w-6" />
                         </span>
                       </Link>
                       <Link
+                        aria-label="Connect via LinkedIn"
                         href={`https://wa.me/${info.linkedin}`}
                         target="_blank"
                         className={cn(
@@ -199,6 +204,7 @@ const SkeletonFour = () => {
                         </span>
                       </Link>
                       <Link
+                        aria-label="Connect via GitHub"
                         href={`https://wa.me/${info.github}`}
                         target="_blank"
                         className={cn(

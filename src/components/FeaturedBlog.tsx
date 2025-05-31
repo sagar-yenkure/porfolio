@@ -67,7 +67,7 @@ const FeaturedBlog = ({ post }: FeaturedBlogProps) => {
               <p className="font-medium">By {post.author}</p>
 
               <Link href={`/blogs/${post.slug}`}>
-                <Button className="group">
+                <Button aria-label="Read Featured Blog" className="group">
                   Read Featured Blog
                   <motion.span
                     initial={{ x: 0 }}

@@ -119,7 +119,11 @@ const BlogCard = ({ post, index = 0 }: BlogCardProps) => {
 
           {/* Title */}
           <motion.div variants={itemVariants}>
-            <Link href={`/blogs/${post.slug}`} className="block">
+            <Link
+              aria-label={`Read about ${post.title}`}
+              href={`/blogs/${post.slug}`}
+              className="block"
+            >
               <h3 className="text-xl md:text-2xl font-bold leading-tight mb-3 text-foreground group-hover:text-primary transition-colors duration-300">
                 {post.title}
               </h3>
@@ -146,7 +150,11 @@ const BlogCard = ({ post, index = 0 }: BlogCardProps) => {
         {/* Footer with Button */}
         <CardFooter className="px-5 py-2 border-t border-border/40">
           <motion.div variants={itemVariants} className="w-full">
-            <Link href={`/blogs/${post.slug}`} className="w-full">
+            <Link
+              aria-label={`Read about ${post.title}`}
+              href={`/blogs/${post.slug}`}
+              className="w-full"
+            >
               <motion.div
                 whileHover={{
                   scale: 1.02,

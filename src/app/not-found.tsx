@@ -22,8 +22,13 @@ function NotFound() {
         This page couldn&apos;t be found. It may exist somewhere else.
       </p>
       <div className="mt-10 flex flex-col sm:flex-row sm:items-center sm:justify-center gap-y-3 gap-x-6">
-        <Button variant="secondary" asChild className="group">
-          <Link href="/">
+        <Button
+          aria-label="Home Button"
+          variant="secondary"
+          asChild
+          className="group"
+        >
+          <Link aria-label="Take Me Home Link" href="/">
             <ArrowLeft
               className="me-2 ms-0 opacity-60 transition-transform group-hover:-translate-x-0.5"
               size={16}

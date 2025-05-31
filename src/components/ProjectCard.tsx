@@ -80,6 +80,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
                   <motion.div whileHover={{ scale: 1.1 }}>
                     <Link href={project.liveUrl} target="_blank">
                       <Button
+                        aria-label="View Project Live"
                         variant="outline"
                         size="icon"
                         className="h-8 w-8 rounded-full"
@@ -93,6 +94,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
                   <motion.div whileHover={{ scale: 1.1 }}>
                     <Link href={project.githubUrl} target="_blank">
                       <Button
+                        aria-label="View Project on GitHub"
                         variant="outline"
                         size="icon"
                         className="h-8 w-8 rounded-full"
@@ -142,6 +144,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
           {hasMultipleImages && (
             <div className="flex justify-between items-center mt-auto">
               <Button
+                aria-label="Previous Project Image"
                 variant="outline"
                 size="sm"
                 onClick={handlePrev}
@@ -170,6 +173,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
               </div>
 
               <Button
+                aria-label="Next Project Image"
                 variant="outline"
                 size="sm"
                 onClick={handleNext}
