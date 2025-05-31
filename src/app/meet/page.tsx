@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     "Tech Chat",
     "Portfolio Meeting",
   ],
+  metadataBase: new URL(info.HOST_URL!),
   openGraph: {
     title: "Book a Meeting with Sagar Yenkure",
     description:
@@ -20,14 +21,14 @@ export const metadata: Metadata = {
     siteName: "Sagar Yenkure - Portfolio",
     locale: "en_US",
     type: "website",
-    images: [`${process.env.NEXT_PUBLIC_HOST_URL}/opengraph.png`],
+    images: ["opengraph-image.png"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Book a Meeting with Sagar Yenkure",
     description:
       "Schedule a one-on-one meeting with Sagar Yenkure — a passionate Software Engineer. Pick a time that works for you and let's connect!",
-    images: [`${process.env.NEXT_PUBLIC_HOST_URL}/opengraph.png`],
+    images: ["opengraph-image.png"],
   },
   alternates: {
     canonical: `${process.env.NEXT_PUBLIC_HOST_URL}/meet`,
@@ -48,6 +49,7 @@ export const metadata: Metadata = {
 
 import React from "react";
 import MeetPage from "@/components/MeetPage";
+import info from "@/constants/info";
 
 const page = () => {
   return <MeetPage />;

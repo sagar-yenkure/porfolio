@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     "Problem Solving",
     "Web Development",
   ],
+  metadataBase: new URL(info.HOST_URL!),
   publisher: "Sagar Yenkure",
   creator: "Sagar Yenkure",
   openGraph: {
@@ -24,14 +25,14 @@ export const metadata: Metadata = {
       "Read the latest tech blogs and tutorials by Sagar Yenkure on full stack development, React, Next.js, and more.",
     url: `${info.HOST_URL}/blogs`,
     type: "article",
-    images: [`${info.HOST_URL}/opengraph.png`],
+    images: ["opengraph-image.png"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Tech Blogs by Sagar Yenkure",
     description:
       "Stay updated with tech articles and programming tips by Sagar Yenkure.",
-    images: [`${info.HOST_URL}/opengraph.png`],
+    images: ["opengraph-image.png"],
   },
   alternates: {
     canonical: `${info.HOST_URL}/blogs`,
