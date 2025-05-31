@@ -11,7 +11,7 @@ import {
   Particles,
 } from "@/components/ui/highlighter";
 
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 import React, { useEffect } from "react";
 import { Mail } from "lucide-react";

@@ -47,7 +47,7 @@ export function Footer({
             {socialLinks.map((link, i, label) => (
               <li key={i}>
                 <Button
-                  aria-label={`${link.label} Social Link`}
+                  aria-label={`${label} Social Link`}
                   variant="secondary"
                   size="icon"
                   className="h-10 w-10 rounded-full"

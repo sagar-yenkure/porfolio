@@ -17,11 +17,11 @@ const subscribe = async (email: string) => {
 
     await redis.sadd("subscribed_emails", email);
     await sendmail({}, email, "Thanks for subscribing", "subscription");
-  } catch (error: any) {
-    throw new Error(
-      "Failed to subscribe. Please try again later.",
-      error?.message
-    );
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    }
+    throw new Error("Failed to subscribe. Please try again later.");
   }
 };
 

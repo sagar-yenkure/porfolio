@@ -69,7 +69,10 @@ export default function Contact() {
       });
 
       form.reset();
-    } catch (error) {
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        throw new Error(error.message);
+      }
       toast("Something went wrong", {
         description:
           "Oops! Failed to send your message. Please try again in a moment.",
