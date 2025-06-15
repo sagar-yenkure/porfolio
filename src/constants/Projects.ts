@@ -13,10 +13,11 @@ import {
   SiRedis,
   SiExpo,
   SiOpenai,
+  SiSwr,
+  SiFramer,
 } from "react-icons/si";
 import { SiAuth0 } from "react-icons/si";
 import { SiShadcnui } from "react-icons/si";
-import { SiSupabase } from "react-icons/si";
 
 export type ProjectCategory =
   | "Web Application"
@@ -111,34 +112,28 @@ export const projectsList: Project[] = [
     ],
   },
   {
-    title: "MeTube",
+    title: "AniPlay",
     description:
-      "A YouTube-inspired mobile video streaming app built using Expo and Supabase. Supports real-time content delivery and dynamic video rendering with Tailwind styling for a polished UI.",
+      "AniPlay is a modern anime streaming web app that lets users explore and watch anime with an elegant UI.Built using cutting- edge frontend tools, it offers smooth navigation, responsive design, and fast performance.Integrated with APIs for real - time data, AniPlay delivers an immersive and efficient viewing experience for anime enthusiasts",
     images: [
-      `${BASE}/v1743940691/projects/WhatsApp_Image_2025-04-06_at_5.01.02_PM_1_gzyhu5.jpg`,
-      `${BASE}/v1743940691/projects/WhatsApp_Image_2025-04-06_at_5.01.01_PM_igtwvz.jpg`,
-      `${BASE}/v1743940691/projects/WhatsApp_Image_2025-04-06_at_5.01.03_PM_q7ys4p.jpg`,
-      `${BASE}/v1743940691/projects/WhatsApp_Image_2025-04-06_at_5.01.02_PM_nrcl8s.jpg`,
+
+      `${BASE}/v1749997099/projects/Screenshot_2025-06-15_070827_utmxln.png`,
+      `${BASE}/v1749997125/projects/Screenshot_2025-06-15_070911_mxkihi.png`,
+      `${BASE}/v1749997086/projects/Screenshot_2025-06-15_071016_emedxv.png`,
+      `${BASE}/v1749997069/projects/Screenshot_2025-06-15_070946_surj1g.png`,
     ],
-    category: "Mobile Application",
-    liveUrl: "",
-    githubUrl: "https://github.com/sagar-yenkure/expo_meTube",
-    skills: [SiExpo, SiTailwindcss, SiSupabase],
-  },
-  {
-    title: "SnapWalls",
-    description:
-      "A sleek wallpaper discovery and download mobile app designed with Expo and powered by Supabase. Offers a minimal UI for browsing high-quality wallpapers with fast load times.",
-    images: [
-      `${BASE}/v1744001926/projects/Screenshot_20250407-101847_btiz1l.png`,
-      `${BASE}/v1744001927/projects/Screenshot_20250407-101957_fhmtoa.png`,
-      `${BASE}/v1744001926/projects/Screenshot_20250407-102002_crh58f.png`,
-      `${BASE}/v1744001925/projects/Screenshot_20250407-101952_sp51vc.png`,
-      `${BASE}/v1744001925/projects/Screenshot_20250407-101926_r83h4g.png`,
+    category: "Web Application",
+    liveUrl: "https://ani-play-nine.vercel.app/",
+    githubUrl: "https://github.com/sagar-yenkure/AniPlay",
+    skills: [
+      SiNextdotjs,
+      SiReact,
+      SiTypescript,
+      SiSwr,
+      SiTailwindcss,
+      SiShadcnui,
+      SiFramer,
+      SiVercel,
     ],
-    category: "Mobile Application",
-    liveUrl: "",
-    githubUrl: "https://github.com/sagar-yenkure/expo_meTube",
-    skills: [SiExpo, SiTailwindcss, SiSupabase],
   },
 ];
