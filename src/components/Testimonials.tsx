@@ -19,7 +19,7 @@ const Testimonials = () => {
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
 
   return (
-    <section ref={containerRef} className="py-8 px-8 overflow-hidden">
+    <section ref={containerRef} className="py-8 md:px-8 px-4 overflow-hidden">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

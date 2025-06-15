@@ -52,7 +52,7 @@ const Projects = () => {
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
       id="projects"
-      className="relative py-8 px-8"
+      className="relative py-8 px-4 md:px-8"
     >
       <motion.div
         initial={{ opacity: 0, y: 20 }}

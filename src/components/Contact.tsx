@@ -91,7 +91,7 @@ export default function Contact() {
       id="contact"
       className="flex items-center justify-center bg-gradient-to-b from-background to-background/80"
     >
-      <div className="w-full py-24 px-8 mx-auto">
+      <div className="w-full py-24 px-4 md:px-8 mx-auto">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

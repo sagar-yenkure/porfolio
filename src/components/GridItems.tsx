@@ -63,7 +63,7 @@ const SkeletonFour = () => {
   }, [animate]);
 
   return (
-    <section className="relative max-w-9xl px-8 py-8 rounded-2xl">
+    <section className="relative max-w-9xl px-4 md:px-8 py-8 rounded-2xl">
       <HighlightGroup className="group h-full">
         <div
           className="group/item h-full md:col-span-6 lg:col-span-12"
