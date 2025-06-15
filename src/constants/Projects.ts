@@ -11,10 +11,9 @@ import {
   SiPrisma,
   SiMongodb,
   SiRedis,
-  SiExpo,
   SiOpenai,
-  SiSwr,
   SiFramer,
+  SiSwr,
 } from "react-icons/si";
 import { SiAuth0 } from "react-icons/si";
 import { SiShadcnui } from "react-icons/si";
