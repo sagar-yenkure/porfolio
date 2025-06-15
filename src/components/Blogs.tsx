@@ -14,7 +14,7 @@ const BlogsSection = () => {
   if (!blogs) return <ServerErrorPage />;
 
   return (
-    <section className="w-full bg-background py-8 px-8">
+    <section className="w-full bg-background py-8 px-4 md:px-8">
       <div className="">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

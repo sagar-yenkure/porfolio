@@ -34,7 +34,7 @@ const SkillCard = ({
 
 const SkillsSection: React.FC = () => {
   return (
-    <section className="relative overflow-hidden py-8 px-8">
+    <section className="relative overflow-hidden py-8 md:px-8 px-4">
       <div className="">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

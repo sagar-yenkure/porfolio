@@ -9,7 +9,7 @@ const Work = () => {
   const { months, years } = useCalculateExperience(2, 2024);
 
   return (
-    <section className="min-h-screen py-8 px-8 ">
+    <section className="min-h-screen py-8 px-4 md:px-8 ">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
