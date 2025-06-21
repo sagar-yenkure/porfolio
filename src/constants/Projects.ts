@@ -14,6 +14,7 @@ import {
   SiOpenai,
   SiFramer,
   SiSwr,
+  SiResend,
 } from "react-icons/si";
 import { SiAuth0 } from "react-icons/si";
 import { SiShadcnui } from "react-icons/si";
@@ -135,4 +136,28 @@ export const projectsList: Project[] = [
       SiVercel,
     ],
   },
+  {
+    title: "New Sagar Tailors - Website",
+    description:
+      "New Sagar Tailors is a modern and responsive business website designed for a professional tailoring service. Built with the latest frontend technologies, it ensures fast performance, intuitive navigation, and elegant design. The site showcases services, customer testimonials, and a contact form, offering a complete digital experience for clients.",
+    images: [
+      `${BASE}/v1750491959/projects/Screenshot_2025-06-21_131216_b64r06.png`,
+      `${BASE}/v1750491978/projects/Screenshot_2025-06-21_131247_uchiso.png`,
+      `${BASE}/v1750491975/projects/Screenshot_2025-06-21_131330_q11qw0.png`,
+      `${BASE}/v1750491970/projects/Screenshot_2025-06-21_131519_qacppt.png`,
+    ],
+    category: "Web Application",
+    liveUrl: "https://newsagartailors.vercel.app/",
+    githubUrl: "https://github.com/sagar-yenkure/sagartailors",
+    skills: [
+      SiNextdotjs,
+      SiReact,
+      SiTypescript,
+      SiTailwindcss,
+      SiShadcnui,
+      SiFramer,
+      SiVercel,
+      SiResend
+    ],
+  }
 ];
