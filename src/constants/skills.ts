@@ -5,7 +5,6 @@ import {
   SiRedux,
   SiNextdotjs,
   SiTailwindcss,
-  SiFirebase,
   SiReactquery,
   SiMongodb,
   SiPostman,
@@ -16,29 +15,22 @@ import {
   SiGraphql,
   SiPostgresql,
   SiExpo,
-  SiBootstrap,
   SiRedis,
   SiTrpc,
   SiHtml5,
   SiCss3,
-  SiJira,
   SiGit,
   SiGithub,
   SiDocker,
   SiShadcnui,
   SiSocketdotio,
   SiVercel,
-  SiLangchain,
   SiFramer,
-  SiAntdesign,
-  SiMaterialdesign,
   SiRender,
-  SiSupabase,
   SiCypress,
-  SiRazorpay,
 } from "react-icons/si";
 
-import { FaAmazon, FaJava } from "react-icons/fa";
+import { FaAmazon } from "react-icons/fa";
 import { IconBrandSuperhuman, IconBrandVscode } from "@tabler/icons-react";
 import { Shield } from "lucide-react";
 
