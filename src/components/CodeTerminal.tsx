@@ -26,9 +26,8 @@ Ready to collaborate on exciting projects!`,
   },
   {
     command: "./show_experience.sh",
-    output: `> 1+ years of professional experience
+    output: `> 2 years of professional experience
 > Delivered 7+ high-performing websites,
-> Mentored 5+ interns
 > Always learning and exploring new technologies`,
   },
 ];
