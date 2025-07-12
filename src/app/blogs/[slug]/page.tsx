@@ -25,7 +25,7 @@ export async function generateMetadata({
   return {
     title: article?.title,
     description,
-    keywords: article.tags,
+    keywords: article.keyword,
     publisher: "Sagar Yenkure",
     creator: "Sagar Yenkure",
 

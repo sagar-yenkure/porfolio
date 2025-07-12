@@ -92,7 +92,7 @@ const BlogCard = ({ post, index = 0 }: BlogCardProps) => {
         </motion.div>
 
         {/* Content Section */}
-        <CardContent className="flex-1 flex flex-col p-5">
+        <CardContent className="flex-1 flex flex-col p-2">
           {/* Meta Info */}
           <motion.div
             variants={itemVariants}
@@ -148,7 +148,7 @@ const BlogCard = ({ post, index = 0 }: BlogCardProps) => {
         </CardContent>
 
         {/* Footer with Button */}
-        <CardFooter className="px-5 py-2 border-t border-border/40">
+        <CardFooter className="px-5 border-t border-border/40">
           <motion.div variants={itemVariants} className="w-full">
             <Link
               aria-label={`Read about ${post.title}`}
