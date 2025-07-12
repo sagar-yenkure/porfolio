@@ -1,3 +1,4 @@
+import Updates from "@/updates";
 import getting_started_with_redis from "./getting-started-with-redis";
 import getting_started_with_arcjet from "./getting_started_with_arcjet";
 import how_to_initialize_shadcn_in_react from "./how-to-initilize-shadcn-in-react";
@@ -11,6 +12,7 @@ import how_to_use_prisma_with_nodejs from "./how_to_use_prisma_with_nodejs";
 import how_to_use_react_query_in_nextjs from "./how_to_use_react_query_in_nextjs";
 import how_to_use_zod_in_typescript from "./how_to_use_zod_in_typescript";
 import how_to_use_zustand_with_typescript from "./how_to_use_zustand_with_typescript";
+import setup_databases_with_docker_gui from "./setup_databases_with_docker_gui";
 import trpc_nextjs_from_zero_to_fullstack_hero from "./trpc-nextjs-from-zero-to-fullstack-hero";
 
 export interface Article {
@@ -31,14 +33,18 @@ export interface Article {
 
 export const categories = [
   { name: "All", value: "all" },
-  { name: "Next.js", value: "nextjs" },
-  { name: "Backend", value: "backend" },
+  { name: "Updates", value: "Updates" },
+  { name: "Next.js", value: "Next.js" },
+  { name: "Backend", value: "Backend" },
   { name: "Database", value: "database" },
-  { name: "Authentication & Security", value: "auth-security" },
-  { name: "State Management", value: "state-management" },
+  { name: "Authentication & Security", value: "Authentication & Security" },
+  { name: "State Management", value: "State Management" },
 ];
 
-const ContentList = [
+
+
+// this is all the tutorial and tech stuff
+const ContentList: Article[] = [
   {
     id: 1,
     title: "How to Initialize a React Project Using Vite and shadcn/ui",
@@ -49,7 +55,7 @@ const ContentList = [
     author: "Sagar Yenkure",
     published: "2025-06-30",
     image: "/shadcn_nextjs.png",
-    tags: ["React", "Vite", "shadcn/ui"],
+    tags: ["React", "Vite", "shadcn/ui", "Next.js"],
     content: how_to_initialize_shadcn_in_react,
     views: 427,
     readTime: 10,
@@ -65,7 +71,7 @@ const ContentList = [
     author: "Sagar Yenkure",
     published: "2025-06-20",
     image: "/redux_nextjs.webp",
-    tags: ["Next.js", "Redux", "TypeScript", "Tutorial"],
+    tags: ["Next.js", "Redux", "TypeScript", "State Management"],
     content: how_to_use_redux_in_nextjs_with_typescript,
     views: 467,
     readTime: 10,
@@ -81,7 +87,7 @@ const ContentList = [
     author: "Sagar Yenkure",
     published: "2025-07-10",
     image: "/zod_typescript.png",
-    tags: ["Zod", "TypeScript", "Validation", "Schema"],
+    tags: ["Zod", "TypeScript", "Validation", "Backend", "Authentication & Security"],
     content: how_to_use_zod_in_typescript,
     views: 579,
     readTime: 8,
@@ -129,7 +135,7 @@ const ContentList = [
     author: "Sagar Yenkure",
     published: "2025-07-15",
     image: "/arcjet_nextjs.png",
-    tags: ["Arcjet", "Rate Limiting", "Next.js", "API Security"],
+    tags: ["Backend", "Rate Limiting", "Next.js", "Authentication & Security"],
     content: getting_started_with_arcjet,
     views: 559,
     readTime: 7,
@@ -145,7 +151,7 @@ const ContentList = [
     author: "Sagar Yenkure",
     published: "2025-07-18",
     image: "/prisma.png",
-    tags: ["Prisma", "Node.js", "ORM", "PostgreSQL", "Database"],
+    tags: ["Prisma", "Node.js", "ORM", "PostgreSQL", "Database", "Backend"],
     content: how_to_use_prisma_with_nodejs,
     views: 485,
     readTime: 10,
@@ -209,7 +215,7 @@ const ContentList = [
     author: "Sagar Yenkure",
     published: "2025-08-05",
     image: "/nodemailer.jpg",
-    tags: ["Node.js", "Next.js", "Email", "SMTP", "Resend", "Nodemailer"],
+    tags: ["Node.js", "Next.js", "Email", "SMTP", "Backend", "Nodemailer"],
     content: how_to_send_emails_in_nodejs,
     views: 472,
     readTime: 7,
@@ -262,7 +268,25 @@ const ContentList = [
     views: 522,
     readTime: 8,
     keyword: "graphql nodejs tutorial, how to use graphql with express, nodejs graphql api, express-graphql example, graphql schema and resolvers, graphql api in nodejs, graphql express typescript"
-  }
+  },
+  {
+    id: 15,
+    title: "Run PostgreSQL and MongoDB Locally with Docker and GUI Access",
+    summary:
+      "Learn how to run PostgreSQL and MongoDB in your local development environment using Docker, with GUI access via pgAdmin and Mongo Express.",
+    label: "DevOps",
+    slug: "docker-postgresql-mongodb-with-gui",
+    author: "Sagar Yenkure",
+    published: "2025-08-20",
+    image: "/db_docker.png",
+    tags: ["database", "PostgreSQL", "MongoDB", "pgAdmin", "Mongo Express", "DevOps"],
+    content: setup_databases_with_docker_gui,
+    views: 433,
+    readTime: 9,
+    keyword: "docker postgresql setup, run mongodb with docker, docker-compose for databases, pgadmin docker tutorial, mongo express gui"
+  },
+
+  ...Updates
 ];
 
 

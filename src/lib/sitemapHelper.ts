@@ -1,6 +1,7 @@
 import info from "@/constants/info";
 import { MetadataRoute } from "next";
 import ContentList from "@/content";
+import Updates from "@/updates";
 
 export const getAllBlogsFetch = () => ContentList;
 
