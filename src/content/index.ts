@@ -1,9 +1,9 @@
 import getting_started_with_redis from "./getting-started-with-redis";
 import getting_started_with_arcjet from "./getting_started_with_arcjet";
 import how_to_initialize_shadcn_in_react from "./how-to-initilize-shadcn-in-react";
-import how_to_use_bun_with_hono from "./how-to-use-bun-with-hono";
 import how_to_use_redux_in_nextjs_with_typescript from "./how-to-use-redux-in-nextjs-with-typescript";
 import how_to_send_emails_in_nodejs from "./how_to_send_emails_in_nodejs";
+import how_to_use_authjs_with_nextjs from "./how_to_use_authjs_with_nextjs";
 import how_to_use_mongoose_with_nodejs from "./how_to_use_mongoose_with_nodejs";
 import how_to_use_prisma_with_nodejs from "./how_to_use_prisma_with_nodejs";
 import how_to_use_react_query_in_nextjs from "./how_to_use_react_query_in_nextjs";
@@ -235,6 +235,25 @@ const ContentList = [
     views: 472,
     readTime: 7,
     keyword: "send email in nodejs, send email in nextjs, gmail smtp nodemailer, resend api nextjs, email integration nodejs, how to use resend email api",
+  },
+
+  // How to Use Auth.js in Next.js
+  {
+    id: "13",
+    title: "How to Use Auth.js in Next.js",
+    summary:
+      "Learn how to implement secure authentication in your Next.js app using Auth.js (NextAuth) with both email/password credentials and Google OAuth provider.",
+    label: "Authentication",
+    slug: "how-to-use-authjs-with-nextjs",
+    author: "Sagar Yenkure",
+    published: "2025-08-08",
+    image: "/nextauth.png",
+    tags: ["Next.js", "Auth.js", "Authentication", "OAuth", "JWT"],
+    content: how_to_use_authjs_with_nextjs,
+    views: 587,
+    readTime: 9,
+    keyword: "google auth nextjs, authjs with jwt session, how to use next-auth with email and google, custom login with next-auth, secure login nextjs authjs, nextjs auth with credentials and google"
+
   }
 
 ];
