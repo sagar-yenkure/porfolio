@@ -3,6 +3,7 @@ import getting_started_with_arcjet from "./getting_started_with_arcjet";
 import how_to_initialize_shadcn_in_react from "./how-to-initilize-shadcn-in-react";
 import how_to_use_bun_with_hono from "./how-to-use-bun-with-hono";
 import how_to_use_redux_in_nextjs_with_typescript from "./how-to-use-redux-in-nextjs-with-typescript";
+import how_to_use_prisma_with_nodejs from "./how_to_use_prisma_with_nodejs";
 import how_to_use_zod_in_typescript from "./how_to_use_zod_in_typescript";
 import trpc_nextjs_from_zero_to_fullstack_hero from "./trpc-nextjs-from-zero-to-fullstack-hero";
 
@@ -42,31 +43,13 @@ const ContentList = [
     label: "Fullstack",
     slug: "trpc-nextjs-from-zero-to-fullstack-hero",
     author: "Sagar Yenkure",
-    published: "2025-04-12",
+    published: "2025-06-12",
     image: "/trpc.jpg",
     tags: ["tRPC", "Next.js", "TypeScript", "Tutorial"],
     content: trpc_nextjs_from_zero_to_fullstack_hero,
-    views: 1373,
+    views: 576,
     readTime: 10,
     keyword: "trpc nextjs tutorial, typesafe api nextjs, fullstack typescript, trpc react query zod"
-  },
-
-  // How to Use Bun with Hono
-  {
-    id: "3",
-    title: "How to Use Bun with Hono - A Lightweight Web Framework",
-    summary:
-      "Discover how to build high-performance web APIs using Bun and Hono — a lightweight, ultra-fast web framework for modern JavaScript runtimes.",
-    label: "Backend",
-    slug: "how-to-use-bun-with-hono",
-    author: "Sagar Yenkure",
-    published: "2025-03-28",
-    image: "/hono.webp",
-    tags: ["Bun", "Hono", "API", "JavaScript", "Tutorial"],
-    content: how_to_use_bun_with_hono,
-    views: 1843,
-    readTime: 10,
-    keyword: "bun js tutorial, hono framework example, bun hono api, fast js backend"
   },
 
   // How to use Redux in Next.js with TypeScript
@@ -78,11 +61,11 @@ const ContentList = [
     label: "Tutorial",
     slug: "how-to-use-redux-in-nextjs-with-typescript",
     author: "Sagar Yenkure",
-    published: "2025-03-13",
+    published: "2025-06-20",
     image: "/redux_nextjs.webp",
     tags: ["Next.js", "Redux", "TypeScript", "Tutorial"],
     content: how_to_use_redux_in_nextjs_with_typescript,
-    views: 1473,
+    views: 467,
     readTime: 10,
     keyword: "redux with nextjs, redux typescript guide, nextjs state management, redux toolkit nextjs"
   },
@@ -96,11 +79,11 @@ const ContentList = [
     label: "Tutorial",
     slug: "initialize-react-vite-shadcn",
     author: "Sagar Yenkure",
-    published: "2025-02-26",
+    published: "2025-06-30",
     image: "/shadcn_nextjs.png",
     tags: ["React", "Vite", "shadcn/ui"],
     content: how_to_initialize_shadcn_in_react,
-    views: 1297,
+    views: 427,
     readTime: 10,
     keyword: "vite react setup, shadcn ui tutorial, react vite shadcn, initialize react with vite"
   },
@@ -114,7 +97,7 @@ const ContentList = [
     label: "Database",
     slug: "getting-started-with-redis",
     author: "Sagar Yenkure",
-    published: "2025-07-12",
+    published: "2025-07-05",
     image: "/redis_nextjs.png",
     tags: ["Redis", "Database", "Caching", "Performance", "Tutorial"],
     content: getting_started_with_redis,
@@ -132,11 +115,11 @@ const ContentList = [
     label: "Validation",
     slug: "how-to-use-zod-in-typescript",
     author: "Sagar Yenkure",
-    published: "2025-07-18",
+    published: "2025-07-10",
     image: "/zod_typescript.png",
     tags: ["Zod", "TypeScript", "Validation", "Schema"],
     content: how_to_use_zod_in_typescript,
-    views: 0,
+    views: 579,
     readTime: 8,
     keyword: "typescript form validation with zod, how to validate data using zod, type-safe API validation, zod infer typescript, form validation react zod, zod validation tutorial",
   },
@@ -150,15 +133,33 @@ const ContentList = [
     label: "Security",
     slug: "getting-started-with-arcjet",
     author: "Sagar Yenkure",
-    published: "2025-07-25",
+    published: "2025-07-15",
     image: "/arcjet_nextjs.png",
     tags: ["Arcjet", "Rate Limiting", "Next.js", "API Security"],
     content: getting_started_with_arcjet,
-    views: 0,
+    views: 559,
     readTime: 7,
     keyword: "arcjet nextjs integration, api rate limiting nextjs, arcjet bot protection, arcjet edge middleware, arcjet setup tutorial"
-  }
+  },
 
+  // How to Use Prisma with Node.js for Database Access
+  {
+    id: "7",
+    title: "How to Use Prisma with Node.js for Database Access",
+    summary:
+      "A complete guide on setting up and using Prisma ORM in a Node.js project. Learn how to define schemas, run migrations, and perform type-safe queries.",
+    label: "Backend",
+    slug: "how-to-use-prisma-with-nodejs",
+    author: "Sagar Yenkure",
+    published: "2025-07-18",
+    image: "/prisma.png",
+    tags: ["Prisma", "Node.js", "ORM", "PostgreSQL", "Database"],
+    content: how_to_use_prisma_with_nodejs,
+    views: 485,
+    readTime: 10,
+    keyword:
+      "prisma nodejs tutorial, nodejs orm guide, prisma typescript example, how to setup prisma, database orm nodejs, prisma migration schema"
+  }
 
 ];
 
