@@ -3,6 +3,7 @@ import getting_started_with_arcjet from "./getting_started_with_arcjet";
 import how_to_initialize_shadcn_in_react from "./how-to-initilize-shadcn-in-react";
 import how_to_use_bun_with_hono from "./how-to-use-bun-with-hono";
 import how_to_use_redux_in_nextjs_with_typescript from "./how-to-use-redux-in-nextjs-with-typescript";
+import how_to_use_mongoose_with_nodejs from "./how_to_use_mongoose_with_nodejs";
 import how_to_use_prisma_with_nodejs from "./how_to_use_prisma_with_nodejs";
 import how_to_use_react_query_in_nextjs from "./how_to_use_react_query_in_nextjs";
 import how_to_use_zod_in_typescript from "./how_to_use_zod_in_typescript";
@@ -178,6 +179,23 @@ const ContentList = [
     views: 387,
     readTime: 9,
     keyword: "react query nextjs tutorial, axios react query setup, nextjs api hooks, react query folder structure, fetch data nextjs react query"
+  },
+
+  // How to Use Mongoose with Node.js and Express
+  {
+    id: "10",
+    title: "How to Use Mongoose with Node.js and Express",
+    summary: "Learn how to connect to MongoDB and build full CRUD APIs using Mongoose in a Node.js + Express setup.",
+    label: "Database",
+    slug: "how-to-use-mongoose-with-nodejs",
+    author: "Sagar Yenkure",
+    published: "2025-07-12",
+    image: "/mongoose.png",
+    tags: ["MongoDB", "Mongoose", "Node.js", "Express"],
+    content: how_to_use_mongoose_with_nodejs,
+    views: 625,
+    readTime: 8,
+    keyword: "mongoose nodejs tutorial, express mongodb api, mongoose schema validation, mongodb express crud, how to use mongoose"
   }
 
 ];
