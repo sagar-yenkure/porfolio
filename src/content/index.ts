@@ -1,7 +1,9 @@
 import getting_started_with_redis from "./getting-started-with-redis";
+import getting_started_with_arcjet from "./getting_started_with_arcjet";
 import how_to_initialize_shadcn_in_react from "./how-to-initilize-shadcn-in-react";
 import how_to_use_bun_with_hono from "./how-to-use-bun-with-hono";
 import how_to_use_redux_in_nextjs_with_typescript from "./how-to-use-redux-in-nextjs-with-typescript";
+import how_to_use_zod_in_typescript from "./how_to_use_zod_in_typescript";
 import trpc_nextjs_from_zero_to_fullstack_hero from "./trpc-nextjs-from-zero-to-fullstack-hero";
 
 export interface Article {
@@ -103,7 +105,7 @@ const ContentList = [
     keyword: "vite react setup, shadcn ui tutorial, react vite shadcn, initialize react with vite"
   },
 
-  // how to use redis 
+  // Getting Started with Redis
   {
     id: "5",
     title: "Getting Started with Redis: A Guide to Fast In-Memory Data Storage",
@@ -119,7 +121,44 @@ const ContentList = [
     views: 323,
     readTime: 9,
     keyword: "redis tutorial, what is redis, redis for beginners, redis caching guide, redis key value store, in-memory database tutorial"
+  },
+
+  // How to Use Zod in TypeScript Projects for Validation and Safety
+  {
+    id: "6",
+    title: "How to Use Zod in TypeScript Projects for Validation and Safety",
+    summary:
+      "Learn how to use Zod, a TypeScript-first schema validation library, to validate and type-check your data in both frontend and backend applications.",
+    label: "Validation",
+    slug: "how-to-use-zod-in-typescript",
+    author: "Sagar Yenkure",
+    published: "2025-07-18",
+    image: "/zod_typescript.png",
+    tags: ["Zod", "TypeScript", "Validation", "Schema"],
+    content: how_to_use_zod_in_typescript,
+    views: 0,
+    readTime: 8,
+    keyword: "typescript form validation with zod, how to validate data using zod, type-safe API validation, zod infer typescript, form validation react zod, zod validation tutorial",
+  },
+
+  // Getting Started with Arcjet for Rate Limiting and Protection in Next.js
+  {
+    id: "7",
+    title: "Getting Started with Arcjet for Rate Limiting and Protection in Next.js",
+    summary:
+      "integrate Arcjet into your Next.js app to enable secure, features like rate limiting, bot protection, and spam prevention with minimal code.",
+    label: "Security",
+    slug: "getting-started-with-arcjet",
+    author: "Sagar Yenkure",
+    published: "2025-07-25",
+    image: "/arcjet_nextjs.png",
+    tags: ["Arcjet", "Rate Limiting", "Next.js", "API Security"],
+    content: getting_started_with_arcjet,
+    views: 0,
+    readTime: 7,
+    keyword: "arcjet nextjs integration, api rate limiting nextjs, arcjet bot protection, arcjet edge middleware, arcjet setup tutorial"
   }
+
 
 ];
 

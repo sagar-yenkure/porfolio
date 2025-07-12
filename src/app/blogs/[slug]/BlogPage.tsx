@@ -37,6 +37,7 @@ const BlogPage = ({ slug }: BlogPageProps) => {
             <Image
               src={article.image}
               alt={article.title}
+              aria-label={article.title}
               width={800}
               height={400}
               priority
