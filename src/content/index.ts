@@ -7,6 +7,7 @@ import how_to_use_mongoose_with_nodejs from "./how_to_use_mongoose_with_nodejs";
 import how_to_use_prisma_with_nodejs from "./how_to_use_prisma_with_nodejs";
 import how_to_use_react_query_in_nextjs from "./how_to_use_react_query_in_nextjs";
 import how_to_use_zod_in_typescript from "./how_to_use_zod_in_typescript";
+import how_to_use_zustand_with_typescript from "./how_to_use_zustand_with_typescript";
 import trpc_nextjs_from_zero_to_fullstack_hero from "./trpc-nextjs-from-zero-to-fullstack-hero";
 
 export interface Article {
@@ -189,13 +190,31 @@ const ContentList = [
     label: "Database",
     slug: "how-to-use-mongoose-with-nodejs",
     author: "Sagar Yenkure",
-    published: "2025-07-12",
+    published: "2025-07-25",
     image: "/mongoose.png",
     tags: ["MongoDB", "Mongoose", "Node.js", "Express"],
     content: how_to_use_mongoose_with_nodejs,
     views: 625,
     readTime: 8,
     keyword: "mongoose nodejs tutorial, express mongodb api, mongoose schema validation, mongodb express crud, how to use mongoose"
+  },
+
+  {
+    id: "11",
+    title: "Using Zustand with TypeScript in Next.js for Global State",
+    summary:
+      "Learn how to manage global state in Next.js apps using Zustand and TypeScript. Covers typed stores, folder structure, async actions, and persistence.",
+    label: "State Management",
+    slug: "zustand-typescript-nextjs",
+    author: "Sagar Yenkure",
+    published: "2025-08-02",
+    image: "/zustand.jpg",
+    tags: ["Zustand", "Next.js", "TypeScript", "State Management"],
+    content: how_to_use_zustand_with_typescript,
+    views: 0,
+    readTime: 7,
+    keyword:
+      "zustand with typescript nextjs, zustand global state react, typescript zustand store, zustand async fetch, zustand persist middleware"
   }
 
 ];
