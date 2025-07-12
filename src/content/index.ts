@@ -32,11 +32,10 @@ export interface Article {
 export const categories = [
   { name: "All", value: "all" },
   { name: "Next.js", value: "nextjs" },
-  { name: "React", value: "react" },
-  { name: "TypeScript", value: "typescript" },
-  { name: "JavaScript", value: "javascript" },
-  { name: "Fullstack", value: "fullstack" },
-  { name: "Tutorial", value: "tutorial" },
+  { name: "Backend", value: "backend" },
+  { name: "Database", value: "database" },
+  { name: "Authentication & Security", value: "auth-security" },
+  { name: "State Management", value: "state-management" },
 ];
 
 const ContentList = [
