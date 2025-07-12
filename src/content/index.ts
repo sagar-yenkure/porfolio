@@ -4,6 +4,7 @@ import how_to_initialize_shadcn_in_react from "./how-to-initilize-shadcn-in-reac
 import how_to_use_bun_with_hono from "./how-to-use-bun-with-hono";
 import how_to_use_redux_in_nextjs_with_typescript from "./how-to-use-redux-in-nextjs-with-typescript";
 import how_to_use_prisma_with_nodejs from "./how_to_use_prisma_with_nodejs";
+import how_to_use_react_query_in_nextjs from "./how_to_use_react_query_in_nextjs";
 import how_to_use_zod_in_typescript from "./how_to_use_zod_in_typescript";
 import trpc_nextjs_from_zero_to_fullstack_hero from "./trpc-nextjs-from-zero-to-fullstack-hero";
 
@@ -144,7 +145,7 @@ const ContentList = [
 
   // How to Use Prisma with Node.js for Database Access
   {
-    id: "7",
+    id: "8",
     title: "How to Use Prisma with Node.js for Database Access",
     summary:
       "A complete guide on setting up and using Prisma ORM in a Node.js project. Learn how to define schemas, run migrations, and perform type-safe queries.",
@@ -159,6 +160,24 @@ const ContentList = [
     readTime: 10,
     keyword:
       "prisma nodejs tutorial, nodejs orm guide, prisma typescript example, how to setup prisma, database orm nodejs, prisma migration schema"
+  },
+
+  // How to Use React Query in Next.js with Axios & Type Safety
+  {
+    id: "9",
+    title: "How to Use React Query in Next.js with Axios & Type Safety",
+    summary:
+      "A practical guide to using React Query in Next.js apps with a clean structure. Learn how to manage API calls using Axios.",
+    label: "React Query",
+    slug: "how-to-use-react-query-in-nextjs",
+    author: "Sagar Yenkure",
+    published: "2025-07-20",
+    image: "/reactQuery.jpg",
+    tags: ["React Query", "Next.js", "Axios", "TypeScript",],
+    content: how_to_use_react_query_in_nextjs,
+    views: 387,
+    readTime: 9,
+    keyword: "react query nextjs tutorial, axios react query setup, nextjs api hooks, react query folder structure, fetch data nextjs react query"
   }
 
 ];
