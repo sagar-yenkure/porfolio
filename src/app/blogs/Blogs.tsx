@@ -73,7 +73,7 @@ const BlogsSection = () => {
     : undefined;
 
   return (
-    <section className="w-full bg-background pt-26 px-8">
+    <section className="w-full bg-background md:pt-26 pt-12 md:px-8 px-4">
       <div className="">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
