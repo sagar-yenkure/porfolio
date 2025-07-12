@@ -53,6 +53,7 @@ const BlogsSection = () => {
       })
       .map((blog) => ({
         ...blog,
+        id: blog.id,
         readTime: blog.readTime ?? 0,
         views: blog.views ?? 0,
       }));
@@ -62,7 +63,14 @@ const BlogsSection = () => {
 
   if (!blogs) return <ServerErrorPage />;
 
-  const featuredBlog = blogs[0];
+  const featuredBlog = blogs[blogs?.length - 1]
+    ? {
+      ...blogs[blogs?.length - 1],
+      id: blogs[blogs?.length - 1].id,
+      readTime: blogs[blogs?.length - 1].readTime ?? 0,
+      views: blogs[blogs?.length - 1].views ?? 0,
+    }
+    : undefined;
 
   return (
     <section className="w-full bg-background pt-26 px-8">
@@ -138,7 +146,7 @@ const BlogsSection = () => {
             ) : (
               <div className="col-span-full text-center py-12">
                 <p className="text-lg text-muted-foreground">
-                  No articles found matching your criteria.
+                  No blog found matching your criteria.
                 </p>
               </div>
             )}
