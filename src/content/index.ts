@@ -3,6 +3,7 @@ import getting_started_with_arcjet from "./getting_started_with_arcjet";
 import how_to_initialize_shadcn_in_react from "./how-to-initilize-shadcn-in-react";
 import how_to_use_redux_in_nextjs_with_typescript from "./how-to-use-redux-in-nextjs-with-typescript";
 import how_to_send_emails_in_nodejs from "./how_to_send_emails_in_nodejs";
+import how_to_upload_images_to_s3 from "./how_to_upload_images_to_s3";
 import how_to_use_authjs_with_nextjs from "./how_to_use_authjs_with_nextjs";
 import how_to_use_mongoose_with_nodejs from "./how_to_use_mongoose_with_nodejs";
 import how_to_use_prisma_with_nodejs from "./how_to_use_prisma_with_nodejs";
@@ -254,7 +255,27 @@ const ContentList = [
     readTime: 9,
     keyword: "google auth nextjs, authjs with jwt session, how to use next-auth with email and google, custom login with next-auth, secure login nextjs authjs, nextjs auth with credentials and google"
 
+  },
+
+
+  // How to Upload Images to AWS S3 using Node.js and Multer
+  {
+    id: "14",
+    title: "Upload Images to AWS S3 using Node.js and Multer",
+    summary:
+      "Learn how to upload images to an Amazon S3 bucket using Node.js, Express, Multer, and the AWS SDK. This guide covers everything from setup to secure file handling.",
+    label: "Backend",
+    slug: "upload-images-to-s3-nodejs",
+    author: "Sagar Yenkure",
+    published: "2025-08-12",
+    image: "/s3.png",
+    tags: ["AWS S3", "Node.js", "Multer", "Express", "Backend"],
+    content: how_to_upload_images_to_s3,
+    views: 588,
+    readTime: 8,
+    keyword: "upload image to s3 nodejs, aws s3 file upload, express multer s3, s3 bucket image upload tutorial, nodejs aws sdk image upload, multer s3 integration, secure file upload to s3"
   }
+
 
 ];
 
