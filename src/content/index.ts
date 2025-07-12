@@ -3,6 +3,7 @@ import getting_started_with_arcjet from "./getting_started_with_arcjet";
 import how_to_initialize_shadcn_in_react from "./how-to-initilize-shadcn-in-react";
 import how_to_use_bun_with_hono from "./how-to-use-bun-with-hono";
 import how_to_use_redux_in_nextjs_with_typescript from "./how-to-use-redux-in-nextjs-with-typescript";
+import how_to_send_emails_in_nodejs from "./how_to_send_emails_in_nodejs";
 import how_to_use_mongoose_with_nodejs from "./how_to_use_mongoose_with_nodejs";
 import how_to_use_prisma_with_nodejs from "./how_to_use_prisma_with_nodejs";
 import how_to_use_react_query_in_nextjs from "./how_to_use_react_query_in_nextjs";
@@ -199,6 +200,7 @@ const ContentList = [
     keyword: "mongoose nodejs tutorial, express mongodb api, mongoose schema validation, mongodb express crud, how to use mongoose"
   },
 
+  // How to Use Zustand with TypeScript in Next.js for Global State
   {
     id: "11",
     title: "Using Zustand with TypeScript in Next.js for Global State",
@@ -211,10 +213,28 @@ const ContentList = [
     image: "/zustand.jpg",
     tags: ["Zustand", "Next.js", "TypeScript", "State Management"],
     content: how_to_use_zustand_with_typescript,
-    views: 0,
+    views: 634,
     readTime: 7,
     keyword:
       "zustand with typescript nextjs, zustand global state react, typescript zustand store, zustand async fetch, zustand persist middleware"
+  },
+
+  // How to Send Emails in Node.js / Next.js – Gmail SMTP & Resend Integration
+  {
+    id: "12",
+    title: "How to Send Emails in Node.js / Next.js – Gmail SMTP & Resend Integration",
+    summary:
+      "Learn how to send emails in Node.js or Next.js apps using two reliable methods — Gmail SMTP with Nodemailer and Resend API with a verified domain.",
+    label: "Mail",
+    slug: "how-to-send-emails-in-nodejs",
+    author: "Sagar Yenkure",
+    published: "2025-08-05",
+    image: "/nodemailer.jpg",
+    tags: ["Node.js", "Next.js", "Email", "SMTP", "Resend", "Nodemailer"],
+    content: how_to_send_emails_in_nodejs,
+    views: 472,
+    readTime: 7,
+    keyword: "send email in nodejs, send email in nextjs, gmail smtp nodemailer, resend api nextjs, email integration nodejs, how to use resend email api",
   }
 
 ];
