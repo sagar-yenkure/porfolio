@@ -1,7 +1,6 @@
 import Updates from "@/updates";
 import getting_started_with_redis from "./getting-started-with-redis";
 import getting_started_with_arcjet from "./getting_started_with_arcjet";
-import how_to_initialize_shadcn_in_react from "./how-to-initilize-shadcn-in-react";
 import how_to_use_redux_in_nextjs_with_typescript from "./how-to-use-redux-in-nextjs-with-typescript";
 import how_to_send_emails_in_nodejs from "./how_to_send_emails_in_nodejs";
 import how_to_upload_images_to_s3 from "./how_to_upload_images_to_s3";
@@ -14,6 +13,7 @@ import how_to_use_zod_in_typescript from "./how_to_use_zod_in_typescript";
 import how_to_use_zustand_with_typescript from "./how_to_use_zustand_with_typescript";
 import setup_databases_with_docker_gui from "./setup_databases_with_docker_gui";
 import trpc_nextjs_from_zero_to_fullstack_hero from "./trpc-nextjs-from-zero-to-fullstack-hero";
+import secure_server_actions_in_nextjs from "./secure_server_actions_in_nextjs";
 
 export interface Article {
   id: number;
@@ -45,22 +45,26 @@ export const categories = [
 
 // this is all the tutorial and tech stuff
 const ContentList: Article[] = [
+
+  // 📅 2025-07-21 –  Server Actions + next-safe-action
   {
     id: 1,
-    title: "How to Initialize a React Project Using Vite and shadcn/ui",
+    title: "Secure Server Actions in Next.js with next-safe-action",
     summary:
-      "A comprehensive guide to setting up a modern React project with Vite and shadcn/ui, including step-by-step instructions and best practices.",
-    label: "Tutorial",
-    slug: "initialize-react-vite-shadcn",
+      "Learn how to securely use Server Actions in Next.js using the next-safe-action library. Protect your backend logic while using the latest Next.js feature.",
+    label: "Security",
+    slug: "secure-server-actions-in-nextjs",
     author: "Sagar Yenkure",
-    published: "2025-06-30",
-    image: "/shadcn_nextjs.png",
-    tags: ["React", "Vite", "shadcn/ui", "Next.js"],
-    content: how_to_initialize_shadcn_in_react,
-    views: 427,
-    readTime: 10,
-    keyword: "vite react setup, shadcn ui tutorial, react vite shadcn, initialize react with vite"
+    published: "2025-07-21",
+    image: "/server_Actions.png",
+    tags: ["Next.js", "Server Actions", "Security", "TypeScript", "Backend"],
+    content: secure_server_actions_in_nextjs,
+    views: 392,
+    readTime: 7,
+    keyword: "nextjs server actions secure, next-safe-action example, how to use server actions securely, nextjs server actions with typescript"
   },
+
+  // 📅 2025-07-28 –  Redux (Intro State Management)
   {
     id: 2,
     title: "How to use Redux in Next.js with TypeScript",
@@ -69,7 +73,7 @@ const ContentList: Article[] = [
     label: "Tutorial",
     slug: "how-to-use-redux-in-nextjs-with-typescript",
     author: "Sagar Yenkure",
-    published: "2025-06-20",
+    published: "2025-07-28",
     image: "/redux_nextjs.webp",
     tags: ["Next.js", "Redux", "TypeScript", "State Management"],
     content: how_to_use_redux_in_nextjs_with_typescript,
@@ -77,6 +81,8 @@ const ContentList: Article[] = [
     readTime: 10,
     keyword: "redux with nextjs, redux typescript guide, nextjs state management, redux toolkit nextjs"
   },
+
+  // 📅 2025-08-04 –  Zod (Form & API Validation)
   {
     id: 3,
     title: "How to Use Zod in TypeScript Projects for Validation and Safety",
@@ -85,7 +91,7 @@ const ContentList: Article[] = [
     label: "Validation",
     slug: "how-to-use-zod-in-typescript",
     author: "Sagar Yenkure",
-    published: "2025-07-10",
+    published: "2025-08-04",
     image: "/zod_typescript.png",
     tags: ["Zod", "TypeScript", "Validation", "Backend", "Authentication & Security"],
     content: how_to_use_zod_in_typescript,
@@ -93,22 +99,8 @@ const ContentList: Article[] = [
     readTime: 8,
     keyword: "typescript form validation with zod, how to validate data using zod, type-safe API validation, zod infer typescript, form validation react zod, zod validation tutorial"
   },
-  {
-    id: 4,
-    title: "tRPC + Next.js: From Zero to Fullstack Hero",
-    summary:
-      "Go from zero to fullstack with tRPC and Next.js. Learn how to create typesafe APIs without REST or GraphQL using tRPC, Zod, and React Query.",
-    label: "Fullstack",
-    slug: "trpc-nextjs-from-zero-to-fullstack-hero",
-    author: "Sagar Yenkure",
-    published: "2025-06-12",
-    image: "/trpc.jpg",
-    tags: ["tRPC", "Next.js", "TypeScript", "Tutorial"],
-    content: trpc_nextjs_from_zero_to_fullstack_hero,
-    views: 576,
-    readTime: 10,
-    keyword: "trpc nextjs tutorial, typesafe api nextjs, fullstack typescript, trpc react query zod"
-  },
+
+  // 📅 2025-08-11 –  Redis (Data Caching Basics)
   {
     id: 5,
     title: "Getting Started with Redis: A Guide to Fast In-Memory Data Storage",
@@ -117,7 +109,7 @@ const ContentList: Article[] = [
     label: "Database",
     slug: "getting-started-with-redis",
     author: "Sagar Yenkure",
-    published: "2025-07-05",
+    published: "2025-08-11",
     image: "/redis_nextjs.png",
     tags: ["Redis", "Database", "Caching", "Performance", "Tutorial"],
     content: getting_started_with_redis,
@@ -125,54 +117,8 @@ const ContentList: Article[] = [
     readTime: 9,
     keyword: "redis tutorial, what is redis, redis for beginners, redis caching guide, redis key value store, in-memory database tutorial"
   },
-  {
-    id: 6,
-    title: "Getting Started with Arcjet for Rate Limiting and Protection in Next.js",
-    summary:
-      "integrate Arcjet into your Next.js app to enable secure, features like rate limiting, bot protection, and spam prevention with minimal code.",
-    label: "Security",
-    slug: "getting-started-with-arcjet",
-    author: "Sagar Yenkure",
-    published: "2025-07-15",
-    image: "/arcjet_nextjs.png",
-    tags: ["Backend", "Rate Limiting", "Next.js", "Authentication & Security"],
-    content: getting_started_with_arcjet,
-    views: 559,
-    readTime: 7,
-    keyword: "arcjet nextjs integration, api rate limiting nextjs, arcjet bot protection, arcjet edge middleware, arcjet setup tutorial"
-  },
-  {
-    id: 7,
-    title: "How to Use Prisma with Node.js for Database Access",
-    summary:
-      "A complete guide on setting up and using Prisma ORM in a Node.js project. Learn how to define schemas, run migrations, and perform type-safe queries.",
-    label: "Backend",
-    slug: "how-to-use-prisma-with-nodejs",
-    author: "Sagar Yenkure",
-    published: "2025-07-18",
-    image: "/prisma.png",
-    tags: ["Prisma", "Node.js", "ORM", "PostgreSQL", "Database", "Backend"],
-    content: how_to_use_prisma_with_nodejs,
-    views: 485,
-    readTime: 10,
-    keyword: "prisma nodejs tutorial, nodejs orm guide, prisma typescript example, how to setup prisma, database orm nodejs, prisma migration schema"
-  },
-  {
-    id: 8,
-    title: "How to Use React Query in Next.js with Axios & Type Safety",
-    summary:
-      "A practical guide to using React Query in Next.js apps with a clean structure. Learn how to manage API calls using Axios.",
-    label: "React Query",
-    slug: "how-to-use-react-query-in-nextjs",
-    author: "Sagar Yenkure",
-    published: "2025-07-20",
-    image: "/reactQuery.jpg",
-    tags: ["React Query", "Next.js", "Axios", "TypeScript"],
-    content: how_to_use_react_query_in_nextjs,
-    views: 387,
-    readTime: 9,
-    keyword: "react query nextjs tutorial, axios react query setup, nextjs api hooks, react query folder structure, fetch data nextjs react query"
-  },
+
+  // 📅 2025-08-18 –  Mongoose (MongoDB + Express)
   {
     id: 9,
     title: "How to Use Mongoose with Node.js and Express",
@@ -181,7 +127,7 @@ const ContentList: Article[] = [
     label: "Database",
     slug: "how-to-use-mongoose-with-nodejs",
     author: "Sagar Yenkure",
-    published: "2025-07-25",
+    published: "2025-08-18",
     image: "/mongoose.png",
     tags: ["MongoDB", "Mongoose", "Node.js", "Express"],
     content: how_to_use_mongoose_with_nodejs,
@@ -189,22 +135,26 @@ const ContentList: Article[] = [
     readTime: 8,
     keyword: "mongoose nodejs tutorial, express mongodb api, mongoose schema validation, mongodb express crud, how to use mongoose"
   },
+
+  // 📅 2025-08-25 –  Prisma ORM (Type-Safe SQL Access)
   {
-    id: 10,
-    title: "Using Zustand with TypeScript in Next.js for Global State",
+    id: 7,
+    title: "How to Use Prisma with Node.js for Database Access",
     summary:
-      "Learn how to manage global state in Next.js apps using Zustand and TypeScript. Covers typed stores, folder structure, async actions, and persistence.",
-    label: "State Management",
-    slug: "zustand-typescript-nextjs",
+      "A complete guide on setting up and using Prisma ORM in a Node.js project. Learn how to define schemas, run migrations, and perform type-safe queries.",
+    label: "Backend",
+    slug: "how-to-use-prisma-with-nodejs",
     author: "Sagar Yenkure",
-    published: "2025-08-02",
-    image: "/zustand.jpg",
-    tags: ["Zustand", "Next.js", "TypeScript", "State Management"],
-    content: how_to_use_zustand_with_typescript,
-    views: 634,
-    readTime: 7,
-    keyword: "zustand with typescript nextjs, zustand global state react, typescript zustand store, zustand async fetch, zustand persist middleware"
+    published: "2025-08-25",
+    image: "/prisma.png",
+    tags: ["Prisma", "Node.js", "ORM", "PostgreSQL", "Database", "Backend"],
+    content: how_to_use_prisma_with_nodejs,
+    views: 485,
+    readTime: 10,
+    keyword: "prisma nodejs tutorial, nodejs orm guide, prisma typescript example, how to setup prisma, database orm nodejs, prisma migration schema"
   },
+
+  // 📅 2025-09-01 –  Nodemailer + Resend (Email)
   {
     id: 11,
     title: "How to Send Emails in Node.js / Next.js – Gmail SMTP & Resend Integration",
@@ -213,7 +163,7 @@ const ContentList: Article[] = [
     label: "Mail",
     slug: "how-to-send-emails-in-nodejs",
     author: "Sagar Yenkure",
-    published: "2025-08-05",
+    published: "2025-09-01",
     image: "/nodemailer.jpg",
     tags: ["Node.js", "Next.js", "Email", "SMTP", "Backend", "Nodemailer"],
     content: how_to_send_emails_in_nodejs,
@@ -221,6 +171,8 @@ const ContentList: Article[] = [
     readTime: 7,
     keyword: "send email in nodejs, send email in nextjs, gmail smtp nodemailer, resend api nextjs, email integration nodejs, how to use resend email api"
   },
+
+  // 📅 2025-09-08 –  Auth.js (JWT, OAuth)
   {
     id: 12,
     title: "How to Use Auth.js in Next.js",
@@ -229,7 +181,7 @@ const ContentList: Article[] = [
     label: "Authentication",
     slug: "how-to-use-authjs-with-nextjs",
     author: "Sagar Yenkure",
-    published: "2025-08-08",
+    published: "2025-09-08",
     image: "/nextauth.png",
     tags: ["Next.js", "Auth.js", "Authentication", "OAuth", "JWT"],
     content: how_to_use_authjs_with_nextjs,
@@ -237,22 +189,26 @@ const ContentList: Article[] = [
     readTime: 9,
     keyword: "google auth nextjs, authjs with jwt session, how to use next-auth with email and google, custom login with next-auth, secure login nextjs authjs, nextjs auth with credentials and google"
   },
+
+  // 📅 2025-09-15 –  Arcjet (Security & Rate Limiting)
   {
-    id: 13,
-    title: "Upload Images to AWS S3 using Node.js and Multer",
+    id: 6,
+    title: "Getting Started with Arcjet for Rate Limiting and Protection in Next.js",
     summary:
-      "Learn how to upload images to an Amazon S3 bucket using Node.js, Express, Multer, and the AWS SDK. This guide covers everything from setup to secure file handling.",
-    label: "Backend",
-    slug: "upload-images-to-s3-nodejs",
+      "integrate Arcjet into your Next.js app to enable secure, features like rate limiting, bot protection, and spam prevention with minimal code.",
+    label: "Security",
+    slug: "getting-started-with-arcjet",
     author: "Sagar Yenkure",
-    published: "2025-08-12",
-    image: "/s3.png",
-    tags: ["AWS S3", "Node.js", "Multer", "Express", "Backend"],
-    content: how_to_upload_images_to_s3,
-    views: 588,
-    readTime: 8,
-    keyword: "upload image to s3 nodejs, aws s3 file upload, express multer s3, s3 bucket image upload tutorial, nodejs aws sdk image upload, multer s3 integration, secure file upload to s3"
+    published: "2025-09-15",
+    image: "/arcjet_nextjs.png",
+    tags: ["Backend", "Rate Limiting", "Next.js", "Authentication & Security"],
+    content: getting_started_with_arcjet,
+    views: 559,
+    readTime: 7,
+    keyword: "arcjet nextjs integration, api rate limiting nextjs, arcjet bot protection, arcjet edge middleware, arcjet setup tutorial"
   },
+
+  // 📅 2025-09-22 –  GraphQL (Custom APIs)
   {
     id: 14,
     title: "GraphQL with Node.js: Build a Type-Safe API with Express",
@@ -261,7 +217,7 @@ const ContentList: Article[] = [
     label: "Backend",
     slug: "graphql-with-nodejs-api-setup",
     author: "Sagar Yenkure",
-    published: "2025-08-15",
+    published: "2025-09-22",
     image: "/graphql.jpg",
     tags: ["GraphQL", "Node.js", "Express", "API"],
     content: how_to_use_graphql_with_nodejs,
@@ -269,6 +225,26 @@ const ContentList: Article[] = [
     readTime: 8,
     keyword: "graphql nodejs tutorial, how to use graphql with express, nodejs graphql api, express-graphql example, graphql schema and resolvers, graphql api in nodejs, graphql express typescript"
   },
+
+  // 📅 2025-09-29 –  AWS S3 (File Upload)
+  {
+    id: 13,
+    title: "Upload Images to AWS S3 using Node.js and Multer",
+    summary:
+      "Learn how to upload images to an Amazon S3 bucket using Node.js, Express, Multer, and the AWS SDK. This guide covers everything from setup to secure file handling.",
+    label: "Backend",
+    slug: "upload-images-to-s3-nodejs",
+    author: "Sagar Yenkure",
+    published: "2025-09-29",
+    image: "/s3.png",
+    tags: ["AWS S3", "Node.js", "Multer", "Express", "Backend"],
+    content: how_to_upload_images_to_s3,
+    views: 588,
+    readTime: 8,
+    keyword: "upload image to s3 nodejs, aws s3 file upload, express multer s3, s3 bucket image upload tutorial, nodejs aws sdk image upload, multer s3 integration, secure file upload to s3"
+  },
+
+  // 📅 2025-10-06 –  Docker for DB Setup
   {
     id: 15,
     title: "Run PostgreSQL and MongoDB Locally with Docker and GUI Access",
@@ -277,7 +253,7 @@ const ContentList: Article[] = [
     label: "DevOps",
     slug: "docker-postgresql-mongodb-with-gui",
     author: "Sagar Yenkure",
-    published: "2025-08-20",
+    published: "2025-10-06",
     image: "/db_docker.png",
     tags: ["database", "PostgreSQL", "MongoDB", "pgAdmin", "Mongo Express", "DevOps"],
     content: setup_databases_with_docker_gui,
@@ -286,9 +262,63 @@ const ContentList: Article[] = [
     keyword: "docker postgresql setup, run mongodb with docker, docker-compose for databases, pgadmin docker tutorial, mongo express gui"
   },
 
-  ...Updates
-];
+  // 📅 2025-10-13 –  React Query (Fetching APIs)
+  {
+    id: 8,
+    title: "How to Use React Query in Next.js with Axios & Type Safety",
+    summary:
+      "A practical guide to using React Query in Next.js apps with a clean structure. Learn how to manage API calls using Axios.",
+    label: "React Query",
+    slug: "how-to-use-react-query-in-nextjs",
+    author: "Sagar Yenkure",
+    published: "2025-10-13",
+    image: "/reactQuery.jpg",
+    tags: ["React Query", "Next.js", "Axios", "TypeScript"],
+    content: how_to_use_react_query_in_nextjs,
+    views: 387,
+    readTime: 9,
+    keyword: "react query nextjs tutorial, axios react query setup, nextjs api hooks, react query folder structure, fetch data nextjs react query"
+  },
 
+  // 📅 2025-10-20 –  Zustand (Advanced Global State)
+  {
+    id: 10,
+    title: "Using Zustand with TypeScript in Next.js for Global State",
+    summary:
+      "Learn how to manage global state in Next.js apps using Zustand and TypeScript. Covers typed stores, folder structure, async actions, and persistence.",
+    label: "State Management",
+    slug: "zustand-typescript-nextjs",
+    author: "Sagar Yenkure",
+    published: "2025-10-20",
+    image: "/zustand.jpg",
+    tags: ["Zustand", "Next.js", "TypeScript", "State Management"],
+    content: how_to_use_zustand_with_typescript,
+    views: 634,
+    readTime: 7,
+    keyword: "zustand with typescript nextjs, zustand global state react, typescript zustand store, zustand async fetch, zustand persist middleware"
+  },
+
+  // 📅 2025-10-27 –  tRPC (Advanced Fullstack Type Safety)
+  {
+    id: 4,
+    title: "tRPC + Next.js: From Zero to Fullstack Hero",
+    summary:
+      "Go from zero to fullstack with tRPC and Next.js. Learn how to create typesafe APIs without REST or GraphQL using tRPC, Zod, and React Query.",
+    label: "Fullstack",
+    slug: "trpc-nextjs-from-zero-to-fullstack-hero",
+    author: "Sagar Yenkure",
+    published: "2025-10-27",
+    image: "/trpc.jpg",
+    tags: ["tRPC", "Next.js", "TypeScript", "Tutorial"],
+    content: trpc_nextjs_from_zero_to_fullstack_hero,
+    views: 576,
+    readTime: 10,
+    keyword: "trpc nextjs tutorial, typesafe api nextjs, fullstack typescript, trpc react query zod"
+  },
+
+  ...Updates
+
+].filter((article) => new Date(article?.published) <= new Date());
 
 
 export default ContentList;

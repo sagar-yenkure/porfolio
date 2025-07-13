@@ -25,7 +25,7 @@ export async function generateMetadata({
   return {
     title: article?.title,
     description,
-    keywords: article.keyword,
+    keywords: article?.keyword,
     publisher: "Sagar Yenkure",
     creator: "Sagar Yenkure",
 
@@ -33,32 +33,32 @@ export async function generateMetadata({
       title: article?.title,
       description,
       type: "article",
-      url: `${info.HOST_URL}/blogs/${article.slug}`,
+      url: `${info?.HOST_URL}/blogs/${article?.slug}`,
       siteName: "Sagar Yenkure - Software Engineer",
       images: [
         {
-          url: article.image,
+          url: article?.image,
           width: 1200,
           height: 630,
-          alt: article.title,
+          alt: article?.title,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: article.title,
+      title: article?.title,
       description,
       images: [
         {
-          url: article.image,
+          url: article?.image,
           width: 1200,
           height: 630,
-          alt: article.title,
+          alt: article?.title,
         },
       ],
     },
     alternates: {
-      canonical: `${info.HOST_URL}/blogs/${article.slug}`,
+      canonical: `${info.HOST_URL}/blogs/${article?.slug}`,
     },
     robots: {
       index: true,

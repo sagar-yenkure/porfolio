@@ -25,7 +25,7 @@ interface CodeProps extends React.HTMLAttributes<HTMLElement> {
 const BlogPage = ({ slug }: BlogPageProps) => {
   const allContent = getAllBlogsFetch();
   const articles = allContent?.filter((article) => article?.slug === slug);
-  if (!articles || articles.length === 0) return <ServerErrorPage />;
+  if (!articles || articles?.length === 0) return <ServerErrorPage />;
   const article = articles[0];
 
   return (
