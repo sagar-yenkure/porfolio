@@ -100,6 +100,24 @@ const ContentList: Article[] = [
     keyword: "typescript form validation with zod, how to validate data using zod, type-safe API validation, zod infer typescript, form validation react zod, zod validation tutorial"
   },
 
+  // 📅 2025-08-08 –  Zustand (Advanced Global State)
+  {
+    id: 10,
+    title: "Using Zustand with TypeScript in Next.js for Global State",
+    summary:
+      "Learn how to manage global state in Next.js apps using Zustand and TypeScript. Covers typed stores, folder structure, async actions, and persistence.",
+    label: "State Management",
+    slug: "zustand-typescript-nextjs",
+    author: "Sagar Yenkure",
+    published: "2025-08-08",
+    image: "/zustand.jpg",
+    tags: ["Zustand", "Next.js", "TypeScript", "State Management"],
+    content: how_to_use_zustand_with_typescript,
+    views: 634,
+    readTime: 7,
+    keyword: "zustand with typescript nextjs, zustand global state react, typescript zustand store, zustand async fetch, zustand persist middleware"
+  },
+
   // 📅 2025-08-11 –  Redis (Data Caching Basics)
   {
     id: 5,
@@ -116,6 +134,24 @@ const ContentList: Article[] = [
     views: 323,
     readTime: 9,
     keyword: "redis tutorial, what is redis, redis for beginners, redis caching guide, redis key value store, in-memory database tutorial"
+  },
+
+  // 📅 2025-08-14 –  tRPC (Advanced Fullstack Type Safety)
+  {
+    id: 4,
+    title: "tRPC + Next.js: From Zero to Fullstack Hero",
+    summary:
+      "Go from zero to fullstack with tRPC and Next.js. Learn how to create typesafe APIs without REST or GraphQL using tRPC, Zod, and React Query.",
+    label: "Fullstack",
+    slug: "trpc-nextjs-from-zero-to-fullstack-hero",
+    author: "Sagar Yenkure",
+    published: "2025-08-14",
+    image: "/trpc.jpg",
+    tags: ["tRPC", "Next.js", "TypeScript", "Tutorial"],
+    content: trpc_nextjs_from_zero_to_fullstack_hero,
+    views: 576,
+    readTime: 10,
+    keyword: "trpc nextjs tutorial, typesafe api nextjs, fullstack typescript, trpc react query zod"
   },
 
   // 📅 2025-08-18 –  Mongoose (MongoDB + Express)
@@ -280,41 +316,6 @@ const ContentList: Article[] = [
     keyword: "react query nextjs tutorial, axios react query setup, nextjs api hooks, react query folder structure, fetch data nextjs react query"
   },
 
-  // 📅 2025-10-20 –  Zustand (Advanced Global State)
-  {
-    id: 10,
-    title: "Using Zustand with TypeScript in Next.js for Global State",
-    summary:
-      "Learn how to manage global state in Next.js apps using Zustand and TypeScript. Covers typed stores, folder structure, async actions, and persistence.",
-    label: "State Management",
-    slug: "zustand-typescript-nextjs",
-    author: "Sagar Yenkure",
-    published: "2025-10-20",
-    image: "/zustand.jpg",
-    tags: ["Zustand", "Next.js", "TypeScript", "State Management"],
-    content: how_to_use_zustand_with_typescript,
-    views: 634,
-    readTime: 7,
-    keyword: "zustand with typescript nextjs, zustand global state react, typescript zustand store, zustand async fetch, zustand persist middleware"
-  },
-
-  // 📅 2025-10-27 –  tRPC (Advanced Fullstack Type Safety)
-  {
-    id: 4,
-    title: "tRPC + Next.js: From Zero to Fullstack Hero",
-    summary:
-      "Go from zero to fullstack with tRPC and Next.js. Learn how to create typesafe APIs without REST or GraphQL using tRPC, Zod, and React Query.",
-    label: "Fullstack",
-    slug: "trpc-nextjs-from-zero-to-fullstack-hero",
-    author: "Sagar Yenkure",
-    published: "2025-10-27",
-    image: "/trpc.jpg",
-    tags: ["tRPC", "Next.js", "TypeScript", "Tutorial"],
-    content: trpc_nextjs_from_zero_to_fullstack_hero,
-    views: 576,
-    readTime: 10,
-    keyword: "trpc nextjs tutorial, typesafe api nextjs, fullstack typescript, trpc react query zod"
-  },
 
   ...Updates
 
