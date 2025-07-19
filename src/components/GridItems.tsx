@@ -175,7 +175,7 @@ const SkeletonFour = () => {
                       </Link>
                       <Link
                         aria-label="Connect via X"
-                        href={`https://wa.me/${info.twitter}`}
+                        href={info.twitter}
                         target="_blank"
                         className={cn(
                           buttonVariants({
@@ -190,7 +190,7 @@ const SkeletonFour = () => {
                       </Link>
                       <Link
                         aria-label="Connect via LinkedIn"
-                        href={`https://wa.me/${info.linkedin}`}
+                        href={info.linkedin}
                         target="_blank"
                         className={cn(
                           buttonVariants({
@@ -205,7 +205,7 @@ const SkeletonFour = () => {
                       </Link>
                       <Link
                         aria-label="Connect via GitHub"
-                        href={`https://wa.me/${info.github}`}
+                        href={info.github}
                         target="_blank"
                         className={cn(
                           buttonVariants({
