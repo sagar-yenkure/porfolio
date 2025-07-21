@@ -50,24 +50,18 @@ This action function will now be used to define secure actions with type and sch
 Let’s say you’re building a contact form. You can create a secure Server Action with Zod schema validation like this:
 
 \`\`\`ts
-// app/actions/submitContact.ts
-"use server";
+// app/actions/submitContact.ts 
+"use server"; 
 
-import { z } from "zod";
-import { action } from "@/lib/safeAction";
+import { action } from "@/lib/safeaction";
+import { z } from "zod"; const contactSchema = z.object({ name: z.string().min(2), email: z.string().email(), message: z.string().min(10), });
 
-const contactSchema = z.object({
-  name: z.string().min(2),
-  email: z.string().email(),
-  message: z.string().min(10),
-});
+export const submitContact = action
+.inputSchema(contactSchema) 
+.action(async ({ parsedInput }) => { const { name, email, message } = parsedInput; 
+// Replace this with your DB logic console.log("Saving contact form data:", { name, email, message }); 
 
-export const submitContact = action(contactSchema, async ({ name, email, message }) => {
-  // Replace this with your DB logic
-  console.log("Saving contact form data:", { name, email, message });
-
-  return { success: true };
-});
+return { success: true }; });
 \`\`\`
 
 ✅ Validates the input on the server  
