@@ -171,8 +171,8 @@ export default function ContactForm() {
               ? error._errors
               : [String(error)];
 
-            return errorMessages.map((msg, index) => (
-              <p key={`${field}-${index}`} className="text-sm text-red-500">
+            return errorMessages.map((msg) => (
+              <p key={msg} className="text-sm text-red-500">
                 {msg}
               </p>
             ));
