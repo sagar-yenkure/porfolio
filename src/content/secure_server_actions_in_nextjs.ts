@@ -56,22 +56,32 @@ Let’s say you’re building a contact form. You can create a secure Server Act
 import { action } from "@/lib/safeAction";
 import { z } from "zod";
 
-const contactSchema = z.object({ 
-name: z.string().min(2), 
-email: z.string().email(), 
-message: z.string().min(10), 
+const contactSchema = z.object({
+  name: z
+    .string({ error: "Name is required." })
+    .min(2, { error: "Name must be at least 2 characters." }),
+
+  email: z.email({ error: "Invalid email address." }),
+
+  message: z
+    .string({ error: "Message is required." })
+    .min(10, { error: "Message must be at least 10 characters." }),
 });
 
 export const submitContact = action
-.inputSchema(contactSchema) 
-.action(async ({ parsedInput }) => { 
-const { name, email, message } = parsedInput; 
+  .inputSchema(contactSchema)
+  .action(async ({ parsedInput }) => {
+    const { name, email, message } = parsedInput;
+    
+    // Replace this with your DB logic
+    console.log("Saving contact form data:", { name, email, message });
+    
+    // here you can throw error and it will get caught in the client in result.serverError
+    // throw new Error("This is a server action, not a client action.");
 
-// Replace this with your DB logic 
-console.log("Saving contact form data:", { name, email, message }); 
+    return { success: true };
+  });
 
-return { success: true }; 
-});
 \`\`\`
 
 ✅ Validates the input on the server  
@@ -88,39 +98,91 @@ Now let’s use this action from a client component:
 // components/ContactForm.tsx
 "use client";
 
-import { useTransition, useState } from "react";
-import { submitContact } from "@/app/actions/submitContact";
+import { useAction } from "next-safe-action/hooks";
+import { submitContact } from "@/actions/submitContact";
+import { useState } from "react";
 
 export default function ContactForm() {
-  const [pending, startTransition] = useTransition();
-  const [result, setResult] = useState<string | null>(null);
+  const { execute, result, status } = useAction(submitContact);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
-  const handleSubmit = async (formData: FormData) => {
-    startTransition(async () => {
-      const result = await submitContact({
-        name: formData.get("name"),
-        email: formData.get("email"),
-        message: formData.get("message"),
-      });
+  const onChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-      if (result.serverError) return setResult("Something went wrong!");
-      if (!result.data?.success) return setResult("Invalid input.");
-      setResult("Thanks! Your message was sent.");
-    });
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    execute(formData);
   };
 
   return (
-    <form action={handleSubmit} className="space-y-4">
-      <input name="name" placeholder="Name" required className="border p-2 w-full" />
-      <input name="email" placeholder="Email" required className="border p-2 w-full" />
-      <textarea name="message" placeholder="Message" required className="border p-2 w-full" />
-      <button type="submit" disabled={pending} className="bg-black text-white p-2">
-        {pending ? "Sending..." : "Send"}
+    <form onSubmit={onSubmit} className="space-y-4">
+      <input
+        name="name"
+        placeholder="Name"
+        required
+        value={formData.name}
+        onChange={onChange}
+        className="border p-2 w-full"
+      />
+      <input
+        name="email"
+        placeholder="Email"
+        required
+        value={formData.email}
+        onChange={onChange}
+        className="border p-2 w-full"
+      />
+      <textarea
+        name="message"
+        placeholder="Message"
+        required
+        value={formData.message}
+        onChange={onChange}
+        className="border p-2 w-full"
+      />
+      <button
+        type="submit"
+        disabled={status === "executing"}
+        className="bg-black text-white p-2"
+      >
+        {status === "executing" ? "Sending..." : "Send"}
       </button>
-      <p>{result}</p>
+      
+      {/* success message */}
+      <p>{result?.data?.success && "Message sent successfully!"}</p>
+
+      {/* server error message */}
+      <p>{result?.serverError && result.serverError}</p>
+
+      {/* validations error  */}
+      {result?.validationErrors && (
+        <div className="space-y-1">
+          {Object.entries(result.validationErrors)?.map(([field, error]) => {
+            const errorMessages = Array.isArray(error)
+              ? error
+              : typeof error === "object" && error?._errors
+              ? error._errors
+              : [String(error)];
+
+            return errorMessages.map((msg, index) => (
+              <p key={`${field}-${index}`} className="text-sm text-red-500">
+                {msg}
+              </p>
+            ));
+          })}
+        </div>
+      )}
     </form>
   );
 }
+ 
 \`\`\`
 
 ---
@@ -138,10 +200,10 @@ export default function ContactForm() {
 
 Server Actions simplify backend logic in Next.js — but only if used safely. next-safe-action helps ensure you:
 
-- Validate input using **Zod**
+- Validate input using Zod
 - Prevent unauthorized or malformed requests
-- Get full **type safety** from client to server
-- Write cleaner and more secure code
+- Get full type safety from client to server
+- Get the action state, including loading, success, and validation errors
 
 It’s a must-have for anyone building production-grade apps with App Router.
 
