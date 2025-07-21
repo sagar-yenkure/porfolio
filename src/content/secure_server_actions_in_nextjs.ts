@@ -53,15 +53,25 @@ Let’s say you’re building a contact form. You can create a secure Server Act
 // app/actions/submitContact.ts 
 "use server"; 
 
-import { action } from "@/lib/safeaction";
-import { z } from "zod"; const contactSchema = z.object({ name: z.string().min(2), email: z.string().email(), message: z.string().min(10), });
+import { action } from "@/lib/safeAction";
+import { z } from "zod";
+
+const contactSchema = z.object({ 
+name: z.string().min(2), 
+email: z.string().email(), 
+message: z.string().min(10), 
+});
 
 export const submitContact = action
 .inputSchema(contactSchema) 
-.action(async ({ parsedInput }) => { const { name, email, message } = parsedInput; 
-// Replace this with your DB logic console.log("Saving contact form data:", { name, email, message }); 
+.action(async ({ parsedInput }) => { 
+const { name, email, message } = parsedInput; 
 
-return { success: true }; });
+// Replace this with your DB logic 
+console.log("Saving contact form data:", { name, email, message }); 
+
+return { success: true }; 
+});
 \`\`\`
 
 ✅ Validates the input on the server  
