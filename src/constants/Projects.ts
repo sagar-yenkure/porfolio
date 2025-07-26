@@ -1,4 +1,5 @@
 import { BASE } from "@/lib/cloudinary";
+import { FaFigma } from "react-icons/fa";
 import { IconType } from "react-icons/lib";
 import {
   SiReact,
@@ -159,5 +160,28 @@ export const projectsList: Project[] = [
       SiVercel,
       SiResend
     ],
+  },
+  {
+    title: "Sachin Yenkure – Graphic Designer Portfolio Website",
+    description:
+      "A clean, elegant, and fully responsive portfolio website designed for Sachin Yenkure, a professional graphic designer. The site showcases projects with a focus on typography, layout, and visual hierarchy. Designed with modern UI principles and smooth interactions to reflect creativity and professionalism, the site serves as a digital identity and work showcase.",
+    images: [
+      "https://res.cloudinary.com/dja2zi1g7/image/upload/v1753532439/projects/Screenshot_2025-07-26_174046_c2icgy.png",
+      "https://res.cloudinary.com/dja2zi1g7/image/upload/v1753532419/projects/Screenshot_2025-07-26_174035_aeifct.png",
+      "https://res.cloudinary.com/dja2zi1g7/image/upload/v1753532435/projects/Screenshot_2025-07-26_174902_gpivrx.png",
+      "https://res.cloudinary.com/dja2zi1g7/image/upload/v1753532442/projects/Screenshot_2025-07-26_174106_vc38mi.png",
+      "https://res.cloudinary.com/dja2zi1g7/image/upload/v1753532439/projects/Screenshot_2025-07-26_174917_ftvdgb.png"
+    ],
+    category: "Web Application",
+    liveUrl: "https://sachinyenkure.vercel.app/",
+    githubUrl: "https://github.com/sagar-yenkure/sachinportfolio",
+    skills: [
+      FaFigma,
+      SiNextdotjs,
+      SiReact,
+      SiTypescript,
+      SiTailwindcss,
+    ],
+
   }
 ];
