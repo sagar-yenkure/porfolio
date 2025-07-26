@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import BlogPage from "./BlogPage";
 import { getAllBlogsFetch } from "@/lib/sitemapHelper";
 import info from "@/constants/info";
+import { headers } from "next/headers";
+import { trackBlogView } from "@/lib/trackBlogView";
 
 export async function generateMetadata({
   params,
@@ -81,6 +83,14 @@ export default async function BlogPageWrapper({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+
+  const headersList = await headers();
+  const ip =
+    headersList.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    headersList.get("x-real-ip") ||
+    "unknown";
+
+  await trackBlogView(slug, ip);
 
   return (
     <section className="py-28">
