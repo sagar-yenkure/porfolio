@@ -1,5 +1,6 @@
 import { BASE } from "@/lib/cloudinary";
 import { FaFigma } from "react-icons/fa";
+import { FaAws } from "react-icons/fa6";
 import { IconType } from "react-icons/lib";
 import {
   SiReact,
@@ -182,6 +183,26 @@ export const projectsList: Project[] = [
       SiTypescript,
       SiTailwindcss,
     ],
+  },
+  {
+    title: "S3Visualizer – AWS S3 Management UI",
+    description:
+      "S3Visualizer is a sleek, responsive, and user-friendly web application for managing and visualizing AWS S3 services. It offers an intuitive interface to browse, upload, and manage S3 buckets, objects, and permissions with ease. Built using modern web technologies, it ensures smooth navigation, real-time data updates, and efficient cloud storage operations.",
+    images: [
+      "https://res.cloudinary.com/dja2zi1g7/image/upload/v1754734889/projects/Screenshot_2025-08-09_153338_vbulji.png",
+      "https://res.cloudinary.com/dja2zi1g7/image/upload/v1754734888/projects/Screenshot_2025-08-09_153351_nfynvn.png",
+      "https://res.cloudinary.com/dja2zi1g7/image/upload/v1754734943/projects/Screenshot_2025-08-09_154219_dfnsae.png"
+    ],
+    category: "Web Application",
+    liveUrl: "https://s3visualizer.vercel.app/",
+    githubUrl: "https://github.com/sagar-yenkure/s3visualizer",
+    skills: [
 
+      SiNextdotjs,
+      SiTypescript,
+      FaAws,
+      SiTailwindcss,
+    ],
   }
+
 ];
