@@ -37,28 +37,28 @@ export interface Project {
 }
 
 export const projectsList: Project[] = [
-  {
-    title: "Portfolio",
-    description:
-      "A personal portfolio website showcasing my skills, featured projects, and experience. Built to demonstrate my expertise in modern frontend development with seamless deployment and fast performance using Vercel.",
-    images: [
-      `${BASE}/v1744466691/projects/Screenshot_2025-04-12_193105_odljfe.png`,
-      `${BASE}/v1744466691/projects/Screenshot_2025-04-12_193137_xcup7k.png`,
-      `${BASE}/v1744466693/projects/Screenshot_2025-04-12_193256_db63ck.png`,
-      `${BASE}/v1744466693/projects/Screenshot_2025-04-12_193226_bxh7o0.png`,
-    ],
-    category: "Web Application",
-    liveUrl: "https://sagaryenkure.pro",
-    githubUrl: "https://github.com/sagar-yenkure/porfolio",
-    skills: [
-      SiNextdotjs,
-      SiReact,
-      SiTypescript,
-      SiTailwindcss,
-      SiRedis,
-      SiVercel,
-    ],
-  },
+  // {
+  //   title: "Portfolio",
+  //   description:
+  //     "A personal portfolio website showcasing my skills, featured projects, and experience. Built to demonstrate my expertise in modern frontend development with seamless deployment and fast performance using Vercel.",
+  //   images: [
+  //     `${BASE}/v1744466691/projects/Screenshot_2025-04-12_193105_odljfe.png`,
+  //     `${BASE}/v1744466691/projects/Screenshot_2025-04-12_193137_xcup7k.png`,
+  //     `${BASE}/v1744466693/projects/Screenshot_2025-04-12_193256_db63ck.png`,
+  //     `${BASE}/v1744466693/projects/Screenshot_2025-04-12_193226_bxh7o0.png`,
+  //   ],
+  //   category: "Web Application",
+  //   liveUrl: "https://sagaryenkure.pro",
+  //   githubUrl: "https://github.com/sagar-yenkure/porfolio",
+  //   skills: [
+  //     SiNextdotjs,
+  //     SiReact,
+  //     SiTypescript,
+  //     SiTailwindcss,
+  //     SiRedis,
+  //     SiVercel,
+  //   ],
+  // },
   {
     title: "Lightroom",
     description:
@@ -197,11 +197,11 @@ export const projectsList: Project[] = [
     liveUrl: "https://s3visualizer.vercel.app/",
     githubUrl: "https://github.com/sagar-yenkure/s3visualizer",
     skills: [
-
       SiNextdotjs,
       SiTypescript,
       FaAws,
       SiTailwindcss,
+      SiVercel
     ],
   }
 
