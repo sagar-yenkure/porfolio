@@ -12,7 +12,6 @@ import {
   SiVercel,
   SiPrisma,
   SiMongodb,
-  SiRedis,
   SiOpenai,
   SiFramer,
   SiSwr,
