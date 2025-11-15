@@ -69,10 +69,11 @@ const HeroSection = () => {
 
             <motion.div variants={fadeIn}>
               <h2 className="mb-8 max-w-lg text-3xl font-semibold text-gray-300 md:text-4xl">
-                Software Engineer &{" "}
-                <span className="text-blue-400">Full-Stack Developer</span>
+                Software Engineer & {" "}
+                <span className="text-blue-400">Full-Stack Developer Crafting Modern Digital Experiences</span>
               </h2>
             </motion.div>
+
 
             <motion.div variants={fadeIn}>
               <p className="mb-10 max-w-xl text-lg leading-relaxed text-gray-400">
@@ -86,7 +87,7 @@ const HeroSection = () => {
               <motion.button
                 onClick={downloadResume}
                 disabled={isLoading}
-                className="group flex items-center justify-center gap-3 rounded-lg bg-black px-6 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:shadow-gray-500/50 active:scale-90"
+                className="group flex items-center hover:cursor-pointer justify-center gap-3 rounded-lg bg-black px-6 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:shadow-gray-500/50 active:scale-90"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 aria-label="Download Resume"
