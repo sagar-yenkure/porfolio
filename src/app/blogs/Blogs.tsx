@@ -33,6 +33,7 @@ const BlogsSection = () => {
   const [filteredBlogs, setFilteredBlogs] = useState<Article[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [sortOrder, setSortOrder] = useState("latest");
 
   const blogs = getAllBlogsFetch();
 
@@ -51,6 +52,14 @@ const BlogsSection = () => {
 
         return matchesSearch && matchesCategory;
       })
+      .sort((a, b) => {
+        const dateA = new Date(a.published).getTime();
+        const dateB = new Date(b.published).getTime();
+
+        return sortOrder === "latest"
+          ? dateB - dateA
+          : dateA - dateB;
+      })
       .map((blog) => ({
         ...blog,
         id: blog.id,
@@ -59,8 +68,7 @@ const BlogsSection = () => {
       }));
 
     setFilteredBlogs(filtered);
-  }, [searchQuery, selectedCategory, blogs]);
-
+  }, [searchQuery, selectedCategory, sortOrder, blogs, sortOrder]);
   if (!blogs) return <ServerErrorPage />;
 
   const featuredBlog = blogs[blogs?.length - 1]
@@ -128,6 +136,16 @@ const BlogsSection = () => {
                       {category.name}
                     </SelectItem>
                   ))}
+                </SelectContent>
+              </Select>
+
+              <Select value={sortOrder} onValueChange={setSortOrder}>
+                <SelectTrigger className="w-[160px]">
+                  <SelectValue placeholder="Sort By" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="latest">Latest</SelectItem>
+                  <SelectItem value="oldest">Oldest</SelectItem>
                 </SelectContent>
               </Select>
             </div>

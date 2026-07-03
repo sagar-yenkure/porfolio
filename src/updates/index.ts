@@ -1,6 +1,7 @@
 import { Article } from "@/content";
 import prisma_rust_to_ts_rewrite from "./prisma_rust_to_ts_rewrite";
 import how_to_use_gemini_cli from "./how_to_use_gemini_cli";
+import http_query_method from "./new_http_method_query";
 
 
 
@@ -39,6 +40,31 @@ const Updates: Article[] = [
         views: 256,
         readTime: 7,
         keyword: "gemini cli tutorial, how to use gemini in terminal, google ai cli tool, gemini cli in react, gemini code assist setup, google gemini open source cli, gemini cli react integration"
+    },
+
+    // 📅 2026-07-04 –  The New HTTP QUERY Method Explained
+    {
+        id: 103,
+        title: "The New HTTP QUERY Method: Why HTTP Finally Got a New Request Method",
+        summary:
+            "Learn about the new HTTP QUERY method introduced in RFC 10008. Understand why it was added, how it differs from GET and POST, its benefits, and when you'll be able to use it.",
+        label: "Backend",
+        slug: "http-query-method-explained",
+        author: "Sagar Yenkure",
+        published: "2026-07-04",
+        image: "/http_query_method.png",
+        tags: [
+            "Updates",
+            "REST API",
+            "Backend",
+            "Web Development",
+            "API Design"
+        ],
+        content: http_query_method,
+        views: 276,
+        readTime: 8,
+        keyword:
+            "http query method, http query, query http method, rfc 10008, new http method, get vs post vs query, http methods explained, rest api query method, http query request body, query method in rest api"
     }
 ]
 
