@@ -10,7 +10,7 @@ import Work from "@/components/Work";
 
 export default function Home() {
   return (
-    <>
+    <div className="max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8">
       {/* <Hero /> */}
       <HeroSection />
       <Grid />
@@ -20,6 +20,6 @@ export default function Home() {
       <Blogs />
       <Testimonials />
       <Contact />
-    </>
+    </div>
   );
 }
