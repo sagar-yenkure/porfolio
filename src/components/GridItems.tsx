@@ -118,9 +118,9 @@ export default function SkeletonFour() {
   });
 
   const progress = useSpring(scrollYProgress, {
-    stiffness: 80,
-    damping: 25,
-    mass: 0.5,
+    stiffness: 100,
+    damping: 28,
+    mass: 0.4,
   });
 
   /* ==========================================================
@@ -177,13 +177,13 @@ export default function SkeletonFour() {
   const visualY = useTransform(
     progress,
     [0, 0.35, 0.7, 1],
-    [100, 0, -20, -70]
+    [40, 0, -10, -30]
   );
 
   const visualX = useTransform(
     progress,
     [0, 0.5, 1],
-    [-20, 0, 30]
+    [-8, 0, 12]
   );
 
   const visualScale = useTransform(
@@ -199,7 +199,7 @@ export default function SkeletonFour() {
   const cardY = useTransform(
     progress,
     [0, 0.25, 0.7, 1],
-    [90, 0, -15, -60]
+    [40, 0, -8, -25]
   );
 
   const cardScale = useTransform(
@@ -221,7 +221,7 @@ export default function SkeletonFour() {
   const contentY = useTransform(
     progress,
     [0, 0.4, 0.8, 1],
-    [70, 0, -20, -50]
+    [30, 0, -10, -20]
   );
 
   const contentOpacity = useTransform(
@@ -286,8 +286,8 @@ export default function SkeletonFour() {
 
         <motion.div
           animate={{
-            scale: [1, 1.15, 1],
-            opacity: [0.2, 0.35, 0.2],
+            scale: [1, 1.06, 1],
+            opacity: [0.15, 0.22, 0.15],
           }}
           transition={{
             duration: 8,
@@ -415,8 +415,8 @@ export default function SkeletonFour() {
 
             <motion.div
               animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.25, 0.45, 0.25],
+                scale: [1, 1.08, 1],
+                opacity: [0.2, 0.3, 0.2],
               }}
               transition={{
                 duration: 6,
@@ -444,8 +444,8 @@ export default function SkeletonFour() {
 
             <motion.div
               animate={{
-                scaleX: [0.85, 1, 0.85],
-                opacity: [0.2, 0.35, 0.2],
+                scaleX: [0.9, 1, 0.9],
+                opacity: [0.15, 0.25, 0.15],
               }}
               transition={{
                 duration: 5,

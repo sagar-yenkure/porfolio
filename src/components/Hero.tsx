@@ -35,136 +35,136 @@ export default function ThreeDImageSplit({
   });
 
   const progress = useSpring(scrollYProgress, {
-    stiffness: 70,
-    damping: 25,
-    mass: 0.5,
+    stiffness: 100,
+    damping: 28,
+    mass: 0.4,
   });
 
   const headingY = useTransform(
     progress,
-    [0, 0.12, 0.23, 0.34],
+    [0, 0.06, 0.12, 0.18],
     [260, 180, 70, 0]
   );
 
   const headingOpacity = useTransform(
     progress,
-    [0.05, 0.12, 0.22, 0.30],
+    [0.02, 0.06, 0.12, 0.18],
     [0, 0.2, 0.75, 1]
   );
 
   const containerWidth = useTransform(
     progress,
-    [0, 0.08, 0.25, 0.42],
+    [0, 0.04, 0.14, 0.24],
     ["65vw", "65vw", "65vw", "64vw"]
   );
 
   const containerHeight = useTransform(
     progress,
-    [0, 0.08, 0.25, 0.42],
+    [0, 0.04, 0.14, 0.24],
     ["51vh", "51vh", "49vh", "46vh"]
   );
 
 
   const containerY = useTransform(
     progress,
-    [0, 0.12, 0.30, 0.50],
+    [0, 0.06, 0.16, 0.28],
     [35, 30, 8, 0]
   );
 
   const cardWidth = useTransform(
     progress,
-    [0, 0.30, 0.45],
+    [0, 0.16, 0.26],
     ["33.333%", "31.5%", "30.5%"]
   );
 
 
   const cardHeight = useTransform(
     progress,
-    [0, 0.30, 0.45],
+    [0, 0.16, 0.26],
     ["100%", "100%", "100%"]
   );
 
   const leftPosition = useTransform(
     progress,
-    [0, 0.25, 0.45],
+    [0, 0.14, 0.26],
     ["0%", "0%", "0%"]
   );
 
   const centerPosition = useTransform(
     progress,
-    [0, 0.25, 0.45],
+    [0, 0.14, 0.26],
     ["33.333%", "32%", "31.5%"]
   );
 
   const rightPosition = useTransform(
     progress,
-    [0, 0.25, 0.45],
+    [0, 0.14, 0.26],
     ["66.666%", "64%", "63%"]
   );
 
   const leftX = useTransform(
     progress,
-    [0.20, 0.30, 0.45, 0.60],
+    [0.10, 0.16, 0.26, 0.36],
     [0, 0, -3, -5]
   );
 
   const centerX = useTransform(
     progress,
-    [0.20, 0.30, 0.45],
+    [0.10, 0.16, 0.26],
     [0, 0, 0]
   );
 
   const rightX = useTransform(
     progress,
-    [0.20, 0.30, 0.45, 0.60],
+    [0.10, 0.16, 0.26, 0.36],
     [0, 0, 3, 5]
   );
 
   const leftFlip = useTransform(
     progress,
-    [0.38, 0.49, 0.61],
+    [0.22, 0.34, 0.46],
     [0, 90, 180]
   );
 
   const centerFlip = useTransform(
     progress,
-    [0.40, 0.51, 0.63],
+    [0.25, 0.37, 0.49],
     [0, 90, 180]
   );
 
   const rightFlip = useTransform(
     progress,
-    [0.42, 0.53, 0.65],
+    [0.28, 0.40, 0.52],
     [0, 90, 180]
   );
 
   const leftRotateZ = useTransform(
     progress,
-    [0.48, 0.68, 0.80],
+    [0.35, 0.50, 0.62],
     [0, -4, -7]
   );
 
   const centerRotateZ = useTransform(
     progress,
-    [0.48, 0.68, 0.80],
+    [0.35, 0.50, 0.62],
     [0, 0, 0]
   );
 
   const rightRotateZ = useTransform(
     progress,
-    [0.48, 0.68, 0.80],
+    [0.35, 0.50, 0.62],
     [0, 4, 7]
   );
 
   const radius = useTransform(
     progress,
-    [0, 0.25, 0.38, 0.52],
+    [0, 0.14, 0.22, 0.34],
     [0, 0, 5, 16]
   );
 
   const shadowOpacity = useTransform(
     progress,
-    [0, 0.30, 0.50, 0.70],
+    [0, 0.16, 0.30, 0.46],
     [0, 0, 0.18, 0.3]
   );
 
@@ -247,7 +247,7 @@ export default function ThreeDImageSplit({
   return (
     <section
       ref={sectionRef}
-      className="relative h-[500vh] max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8 bg-[var(--section-bg)] w-full"
+      className="relative h-[250vh] max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8 bg-[var(--section-bg)] w-full"
     >
       <div className="sticky top-0 h-screen w-full overflow-hidden">
 

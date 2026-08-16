@@ -3,12 +3,8 @@
 import useDownloadResume from "@/hooks/useDownloadResume";
 import {
   motion,
-  useScroll,
-  useSpring,
-  useTransform,
 } from "framer-motion";
 import Link from "next/link";
-import { useRef } from "react";
 import { Button } from "./ui/button";
 import { Loader2, Download } from "lucide-react";
 
@@ -16,187 +12,33 @@ export default function Hero() {
 
   const url = process.env.NEXT_PUBLIC_RESUME_URL as string;
   const { downloadResume, isLoading } = useDownloadResume(url);
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  });
-
-  const progress = useSpring(scrollYProgress, {
-    stiffness: 90,
-    damping: 28,
-    mass: 0.45,
-  });
-
-  /* ============================================================
-     VIDEO
-  ============================================================ */
-
-  const videoY = useTransform(
-    progress,
-    [0, 0.25, 0.55, 1],
-    [0, -20, -120, -300]
-  );
-
-  const videoX = useTransform(
-    progress,
-    [0, 0.5, 1],
-    [0, 0, 80]
-  );
-
-  const videoScale = useTransform(
-    progress,
-    [0, 0.25, 0.55, 0.8, 1],
-    [0.8, 0.95, 1.15, 1.25, 0.7]
-  );
-
-  const videoRotateX = useTransform(
-    progress,
-    [0, 0.3, 0.6, 1],
-    [0, 2, 12, 35]
-  );
-
-  const videoRotateY = useTransform(
-    progress,
-    [0, 0.3, 0.6, 1],
-    [0, -3, -15, -35]
-  );
-
-  const videoRotateZ = useTransform(
-    progress,
-    [0, 0.5, 1],
-    [0, 2, 8]
-  );
-
-  /* ============================================================
-     VIDEO CLIP
-  ============================================================ */
-
-  const videoClip = useTransform(
-    progress,
-    [0, 0.45, 0.75, 1],
-    [
-      "inset(0% 0% 0% 0% round 28px)",
-      "inset(0% 0% 0% 0% round 28px)",
-      "inset(3% 4% 3% 4% round 20px)",
-      "inset(8% 12% 8% 12% round 14px)",
-    ]
-  );
-
-  /* ============================================================
-     VIDEO OPACITY
-  ============================================================ */
-
-  const videoOpacity = useTransform(
-    progress,
-    [0, 0.7, 0.92, 1],
-    [1, 1, 0.75, 0]
-  );
-
-  /* ============================================================
-     NAME
-  ============================================================ */
-
-  const nameY = useTransform(
-    progress,
-    [0, 0.35, 0.65, 1],
-    [0, -30, -130, -280]
-  );
-
-  const nameScale = useTransform(
-    progress,
-    [0, 0.45, 1],
-    [1, 0.95, 0.72]
-  );
-
-  const nameOpacity = useTransform(
-    progress,
-    [0, 0.55, 0.85, 1],
-    [1, 1, 0.35, 0]
-  );
-
-  /* ============================================================
-     DESCRIPTION
-  ============================================================ */
-
-  const contentY = useTransform(
-    progress,
-    [0, 0.4, 0.75, 1],
-    [0, -20, -80, -200]
-  );
-
-  const contentOpacity = useTransform(
-    progress,
-    [0, 0.55, 0.8, 1],
-    [1, 1, 0.4, 0]
-  );
-
-  /* ============================================================
-     LABEL
-  ============================================================ */
-
-  const labelY = useTransform(
-    progress,
-    [0, 0.5, 1],
-    [0, -50, -180]
-  );
-
-  const labelOpacity = useTransform(
-    progress,
-    [0, 0.55, 0.9, 1],
-    [1, 1, 0.4, 0]
-  );
-
-  /* ============================================================
-     HEADER
-  ============================================================ */
-
-  const headerOpacity = useTransform(
-    progress,
-    [0, 0.55, 0.85],
-    [1, 1, 0]
-  );
-
-  /* ============================================================
-     NEXT SECTION REVEAL
-  ============================================================ */
-
-  const nextSectionY = useTransform(
-    progress,
-    [0.55, 1],
-    [180, 0]
-  );
-
-  const nextSectionOpacity = useTransform(
-    progress,
-    [0.55, 0.8, 1],
-    [0, 0.5, 1]
-  );
 
   return (
     <section
-      ref={sectionRef}
       className="
         relative
-        h-[200vh]
+        min-h-screen
         w-full
         bg-[var(--section-bg)]
         text-foreground
       "
     >
       {/* ========================================================
-          STICKY SCENE
+          SCENE
       ======================================================== */}
 
       <div
         className="
         max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8
-          sticky
-          top-0
-          h-screen
+          relative
+          min-h-screen
           w-full
           overflow-hidden
+          flex
+          flex-col
+          justify-end
+          pb-16
+          md:pb-20
           [perspective:1400px]
         "
       >
@@ -207,14 +49,7 @@ export default function Hero() {
         <div className="pointer-events-none absolute inset-0 z-0">
           {/* glow */}
 
-          <motion.div
-            style={{
-              scale: useTransform(
-                progress,
-                [0, 0.5, 1],
-                [1, 1.3, 1.8]
-              ),
-            }}
+          <div
             className="
               absolute
               left-1/2
@@ -272,8 +107,7 @@ export default function Hero() {
             HEADER
         ====================================================== */}
 
-        <motion.header
-          style={{ opacity: headerOpacity }}
+        <header
           className="
             absolute
             left-0
@@ -290,24 +124,16 @@ export default function Hero() {
           "
         >
 
-        </motion.header>
+        </header>
 
         {/* ======================================================
             3D VIDEO
         ====================================================== */}
 
         <motion.div
-          style={{
-            x: videoX,
-            y: videoY,
-            scale: videoScale,
-            rotateX: videoRotateX,
-            rotateY: videoRotateY,
-            rotateZ: videoRotateZ,
-            opacity: videoOpacity,
-            clipPath: videoClip,
-            transformStyle: "preserve-3d",
-          }}
+          initial={{ opacity: 0, scale: 0.9, y: 20 }}
+          animate={{ opacity: 1, scale: 0.8, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="
             absolute
             left-1/2
@@ -317,6 +143,7 @@ export default function Hero() {
             w-[260px]
             -translate-x-1/2
             overflow-hidden
+            rounded-[28px]
             border
             border-border/60
             bg-background
@@ -358,20 +185,6 @@ export default function Hero() {
               object-cover
             "
           />
-
-          {/* cinematic overlay */}
-
-          {/* <div
-            className="
-              pointer-events-none
-              absolute
-              inset-0
-              bg-gradient-to-br
-              from-foreground/[0.08]
-              via-transparent
-              to-background/40
-            "
-          /> */}
 
           {/* scan line */}
 
@@ -415,11 +228,7 @@ export default function Hero() {
             LABEL
         ====================================================== */}
 
-        <motion.div
-          style={{
-            y: labelY,
-            opacity: labelOpacity,
-          }}
+        <div
           className="
             absolute
             left-1/2
@@ -430,25 +239,21 @@ export default function Hero() {
           "
         >
 
-        </motion.div>
+        </div>
 
         {/* ======================================================
             NAME
         ====================================================== */}
 
         <motion.div
-          style={{
-            y: nameY,
-            scale: nameScale,
-            opacity: nameOpacity,
-          }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="
-            absolute
-            bottom-[17%]
-            left-[5%]
+            relative
             z-30
             origin-bottom-left
-            md:left-[7%]
+            md:ml-[2%]
           "
         >
           <div
@@ -492,10 +297,9 @@ export default function Hero() {
         ====================================================== */}
 
         <motion.div
-          style={{
-            y: contentY,
-            opacity: contentOpacity,
-          }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
           className="
             absolute
             bottom-[7%]
@@ -608,28 +412,6 @@ export default function Hero() {
 
           </div>
         </motion.div>
-        {/* ======================================================
-            NEXT CONTENT REVEAL
-        ====================================================== */}
-
-        <motion.div
-          style={{
-            y: nextSectionY,
-            opacity: nextSectionOpacity,
-          }}
-          className="
-            pointer-events-none
-            absolute
-            inset-x-0
-            bottom-0
-            z-10
-            h-[35vh]
-            bg-gradient-to-t
-            from-[var(--section-bg)]
-            via-[var(--section-bg)]/70
-            to-transparent
-          "
-        />
       </div>
     </section>
   );

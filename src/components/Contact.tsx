@@ -140,8 +140,8 @@ export default function Contact() {
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <motion.div
           animate={{
-            scale: [1, 1.12, 1],
-            opacity: [0.08, 0.14, 0.08],
+            scale: [1, 1.05, 1],
+            opacity: [0.06, 0.1, 0.06],
           }}
           transition={{
             duration: 8,
@@ -164,8 +164,8 @@ export default function Contact() {
 
         <motion.div
           animate={{
-            y: [0, -20, 0],
-            opacity: [0.04, 0.08, 0.04],
+            y: [0, -10, 0],
+            opacity: [0.03, 0.06, 0.03],
           }}
           transition={{
             duration: 7,
@@ -282,7 +282,7 @@ export default function Contact() {
         <motion.div
           variants={formVariants}
           whileHover={{
-            y: -4,
+            y: -2,
           }}
           transition={{
             type: "spring",

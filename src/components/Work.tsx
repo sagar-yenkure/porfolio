@@ -34,7 +34,7 @@ const Work = () => {
   const headerY = useTransform(
     progress,
     [0, 0.35, 0.7, 1],
-    [70, 0, -20, -60]
+    [30, 0, -10, -25]
   );
 
   const headerOpacity = useTransform(
@@ -56,13 +56,13 @@ const Work = () => {
   const glowY = useTransform(
     progress,
     [0, 0.5, 1],
-    [100, -50, -150]
+    [40, -20, -60]
   );
 
   const glowX = useTransform(
     progress,
     [0, 0.5, 1],
-    [-80, 0, 80]
+    [-30, 0, 30]
   );
 
   return (
@@ -109,8 +109,8 @@ const Work = () => {
 
         <motion.div
           animate={{
-            scale: [1, 1.15, 1],
-            opacity: [0.1, 0.2, 0.1],
+            scale: [1, 1.06, 1],
+            opacity: [0.08, 0.14, 0.08],
           }}
           transition={{
             duration: 8,

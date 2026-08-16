@@ -38,13 +38,13 @@ const BlogsSection = () => {
   const rotateX = useTransform(
     smoothY,
     [-0.5, 0.5],
-    [2.5, -2.5]
+    [1.2, -1.2]
   );
 
   const rotateY = useTransform(
     smoothX,
     [-0.5, 0.5],
-    [-2.5, 2.5]
+    [-1.2, 1.2]
   );
 
   const handleMouseMove = (
@@ -103,8 +103,8 @@ const BlogsSection = () => {
           animate={
             isInView
               ? {
-                scale: [1, 1.12, 1],
-                opacity: [0.1, 0.18, 0.1],
+                scale: [1, 1.05, 1],
+                opacity: [0.08, 0.12, 0.08],
               }
               : {}
           }
@@ -345,7 +345,7 @@ const BlogsSection = () => {
 
             <motion.div
               animate={{
-                opacity: [0.15, 0.3, 0.15],
+                opacity: [0.1, 0.2, 0.1],
               }}
               transition={{
                 duration: 5,

@@ -17,9 +17,9 @@ const containerVariants = {
 const cardVariants = {
   hidden: {
     opacity: 0,
-    y: 70,
-    rotateX: 8,
-    scale: 0.96,
+    y: 35,
+    rotateX: 3,
+    scale: 0.98,
   },
   visible: {
     opacity: 1,
@@ -61,8 +61,8 @@ const Projects = () => {
 
         <motion.div
           animate={{
-            scale: [1, 1.12, 1],
-            opacity: [0.12, 0.2, 0.12],
+            scale: [1, 1.05, 1],
+            opacity: [0.08, 0.14, 0.08],
           }}
           transition={{
             duration: 8,

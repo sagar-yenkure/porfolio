@@ -28,21 +28,21 @@ const Testimonials = () => {
   const firstRowX = useTransform(
     progress,
     [0, 1],
-    ["4%", "-22%"]
+    ["2%", "-10%"]
   );
 
   // Second row moves right
   const secondRowX = useTransform(
     progress,
     [0, 1],
-    ["-18%", "8%"]
+    ["-8%", "4%"]
   );
 
   // Section heading movement
   const headingY = useTransform(
     progress,
     [0, 0.5, 1],
-    [50, 0, -40]
+    [20, 0, -15]
   );
 
   const headingOpacity = useTransform(

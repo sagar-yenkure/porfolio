@@ -328,8 +328,8 @@ const SkillsSection: React.FC = () => {
           animate={
             isInView
               ? {
-                scale: [1, 1.15, 1],
-                opacity: [0.15, 0.25, 0.15],
+                scale: [1, 1.06, 1],
+                opacity: [0.1, 0.18, 0.1],
               }
               : {}
           }
