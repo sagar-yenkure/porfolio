@@ -8,6 +8,7 @@ import { Article } from "@/constants/blogs";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import formatDateWithOrdinal from "@/hooks/useformatDateWithOrdinal";
+import { useRef } from "react";
 
 interface BlogCardProps {
   post: Article;
@@ -15,116 +16,347 @@ interface BlogCardProps {
 }
 
 const BlogCard = ({ post, index = 0 }: BlogCardProps) => {
-  // Animation variants with staggered children
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: index * 0.1,
-      },
-    },
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (
+    event: React.MouseEvent<HTMLDivElement>
+  ) => {
+    const card = cardRef.current;
+
+    if (!card) return;
+
+    const rect = card.getBoundingClientRect();
+
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+
+    const rotateY = (x / rect.width - 0.5) * 5;
+    const rotateX = (y / rect.height - 0.5) * -5;
+
+    card.style.setProperty("--rotate-x", `${rotateX}deg`);
+    card.style.setProperty("--rotate-y", `${rotateY}deg`);
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "easeOut" },
-    },
-  };
+  const handleMouseLeave = () => {
+    const card = cardRef.current;
 
-  const imageVariants = {
-    hidden: { scale: 1.1, opacity: 0.8 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: { duration: 0.5 },
-    },
-    hover: {
-      scale: 1.05,
-      transition: { duration: 0.4 },
-    },
+    if (!card) return;
+
+    card.style.setProperty("--rotate-x", "0deg");
+    card.style.setProperty("--rotate-y", "0deg");
   };
 
   return (
     <motion.div
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      className="h-full bg-white/5 rounded-2xl"
+      ref={cardRef}
+      initial={{
+        opacity: 0,
+        y: 40,
+        scale: 0.96,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+        scale: 1,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.15,
+      }}
+      transition={{
+        duration: 0.65,
+        delay: index * 0.08,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        transform:
+          "perspective(1000px) rotateX(var(--rotate-x, 0deg)) rotateY(var(--rotate-y, 0deg))",
+        transformStyle: "preserve-3d",
+      }}
+      className="group h-full"
     >
-      <Card className="group h-full overflow-hidden border border-border/40 bg-card/30 backdrop-blur-sm hover:bg-card/80 transition-all duration-300 flex flex-col rounded-xl shadow-sm hover:shadow-md">
-        {/* Image Container */}
+      <Card
+        className="
+          relative
+          flex
+          h-full
+          flex-col
+          overflow-hidden
+          rounded-2xl
+          border
+          border-border/40
+          bg-card/30
+          backdrop-blur-sm
+          transition-all
+          duration-500
+          hover:border-border/70
+          hover:bg-card/60
+          hover:shadow-[0_25px_70px_rgba(0,0,0,0.18)]
+        "
+      >
+        {/* Hover glow */}
+        <div
+          className="
+            pointer-events-none
+            absolute
+            -right-20
+            -top-20
+            h-40
+            w-40
+            rounded-full
+            bg-primary/0
+            blur-3xl
+            transition-all
+            duration-700
+            group-hover:bg-primary/10
+          "
+        />
+
+        {/* =====================================================
+            IMAGE
+        ====================================================== */}
         <motion.div
-          className="relative aspect-[16/9] overflow-hidden rounded-t-xl"
-          whileHover="hover"
+          className="
+            relative
+            aspect-[16/9]
+            overflow-hidden
+            rounded-t-2xl
+          "
+          whileHover={{
+            scale: 1.01,
+          }}
+          transition={{
+            duration: 0.4,
+          }}
         >
-          <motion.div variants={imageVariants} className="h-full w-full">
+          <motion.div
+            initial={{
+              scale: 1.08,
+              opacity: 0,
+            }}
+            whileInView={{
+              scale: 1,
+              opacity: 1,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.2,
+            }}
+            transition={{
+              duration: 0.8,
+              delay: index * 0.08,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="relative h-full w-full"
+          >
             <Image
               src={post.image}
               alt={post.title}
               fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              priority
+              className="
+                object-cover
+                transition-transform
+                duration-700
+                ease-out
+                group-hover:scale-105
+              "
+              sizes="
+                (max-width: 768px) 100vw,
+                (max-width: 1200px) 50vw,
+                33vw
+              "
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-60 transition-opacity group-hover:opacity-80" />
+
+            {/* Image overlay */}
+            <div
+              className="
+                absolute
+                inset-0
+                bg-gradient-to-t
+                from-black/60
+                via-black/10
+                to-transparent
+                opacity-70
+                transition-opacity
+                duration-500
+                group-hover:opacity-90
+              "
+            />
           </motion.div>
 
-          {/* Tags Overlay */}
+          {/* Tags */}
           <motion.div
-            variants={itemVariants}
-            className="absolute top-3 left-3 flex flex-wrap gap-2 z-10"
+            initial={{
+              opacity: 0,
+              y: -10,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              delay: 0.2 + index * 0.08,
+              duration: 0.4,
+            }}
+            className="
+              absolute
+              left-3
+              top-3
+              z-10
+              flex
+              flex-wrap
+              gap-2
+            "
           >
-            {post.tags?.map((tag) => (
+            {post.tags?.slice(0, 2).map((tag) => (
               <Badge
                 key={tag}
                 variant="secondary"
-                className="bg-background/80 backdrop-blur-md text-xs font-medium shadow-sm border-border/20"
+                className="
+                  border-border/20
+                  bg-background/75
+                  text-xs
+                  font-medium
+                  shadow-sm
+                  backdrop-blur-md
+                "
               >
                 {tag}
               </Badge>
             ))}
           </motion.div>
+
+          {/* Read indicator */}
+          <div
+            className="
+              absolute
+              bottom-3
+              right-3
+              z-10
+              flex
+              items-center
+              gap-1.5
+              rounded-full
+              border
+              border-white/10
+              bg-black/40
+              px-2.5
+              py-1
+              text-[10px]
+              text-white/70
+              backdrop-blur-md
+            "
+          >
+            <Clock className="h-3 w-3" />
+            {post.readTime || 8} min
+          </div>
         </motion.div>
 
-        {/* Content Section */}
-        <CardContent className="flex-1 flex flex-col p-2">
-          {/* Meta Info */}
+        {/* =====================================================
+            CONTENT
+        ====================================================== */}
+        <CardContent className="relative z-10 flex flex-1 flex-col p-5">
+          {/* Meta */}
           <motion.div
-            variants={itemVariants}
-            className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground mb-2"
+            initial={{
+              opacity: 0,
+              y: 10,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              delay: 0.15 + index * 0.08,
+              duration: 0.4,
+            }}
+            className="
+              mb-3
+              flex
+              flex-wrap
+              items-center
+              gap-2
+              text-xs
+              text-muted-foreground
+            "
           >
-            <div className="flex items-center gap-1 font-medium text-foreground/70">
+            <span className="font-medium text-foreground/70">
               {formatDateWithOrdinal(post.published)}
-            </div>
-            <span className="text-muted-foreground/50">•</span>
+            </span>
+
+            <span className="text-muted-foreground/40">
+              •
+            </span>
+
             <div className="flex items-center gap-1.5">
               <Clock className="h-3.5 w-3.5" />
-              <span>{post.readTime || 8} min read</span>
+              <span>
+                {post.readTime || 8} min read
+              </span>
             </div>
-            {post.views && (
+
+            {post.views ? (
               <>
-                <span className="text-muted-foreground/50">•</span>
+                <span className="text-muted-foreground/40">
+                  •
+                </span>
+
                 <div className="flex items-center gap-1.5">
                   <Eye className="h-3.5 w-3.5" />
-                  <span>{post.views.toLocaleString()}</span>
+                  <span>
+                    {post.views.toLocaleString()}
+                  </span>
                 </div>
               </>
-            )}
+            ) : null}
           </motion.div>
 
           {/* Title */}
-          <motion.div variants={itemVariants}>
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 15,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              delay: 0.2 + index * 0.08,
+              duration: 0.45,
+            }}
+          >
             <Link
-              aria-label={`Read about ${post.title}`}
               href={`/blogs/${post.slug}`}
+              aria-label={`Read about ${post.title}`}
               className="block"
             >
-              <h3 className="text-xl md:text-2xl font-bold leading-tight mb-3 text-foreground group-hover:text-primary transition-colors duration-300">
+              <h3
+                className="
+                  mb-3
+                  line-clamp-2
+                  text-xl
+                  font-bold
+                  leading-tight
+                  tracking-tight
+                  text-foreground
+                  transition-colors
+                  duration-300
+                  group-hover:text-primary
+                  md:text-2xl
+                "
+              >
                 {post.title}
               </h3>
             </Link>
@@ -132,54 +364,132 @@ const BlogCard = ({ post, index = 0 }: BlogCardProps) => {
 
           {/* Summary */}
           <motion.p
-            variants={itemVariants}
-            className="text-sm text-muted-foreground line-clamp-2 mb-2"
+            initial={{
+              opacity: 0,
+              y: 15,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              delay: 0.25 + index * 0.08,
+              duration: 0.45,
+            }}
+            className="
+              mb-5
+              line-clamp-3
+              text-sm
+              leading-6
+              text-muted-foreground
+            "
           >
             {post.summary}
           </motion.p>
 
           {/* Author */}
           <motion.div
-            variants={itemVariants}
-            className="mt-auto flex items-center gap-2.5"
+            initial={{
+              opacity: 0,
+            }}
+            whileInView={{
+              opacity: 1,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              delay: 0.3 + index * 0.08,
+              duration: 0.4,
+            }}
+            className="mt-auto flex items-center gap-2"
           >
-            <span className="text-sm font-medium">{post.author}</span>
+            <div
+              className="
+                flex
+                h-7
+                w-7
+                items-center
+                justify-center
+                rounded-full
+                border
+                border-border/50
+                bg-background/60
+                text-[10px]
+                font-semibold
+                text-muted-foreground
+              "
+            >
+              {post.author?.charAt(0).toUpperCase()}
+            </div>
+
+            <span className="text-sm font-medium text-foreground/70">
+              {post.author}
+            </span>
           </motion.div>
         </CardContent>
 
-        {/* Footer with Button */}
-        <CardFooter className="px-5 border-t border-border/40">
-          <motion.div variants={itemVariants} className="w-full">
-            <Link
-              aria-label={`Read about ${post.title}`}
-              href={`/blogs/${post.slug}`}
-              className="w-full"
+        {/* =====================================================
+            FOOTER
+        ====================================================== */}
+        <CardFooter className="relative z-10 border-t border-border/40 p-4">
+          <Link
+            href={`/blogs/${post.slug}`}
+            aria-label={`Read about ${post.title}`}
+            className="w-full"
+          >
+            <motion.div
+              whileHover={{
+                scale: 1.015,
+              }}
+              whileTap={{
+                scale: 0.98,
+              }}
+              className="
+                flex
+                w-full
+                items-center
+                justify-center
+                rounded-xl
+                border
+                border-border/50
+                bg-background/40
+                px-4
+                py-2.5
+                text-sm
+                font-medium
+                text-foreground
+                transition-all
+                duration-300
+                group-hover:border-border
+                group-hover:bg-background/70
+              "
             >
-              <motion.div
-                whileHover={{
-                  scale: 1.02,
-                  transition: { duration: 0.2 },
-                }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full bg-background/50 hover:bg-background border border-border/60 hover:border-border text-foreground rounded-lg py-2.5 px-4 text-sm font-medium flex items-center justify-center group transition-all duration-200"
-              >
+              <span>
                 Read blog
-                <motion.span
-                  animate={{ x: 0 }}
-                  whileHover={{
-                    x: 4,
-                    transition: {
-                      repeat: Infinity,
-                      repeatType: "reverse",
-                      duration: 0.6,
-                    },
-                  }}
-                >
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </motion.span>
+              </span>
+
+              <motion.div
+                className="ml-2"
+                animate={{
+                  x: 0,
+                }}
+                whileHover={{
+                  x: 5,
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 15,
+                }}
+              >
+                <ArrowRight className="h-4 w-4" />
               </motion.div>
-            </Link>
-          </motion.div>
+            </motion.div>
+          </Link>
         </CardFooter>
       </Card>
     </motion.div>

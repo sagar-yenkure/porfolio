@@ -19,7 +19,7 @@ const FeaturedBlog = ({ post }: FeaturedBlogProps) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className="relative overflow-hidden rounded-xl border bg-white/5"
+      className="relative overflow-hidden rounded-xl border border-border/60 bg-card text-card-foreground"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 h-full">
         <div className="p-6 md:p-10 flex flex-col justify-between">

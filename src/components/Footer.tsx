@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { Code2 } from "lucide-react";
 import { Footer } from "./ui/footer";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
@@ -7,25 +10,72 @@ import link from "@/constants/links";
 
 const FooterSection = () => {
   return (
-    <div className="w-full">
+    <motion.div
+      className="w-full bg-[var(--section-bg)]"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{
+        duration: 0.7,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+    >
       <Footer
-        logo={<Code2 className="h-10 w-10" />}
+        logo={
+          <motion.div
+            initial={{ rotate: -20, scale: 0.8 }}
+            whileInView={{ rotate: 0, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{
+              duration: 0.6,
+              type: "spring",
+              stiffness: 180,
+            }}
+            whileHover={{
+              rotate: 8,
+              scale: 1.08,
+            }}
+          >
+            <Code2 className="h-10 w-10" />
+          </motion.div>
+        }
         brandName="Sagar Yenkure's Portfolio"
         socialLinks={[
           {
-            icon: <FaSquareXTwitter className="h-5 w-5" />,
+            icon: (
+              <motion.div
+                whileHover={{ y: -3, scale: 1.12, rotate: -5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <FaSquareXTwitter className="h-5 w-5" />
+              </motion.div>
+            ),
             href: info.twitter,
             label: "Twitter",
           },
           {
-            icon: <FaGithub className="h-5 w-5" />,
+            icon: (
+              <motion.div
+                whileHover={{ y: -3, scale: 1.12, rotate: 5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <FaGithub className="h-5 w-5" />
+              </motion.div>
+            ),
             href: info.github,
             label: "GitHub",
           },
           {
-            icon: <FaLinkedin className="h-5 w-5" />,
+            icon: (
+              <motion.div
+                whileHover={{ y: -3, scale: 1.12, rotate: -5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <FaLinkedin className="h-5 w-5" />
+              </motion.div>
+            ),
             href: info.linkedin,
-            label: "GitHub",
+            label: "LinkedIn",
           },
         ]}
         mainLinks={link}
@@ -34,7 +84,8 @@ const FooterSection = () => {
           license: "All rights reserved",
         }}
       />
-    </div>
+    </motion.div>
   );
 };
+
 export default FooterSection;

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Code2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-// import { ThemeToggle } from "./ThemeToggle";
+import { ThemeToggle } from "./ThemeToggle";
 import Link from "next/link";
 import link from "@/constants/links";
 import { NavBar } from "./ui/tubelight-navbar";
@@ -52,12 +52,12 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-4">
             <NavBar items={link} />
-            {/* <ThemeToggle /> */}
+            <ThemeToggle />
           </div>
 
           {/* Mobile Navigation Button */}
           <div className="md:hidden flex items-center gap-4 ">
-            {/* <ThemeToggle /> */}
+            <ThemeToggle />
             <Button
               id="toggle-menu"
               aria-label="Toggle Menu"

@@ -6,6 +6,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-section-bg: var(--section-bg);
+  --color-section-card: var(--section-card);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -45,78 +47,173 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.13 0.028 261.692);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.13 0.028 261.692);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.13 0.028 261.692);
-  --primary: oklch(0.21 0.034 264.665);
-  --primary-foreground: oklch(0.985 0.002 247.839);
-  --secondary: oklch(0.967 0.003 264.542);
-  --secondary-foreground: oklch(0.21 0.034 264.665);
-  --muted: oklch(0.967 0.003 264.542);
-  --muted-foreground: oklch(0.551 0.027 264.364);
-  --accent: oklch(0.967 0.003 264.542);
-  --accent-foreground: oklch(0.21 0.034 264.665);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.928 0.006 264.531);
-  --input: oklch(0.928 0.006 264.531);
-  --ring: oklch(0.707 0.022 261.325);
+  --section-bg: #FFFFFF;
+  --section-card: #F0F0F0;
+  --background: #FFFFFF;
+  --foreground: #18181b;
+  --card: #F0F0F0;
+  --card-foreground: #18181b;
+  --popover: #F0F0F0;
+  --popover-foreground: #18181b;
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --secondary: #f4f4f5;
+  --secondary-foreground: #18181b;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --accent: #e4e4e7;
+  --accent-foreground: #18181b;
+  --destructive: #ef4444;
+  --border: #e4e4e7;
+  --input: #e4e4e7;
+  --ring: #2563eb;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0.002 247.839);
-  --sidebar-foreground: oklch(0.13 0.028 261.692);
-  --sidebar-primary: oklch(0.21 0.034 264.665);
-  --sidebar-primary-foreground: oklch(0.985 0.002 247.839);
-  --sidebar-accent: oklch(0.967 0.003 264.542);
-  --sidebar-accent-foreground: oklch(0.21 0.034 264.665);
-  --sidebar-border: oklch(0.928 0.006 264.531);
-  --sidebar-ring: oklch(0.707 0.022 261.325);
+  --sidebar: #F0F0F0;
+  --sidebar-foreground: #18181b;
+  --sidebar-primary: #2563eb;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e4e4e7;
+  --sidebar-accent-foreground: #18181b;
+  --sidebar-border: #e4e4e7;
+  --sidebar-ring: #2563eb;
 }
 
 .dark {
-  --background: oklch(0.13 0.028 261.692);
-  --foreground: oklch(0.985 0.002 247.839);
-  --card: oklch(0.21 0.034 264.665);
-  --card-foreground: oklch(0.985 0.002 247.839);
-  --popover: oklch(0.21 0.034 264.665);
-  --popover-foreground: oklch(0.985 0.002 247.839);
-  --primary: oklch(0.928 0.006 264.531);
-  --primary-foreground: oklch(0.21 0.034 264.665);
-  --secondary: oklch(0.278 0.033 256.848);
-  --secondary-foreground: oklch(0.985 0.002 247.839);
-  --muted: oklch(0.278 0.033 256.848);
-  --muted-foreground: oklch(0.707 0.022 261.325);
-  --accent: oklch(0.278 0.033 256.848);
-  --accent-foreground: oklch(0.985 0.002 247.839);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
+  --section-bg: #0a0a0a;
+  --section-card: #121215;
+  --background: #0a0a0a;
+  --foreground: #f4f4f5;
+  --card: #121215;
+  --card-foreground: #f4f4f5;
+  --popover: #121215;
+  --popover-foreground: #f4f4f5;
+  --primary: #3b82f6;
+  --primary-foreground: #ffffff;
+  --secondary: #1e1e24;
+  --secondary-foreground: #f4f4f5;
+  --muted: #1e1e24;
+  --muted-foreground: #a1a1aa;
+  --accent: #1e1e24;
+  --accent-foreground: #f4f4f5;
+  --destructive: #ef4444;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.15);
+  --ring: #3b82f6;
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.21 0.034 264.665);
-  --sidebar-foreground: oklch(0.985 0.002 247.839);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0.002 247.839);
-  --sidebar-accent: oklch(0.278 0.033 256.848);
-  --sidebar-accent-foreground: oklch(0.985 0.002 247.839);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --sidebar: #121215;
+  --sidebar-foreground: #f4f4f5;
+  --sidebar-primary: #3b82f6;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #1e1e24;
+  --sidebar-accent-foreground: #f4f4f5;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: #3b82f6;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-poppins), system-ui, -apple-system, sans-serif;
   }
+
+  /* ========== TYPOGRAPHY SYSTEM ==========*/
+
+  /* Main Heading (H1) - Desktop: 40px, Mobile: 32px, Left-aligned */
+  h1 {
+    @apply text-2xl md:text-3xl lg:text-4xl font-bold text-left leading-tight tracking-tight;
+    font-size: clamp(2rem, 8vw, 2.5rem);
+  }
+
+  /* Secondary Heading (H2) - Desktop: 32px, Mobile: 28px, Left-aligned */
+  h2 {
+    @apply text-xl md:text-2xl lg:text-3xl font-bold text-left leading-snug tracking-tight;
+    font-size: clamp(1.75rem, 6vw, 2rem);
+  }
+
+  /* Tertiary Heading (H3) - Desktop: 24px, Mobile: 20px, Left-aligned */
+  h3 {
+    @apply text-lg md:text-xl lg:text-2xl font-semibold text-left leading-snug tracking-tight;
+    font-size: clamp(1.25rem, 5vw, 1.5rem);
+  }
+
+  /* Quaternary Heading (H4) - Desktop: 20px, Mobile: 18px, Left-aligned */
+  h4 {
+    @apply text-base md:text-lg font-semibold text-left leading-snug tracking-normal;
+    font-size: clamp(1.125rem, 4vw, 1.25rem);
+  }
+
+  /* Paragraph (P) - Desktop: 16px, Mobile: 14px, Left-aligned */
+  p {
+    @apply text-sm md:text-base text-left leading-relaxed;
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+    line-height: 1.6;
+  }
+
+  /* Small Text / Sub-paragraph - Desktop: 14px, Mobile: 12px, Left-aligned */
+  small,
+  .text-small {
+    @apply text-xs md:text-sm text-left;
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+  }
+
+  /* Extra Small Text - Desktop: 12px, Mobile: 11px, Left-aligned */
+  .text-xs {
+    @apply text-left;
+    font-size: clamp(0.6875rem, 1.5vw, 0.75rem);
+  }
+
+  /* Subtitle - For text under headings */
+  .subtitle {
+    @apply text-sm md:text-base text-left text-muted-foreground;
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+  }
+
+  /* Left-aligned text wrapper for sections */
+  .text-left {
+    text-align: left;
+  }
+
+  /* Center-aligned text override (if needed) */
+  .text-center {
+    text-align: center;
+  }
+}
+
+/* ========== SECTION SPACING SYSTEM ==========*/
+.section-container {
+  @apply py-16 md:py-24 lg:py-32;
+}
+
+.section-spacing {
+  @apply py-12 md:py-16 lg:py-20;
+}
+
+.section-sm {
+  @apply py-8 md:py-12 lg:py-16;
+}
+
+/* ========== SECTION BACKGROUND ==========*/
+.section-bg {
+  background-color: var(--section-bg);
+}
+
+/* ========== SECTION CONTENT WRAPPER ==========*/
+.section-content {
+  @apply relative z-10 mx-auto max-w-7xl px-4 md:px-8;
+}
+
+.section-header {
+  @apply mb-12 md:mb-16 lg:mb-20;
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Toaster } from "@/components/ui/sonner";
+import { Poppins } from "next/font/google";
 
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -9,8 +10,14 @@ import info from "@/constants/info";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-poppins",
+});
+
 export const metadata: Metadata = {
-  title: "Sagar Yenkure - a passionate Software Engineer",
+  title: "Sagar Yenkure - let's build something amazing together",
   description:
     "Welcome to the portfolio of Sagar Yenkure — a passionate Software Engineer. Explore projects, read blogs, and learn more about my journey in tech.",
   keywords: [
@@ -63,7 +70,7 @@ export default function RootLayout({
 }>) {
   return (
     <>
-      <html lang="en" suppressHydrationWarning>
+      <html lang="en" suppressHydrationWarning className={poppins.className}>
         <head>
           <link
             rel="apple-touch-icon"

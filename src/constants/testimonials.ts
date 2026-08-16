@@ -44,15 +44,6 @@ export const testimonials = [
       "Calm under pressure and clear in communication — that's what stood out about Sagar. Whether working across teams or solving critical issues, he always brought a sense of confidence, maturity, and clarity.",
   },
   {
-    id: 4,
-    name: "Omkar Torne",
-    role: "Digital Marketing Executive",
-    company: "Vionsys IT Solution India Pvt. Ltd",
-    url: cloudinaryUrl("v1743841303/users/1728895563351_mxf3mj.jpg"),
-    message:
-      "It's been great seeing how effortlessly Sagar adapts to new roles and responsibilities. His humility, combined with confidence and consistency, makes him a real standout in any professional environment.",
-  },
-  {
     id: 1,
     name: "Prem Khadekar",
     role: "Talent Acquisition Specialist",
@@ -114,17 +105,7 @@ export const testimonials = [
     message:
       "In team discussions, Sagar brings thoughtful ideas and follows through with excellent execution. He's a quiet achiever — always letting his work do the talking, and his work speaks volumes.",
   },
-  {
-    id: 12,
-    name: "Vijaya Gavhane",
-    role: ".NET Developer",
-    company: "Paramount Healthcare Management System",
-    url: cloudinaryUrl(
-      "v1743840900/users/WhatsApp_Image_2025-04-05_at_10.07.22_AM_jmjoai.jpg"
-    ),
-    message:
-      "His blend of intelligence and humility is rare. Whether facing a complex technical challenge or mentoring peers, Sagar always delivers with grace, insight, and patience.",
-  },
+
   {
     id: 13,
     name: "Karan Patil",
@@ -135,6 +116,17 @@ export const testimonials = [
     ),
     message:
       "You can always count on Sagar to help and uplift those around him. His natural curiosity and willingness to explore new ideas drive real impact and meaningful conversations.",
+  },
+  {
+    id: 166,
+    name: "Adity Raskar",
+    role: "Python Developer",
+    company: "Code Techie",
+    url: cloudinaryUrl(
+      "v1743940576/users/WhatsApp_Image_2025-04-05_at_11.13.49_PM_jnmuwo.jpg"
+    ),
+    message:
+      "Sagar's combination of technical skills and empathy makes him a standout. He uplifts others while climbing himself — a rare and admirable quality in today's fast-paced world of tech.",
   },
   {
     id: 14,
@@ -156,15 +148,25 @@ export const testimonials = [
     message:
       "Watching Sagar's growth has been nothing short of motivating. He's consistent, focused, and never settles — always chasing improvement with genuine intent and passion.",
   },
+
   {
-    id: 166,
-    name: "Adity Raskar",
-    role: "Python Developer",
-    company: "Code Techie",
+    id: 12,
+    name: "Vijaya Gavhane",
+    role: ".NET Developer",
+    company: "Paramount Healthcare Management System",
     url: cloudinaryUrl(
-      "v1743940576/users/WhatsApp_Image_2025-04-05_at_11.13.49_PM_jnmuwo.jpg"
+      "v1743840900/users/WhatsApp_Image_2025-04-05_at_10.07.22_AM_jmjoai.jpg"
     ),
     message:
-      "Sagar's combination of technical skills and empathy makes him a standout. He uplifts others while climbing himself — a rare and admirable quality in today's fast-paced world of tech.",
+      "His blend of intelligence and humility is rare. Whether facing a complex technical challenge or mentoring peers, Sagar always delivers with grace, insight, and patience.",
+  },
+  {
+    id: 4,
+    name: "Omkar Torne",
+    role: "Digital Marketing Executive",
+    company: "Vionsys IT Solution India Pvt. Ltd",
+    url: cloudinaryUrl("v1743841303/users/1728895563351_mxf3mj.jpg"),
+    message:
+      "It's been great seeing how effortlessly Sagar adapts to new roles and responsibilities. His humility, combined with confidence and consistency, makes him a real standout in any professional environment.",
   },
 ];

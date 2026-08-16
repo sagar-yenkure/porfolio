@@ -1,27 +1,104 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+  motion,
+  AnimatePresence,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from "framer-motion";
+
 import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
+
 import { Project } from "@/constants/Projects";
-import { Badge } from "./ui/badge";
 import Link from "next/link";
 import { IconType } from "react-icons/lib";
 
-const ProjectCard = ({ project }: { project: Project }) => {
+const ProjectCard = ({
+  project,
+  index,
+}: {
+  project: Project;
+  index: number;
+}) => {
   const [step, setStep] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
+  const [isHovered] = useState(false);
+
+  const cardRef = useRef<HTMLDivElement>(null);
+
   const totalSteps = project.images.length;
   const hasMultipleImages = totalSteps > 1;
+
+  /* ==========================================================
+     MOUSE 3D
+  ========================================================== */
+
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const rotateX = useSpring(
+    useTransform(mouseY, [-0.5, 0.5], [5, -5]),
+    {
+      stiffness: 180,
+      damping: 22,
+      mass: 0.5,
+    }
+  );
+
+  const rotateY = useSpring(
+    useTransform(mouseX, [-0.5, 0.5], [-5, 5]),
+    {
+      stiffness: 180,
+      damping: 22,
+      mass: 0.5,
+    }
+  );
+
+  const imageX = useSpring(
+    useTransform(mouseX, [-0.5, 0.5], [-5, 5]),
+    {
+      stiffness: 150,
+      damping: 20,
+    }
+  );
+
+  const imageY = useSpring(
+    useTransform(mouseY, [-0.5, 0.5], [-5, 5]),
+    {
+      stiffness: 150,
+      damping: 20,
+    }
+  );
+
+  const handleMouseMove = (
+    event: React.MouseEvent<HTMLDivElement>
+  ) => {
+    const rect =
+      event.currentTarget.getBoundingClientRect();
+
+    mouseX.set(
+      (event.clientX - rect.left) /
+      rect.width -
+      0.5
+    );
+
+    mouseY.set(
+      (event.clientY - rect.top) /
+      rect.height -
+      0.5
+    );
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
+  /* ==========================================================
+     IMAGE PRELOAD
+  ========================================================== */
 
   useEffect(() => {
     project.images.forEach((src) => {
@@ -30,165 +107,570 @@ const ProjectCard = ({ project }: { project: Project }) => {
     });
   }, [project.images]);
 
+  /* ==========================================================
+     CONTROLS
+  ========================================================== */
+
   const handleNext = () => {
-    setStep((prevStep) =>
-      prevStep + 1 < totalSteps ? prevStep + 1 : prevStep
+    setStep((prev) =>
+      prev + 1 < totalSteps
+        ? prev + 1
+        : prev
     );
   };
 
   const handlePrev = () => {
-    setStep((prevStep) => (prevStep - 1 >= 0 ? prevStep - 1 : prevStep));
+    setStep((prev) =>
+      prev - 1 >= 0
+        ? prev - 1
+        : prev
+    );
   };
 
+  /* ==========================================================
+     SKILLS
+  ========================================================== */
+
   const skillIcons = () =>
-    project.skills?.map((SkillIcon: IconType, index: number) => {
-      return (
+    project.skills?.map(
+      (
+        SkillIcon: IconType,
+        skillIndex: number
+      ) => (
         <motion.div
-          key={index}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: index * 0.1 }}
-          className="group relative"
+          key={skillIndex}
+          initial={{
+            opacity: 0,
+            scale: 0.8,
+          }}
+          whileInView={{
+            opacity: 1,
+            scale: 1,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            delay: skillIndex * 0.05,
+            duration: 0.4,
+          }}
+          whileHover={{
+            y: -3,
+            scale: 1.08,
+          }}
+          className="
+            flex
+            h-8
+            w-8
+            items-center
+            justify-center
+            rounded-lg
+            border
+            border-border/60
+            bg-background/60
+            text-muted-foreground
+            transition-colors
+            hover:border-border
+            hover:bg-accent
+            hover:text-foreground
+          "
         >
-          <div className="flex items-center p-2.5 bg-gray-100/10 dark:bg-zinc-900/50 rounded-lg hover:bg-gray-200/20 dark:hover:bg-zinc-800/70 transition-colors duration-300">
-            <SkillIcon
-              size={22}
-              className={`transition-all duration-300 group-hover:scale-110`}
-            />
-          </div>
+          <SkillIcon size={15} />
         </motion.div>
-      );
-    });
+      )
+    );
 
   return (
     <motion.div
-      whileHover={{ y: -5 }}
-      transition={{ type: "spring", stiffness: 300 }}
-      className="h-full"
+      ref={cardRef}
+      style={{
+        rotateX,
+        rotateY,
+        transformPerspective: 1200,
+      }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      whileHover={{
+        y: -8,
+      }}
+      transition={{
+        type: "spring",
+        stiffness: 180,
+        damping: 20,
+      }}
+      className="
+        group
+        relative
+        h-full
+        [transform-style:preserve-3d]
+      "
     >
-      <Card
-        className="shadow-lg relative bg-white/5 overflow-hidden border border-gray-200/20 dark:border-zinc-800/50 backdrop-blur-sm h-full flex flex-col"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        <CardHeader className="space-y-2">
-          <div className="space-y-2">
-            <CardTitle className="flex items-center justify-between">
-              <span>{project.title}</span>
-              <div className="flex gap-2">
-                {project.liveUrl && (
-                  <motion.div whileHover={{ scale: 1.1 }}>
-                    <Link href={project.liveUrl} target="_blank">
-                      <Button
-                        aria-label="View Project Live"
-                        variant="outline"
-                        size="icon"
-                        className="h-8 w-8 rounded-full"
-                      >
-                        <ExternalLink size={16} />
-                      </Button>
-                    </Link>
-                  </motion.div>
-                )}
-                {project.githubUrl && (
-                  <motion.div whileHover={{ scale: 1.1 }}>
-                    <Link href={project.githubUrl} target="_blank">
-                      <Button
-                        aria-label="View Project on GitHub"
-                        variant="outline"
-                        size="icon"
-                        className="h-8 w-8 rounded-full"
-                      >
-                        <FaGithub size={16} />
-                      </Button>
-                    </Link>
-                  </motion.div>
-                )}
-              </div>
-            </CardTitle>
-            <CardDescription className="line-clamp-2 min-h-[40px]">
-              {project.description}
-            </CardDescription>
-            <Badge variant="secondary" className="w-fit text-xs font-medium">
-              {project.category}
-            </Badge>
-          </div>
-        </CardHeader>
+      {/* ======================================================
+          CARD
+      ====================================================== */}
 
-        <CardContent className="space-y-4 flex-1 flex flex-col">
+      <div
+        className="
+          relative
+          flex
+          h-full
+          flex-col
+          overflow-hidden
+          rounded-[24px]
+          border
+          border-border/60
+          bg-card
+          text-card-foreground
+          backdrop-blur-xl
+
+          transition-colors
+          duration-500
+
+          group-hover:border-border
+          group-hover:bg-accent/80
+        "
+      >
+        {/* ==================================================
+            CARD GLOW
+        ================================================== */}
+
+        <div
+          className="
+            pointer-events-none
+            absolute
+            -right-24
+            -top-24
+            h-48
+            w-48
+            rounded-full
+            bg-blue-500/[0.06]
+            blur-[70px]
+            transition-all
+            duration-700
+            group-hover:bg-blue-500/[0.12]
+          "
+        />
+
+        {/* ==================================================
+            TOP META
+        ================================================== */}
+
+        <div
+          className="
+            relative
+            z-10
+            flex
+            items-center
+            justify-between
+            px-5
+            pt-5
+          "
+        >
+          <div className="flex items-center gap-3">
+
+            <span className="h-px w-5 bg-border" />
+
+            <span
+              className="
+                text-[11px]
+                font-bold
+                tracking-wider
+                text-blue-500
+              "
+            >
+              {String(index + 1).padStart(
+                2,
+                "0"
+              )}
+            </span>
+          </div>
+
+          <span
+            className="
+              rounded-full
+              border
+              border-border
+              bg-accent
+              px-3
+              py-1
+              text-[10px]
+              font-semibold
+              uppercase
+              tracking-wider
+              text-foreground
+              shadow-sm
+            "
+          >
+            {project.category}
+          </span>
+        </div>
+
+        {/* ==================================================
+            TITLE
+        ================================================== */}
+
+        <div className="relative z-10 px-5 pt-5">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <h3
+                className="
+                  text-lg
+                  font-medium
+                  tracking-[-0.025em]
+                  text-foreground
+
+                  md:text-xl
+                "
+              >
+                {project.title}
+              </h3>
+
+              <p
+                className="
+                  mt-2
+                  line-clamp-2
+                  text-[11px]
+                  leading-5
+                  text-muted-foreground
+                "
+              >
+                {project.description}
+              </p>
+            </div>
+
+            {/* LINKS */}
+
+            <div className="flex shrink-0 gap-1.5">
+              {project.liveUrl && (
+                <motion.div
+                  whileHover={{
+                    scale: 1.1,
+                    rotate: 4,
+                  }}
+                  whileTap={{
+                    scale: 0.95,
+                  }}
+                >
+                  <Link
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div
+                      className="
+                        flex
+                        h-8
+                        w-8
+                        items-center
+                        justify-center
+                        rounded-full
+                        border
+                        border-border/60
+                        bg-background/60
+                        text-muted-foreground
+                        transition-colors
+                        hover:bg-accent
+                        hover:text-foreground
+                      "
+                    >
+                      <ExternalLink size={14} />
+                    </div>
+                  </Link>
+                </motion.div>
+              )}
+
+              {project.githubUrl && (
+                <motion.div
+                  whileHover={{
+                    scale: 1.1,
+                    rotate: -4,
+                  }}
+                  whileTap={{
+                    scale: 0.95,
+                  }}
+                >
+                  <Link
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div
+                      className="
+                        flex
+                        h-8
+                        w-8
+                        items-center
+                        justify-center
+                        rounded-full
+                        border
+                        border-border/60
+                        bg-background/60
+                        text-muted-foreground
+                        transition-colors
+                        hover:bg-accent
+                        hover:text-foreground
+                      "
+                    >
+                      <FaGithub size={14} />
+                    </div>
+                  </Link>
+                </motion.div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* ==================================================
+            IMAGE
+        ================================================== */}
+
+        <div className="relative mx-5 mt-5">
           <motion.div
-            className={`relative w-full ${
-              project.category === "Mobile Application"
+            style={{
+              x: imageX,
+              y: imageY,
+            }}
+            className={`
+              relative
+              w-full
+              overflow-hidden
+              rounded-[18px]
+              border
+              border-white/[0.07]
+              bg-black/30
+              ${project.category ===
+                "Mobile Application"
                 ? "aspect-[9/16]"
                 : "aspect-[16/9]"
-            } overflow-hidden rounded-lg bg-gradient-to-br from-gray-100/5 to-gray-200/10 dark:from-zinc-800/50 dark:to-zinc-900/50`}
+              }
+            `}
           >
             <AnimatePresence mode="wait">
               <motion.img
                 key={project.images[step]}
                 src={project.images[step]}
-                alt={`${project.title} preview ${step + 1}`}
-                className={`absolute w-full h-full rounded-lg transition-transform duration-300 ${
-                  project.category === "Mobile Application"
+                alt={`${project.title} preview ${step + 1
+                  }`}
+                initial={{
+                  opacity: 0,
+                  scale: 1.04,
+                }}
+                animate={{
+                  opacity: 1,
+                  scale: isHovered
+                    ? 1.04
+                    : 1,
+                }}
+                exit={{
+                  opacity: 0,
+                  scale: 0.98,
+                }}
+                transition={{
+                  duration: 0.45,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className={`
+                  absolute
+                  inset-0
+                  h-full
+                  w-full
+                  ${project.category ===
+                    "Mobile Application"
                     ? "object-contain"
                     : "object-cover"
-                } ${isHovered ? "scale-105" : "scale-100"}`}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
+                  }
+                `}
               />
             </AnimatePresence>
+
+            {/* Image overlay */}
+
+            <div
+              className="
+                pointer-events-none
+                absolute
+                inset-0
+                bg-gradient-to-br
+                from-white/[0.08]
+                via-transparent
+                to-black/30
+              "
+            />
+
+            {/* Image border */}
+
+            <div
+              className="
+                pointer-events-none
+                absolute
+                inset-0
+                rounded-[18px]
+                border
+                border-white/[0.06]
+              "
+            />
           </motion.div>
+        </div>
 
-          {hasMultipleImages && (
-            <div className="flex justify-between items-center mt-auto">
-              <Button
-                aria-label="Previous Project Image"
-                variant="outline"
-                size="sm"
-                onClick={handlePrev}
-                disabled={step === 0}
-                className="transition-all duration-200"
-              >
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Prev
-              </Button>
+        {/* ==================================================
+            IMAGE CONTROLS
+        ================================================== */}
 
-              <div className="flex space-x-1.5">
-                {project.images.map((_, index) => (
-                  <motion.div
-                    key={index}
-                    className={`h-2 w-2 rounded-full transition-colors duration-200 ${
-                      index === step
-                        ? "bg-primary"
-                        : "bg-gray-300 dark:bg-zinc-700"
-                    }`}
+        {hasMultipleImages && (
+          <div
+            className="
+              relative
+              z-10
+              flex
+              items-center
+              justify-between
+              px-5
+              pt-4
+            "
+          >
+            <button
+              onClick={handlePrev}
+              disabled={step === 0}
+              className="
+                flex
+                items-center
+                gap-2
+                text-[8px]
+                uppercase
+                tracking-[0.15em]
+                text-white/25
+                transition-colors
+                hover:text-white/70
+                disabled:pointer-events-none
+                disabled:opacity-20
+              "
+            >
+              <ArrowLeft size={12} />
+              Prev
+            </button>
+
+            {/* Dots */}
+
+            <div className="flex items-center gap-1.5">
+              {project.images.map(
+                (_, imageIndex) => (
+                  <motion.button
+                    key={imageIndex}
+                    onClick={() =>
+                      setStep(imageIndex)
+                    }
                     animate={{
-                      scale: index === step ? 1.3 : 1,
+                      width:
+                        imageIndex === step
+                          ? 18
+                          : 4,
                     }}
-                    transition={{ type: "spring", stiffness: 300 }}
+                    className="
+                      h-1
+                      rounded-full
+                      bg-white/30
+                    "
+                    transition={{
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 25,
+                    }}
+                    aria-label={`View image ${imageIndex + 1
+                      }`}
                   />
-                ))}
-              </div>
-
-              <Button
-                aria-label="Next Project Image"
-                variant="outline"
-                size="sm"
-                onClick={handleNext}
-                disabled={step === totalSteps - 1}
-                className="transition-all duration-200"
-              >
-                Next
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+                )
+              )}
             </div>
-          )}
 
-          <div className="flex flex-wrap gap-2.5 pt-4">{skillIcons()}</div>
-        </CardContent>
-      </Card>
+            <button
+              onClick={handleNext}
+              disabled={
+                step === totalSteps - 1
+              }
+              className="
+                flex
+                items-center
+                gap-2
+                text-[8px]
+                uppercase
+                tracking-[0.15em]
+                text-white/25
+                transition-colors
+                hover:text-white/70
+                disabled:pointer-events-none
+                disabled:opacity-20
+              "
+            >
+              Next
+              <ArrowRight size={12} />
+            </button>
+          </div>
+        )}
+
+        {/* ==================================================
+            BOTTOM
+        ================================================== */}
+
+        <div
+          className="
+            mt-auto
+            flex
+            items-center
+            justify-between
+            px-5
+            pb-5
+            pt-5
+          "
+        >
+          <div className="flex flex-wrap gap-1.5">
+            {skillIcons()}
+          </div>
+
+          <motion.span
+            animate={{
+              x: isHovered ? 3 : 0,
+              opacity: isHovered ? 0.7 : 0.25,
+            }}
+            className="
+              hidden
+              text-[8px]
+              uppercase
+              tracking-[0.15em]
+              text-white/30
+
+              sm:block
+            "
+          >
+            View ↗
+          </motion.span>
+        </div>
+
+        {/* ==================================================
+            BOTTOM ACCENT
+        ================================================== */}
+
+        <motion.div
+          initial={{
+            scaleX: 0,
+          }}
+          animate={{
+            scaleX: isHovered ? 1 : 0,
+          }}
+          transition={{
+            duration: 0.5,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="
+            absolute
+            bottom-0
+            left-5
+            right-5
+            h-px
+            origin-left
+            bg-blue-400/50
+          "
+        />
+      </div>
     </motion.div>
   );
 };

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useState, useCallback } from "react";
@@ -7,23 +6,42 @@ import { toast } from "sonner";
 const useDownloadResume = (url: string) => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const downloadResume = useCallback(() => {
+  const downloadResume = useCallback(async () => {
+    if (!url) {
+      toast.error("Resume is not available at this moment");
+      return;
+    }
+
     setIsLoading(true);
+
     try {
-      if (!url) throw new Error("Resume is not available at this moment");
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch resume");
+      }
+
+      const blob = await response.blob();
+
+      const blobUrl = window.URL.createObjectURL(blob);
 
       const link = document.createElement("a");
-      link.href = url;
-      link.download = "Sagar_yenkure_Resume.pdf";
-      link.target = "_blank";
+      link.href = blobUrl;
+      link.download = "Sagar_Yenkure_Resume.pdf";
+
       document.body.appendChild(link);
       link.click();
-      document.body.removeChild(link);
-    } catch (error: any) {
-      toast(error.message, {
+      link.remove();
+
+      // Clean up
+      window.URL.revokeObjectURL(blobUrl);
+    } catch (error) {
+      console.error("Resume download failed:", error);
+
+      toast.error("Failed to download resume. Please try again.", {
         style: {
           background: "red",
-          color: "black",
+          color: "white",
         },
       });
     } finally {
