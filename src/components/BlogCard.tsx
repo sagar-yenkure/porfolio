@@ -49,20 +49,6 @@ const BlogCard = ({ post, index = 0 }: BlogCardProps) => {
   return (
     <motion.div
       ref={cardRef}
-      initial={{
-        opacity: 0,
-        y: 40,
-        scale: 0.96,
-      }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-        scale: 1,
-      }}
-      viewport={{
-        once: true,
-        amount: 0.15,
-      }}
       transition={{
         duration: 0.65,
         delay: index * 0.08,
@@ -132,18 +118,7 @@ const BlogCard = ({ post, index = 0 }: BlogCardProps) => {
           }}
         >
           <motion.div
-            initial={{
-              scale: 1.08,
-              opacity: 0,
-            }}
-            whileInView={{
-              scale: 1,
-              opacity: 1,
-            }}
-            viewport={{
-              once: true,
-              amount: 0.2,
-            }}
+
             transition={{
               duration: 0.8,
               delay: index * 0.08,
@@ -155,6 +130,7 @@ const BlogCard = ({ post, index = 0 }: BlogCardProps) => {
               src={post.image}
               alt={post.title}
               fill
+              priority
               className="
                 object-cover
                 transition-transform
@@ -188,17 +164,7 @@ const BlogCard = ({ post, index = 0 }: BlogCardProps) => {
 
           {/* Tags */}
           <motion.div
-            initial={{
-              opacity: 0,
-              y: -10,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
+
             transition={{
               delay: 0.2 + index * 0.08,
               duration: 0.4,
@@ -263,17 +229,7 @@ const BlogCard = ({ post, index = 0 }: BlogCardProps) => {
         <CardContent className="relative z-10 flex flex-1 flex-col p-5">
           {/* Meta */}
           <motion.div
-            initial={{
-              opacity: 0,
-              y: 10,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
+
             transition={{
               delay: 0.15 + index * 0.08,
               duration: 0.4,
@@ -321,17 +277,7 @@ const BlogCard = ({ post, index = 0 }: BlogCardProps) => {
 
           {/* Title */}
           <motion.div
-            initial={{
-              opacity: 0,
-              y: 15,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
+
             transition={{
               delay: 0.2 + index * 0.08,
               duration: 0.45,
@@ -364,17 +310,7 @@ const BlogCard = ({ post, index = 0 }: BlogCardProps) => {
 
           {/* Summary */}
           <motion.p
-            initial={{
-              opacity: 0,
-              y: 15,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
+
             transition={{
               delay: 0.25 + index * 0.08,
               duration: 0.45,
@@ -392,15 +328,7 @@ const BlogCard = ({ post, index = 0 }: BlogCardProps) => {
 
           {/* Author */}
           <motion.div
-            initial={{
-              opacity: 0,
-            }}
-            whileInView={{
-              opacity: 1,
-            }}
-            viewport={{
-              once: true,
-            }}
+
             transition={{
               delay: 0.3 + index * 0.08,
               duration: 0.4,

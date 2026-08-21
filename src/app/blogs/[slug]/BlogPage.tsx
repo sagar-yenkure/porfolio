@@ -300,18 +300,6 @@ const BlogPage = ({ slug }: BlogPageProps) => {
           ================================================== */}
 
           <motion.div
-            initial={{
-              opacity: 0,
-              y: 35,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-              amount: 0.1,
-            }}
             transition={{
               duration: 0.7,
               ease: [0.22, 1, 0.36, 1],
@@ -335,17 +323,6 @@ const BlogPage = ({ slug }: BlogPageProps) => {
                   components={{
                     h1: ({ children }) => (
                       <motion.h1
-                        initial={{
-                          opacity: 0,
-                          y: 15,
-                        }}
-                        whileInView={{
-                          opacity: 1,
-                          y: 0,
-                        }}
-                        viewport={{
-                          once: true,
-                        }}
                         transition={{
                           duration: 0.5,
                         }}

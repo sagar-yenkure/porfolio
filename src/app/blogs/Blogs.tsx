@@ -80,22 +80,7 @@ const cardsContainerVariants = {
   },
 };
 
-const cardVariants = {
-  hidden: {
-    opacity: 0,
-    y: 25,
-    scale: 0.97,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.55,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  },
-};
+
 
 /* ============================================================
    MAIN
@@ -217,7 +202,7 @@ const BlogsSection = () => {
             opacity: [0.03, 0.07, 0.03],
           }}
           transition={{
-            duration: 8,
+            duration: 2,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -305,11 +290,7 @@ const BlogsSection = () => {
               text-muted-foreground/50
             "
           >
-            <span className="h-px w-8 bg-border" />
 
-            Writing & Insights
-
-            <span className="text-primary/60">/ 005</span>
           </div>
 
           {/* Heading */}
@@ -359,12 +340,7 @@ const BlogsSection = () => {
         {featuredBlog && (
           <motion.div
             variants={featuredVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{
-              once: true,
-              amount: 0.15,
-            }}
+
             className="mt-14"
           >
             <div className="relative">
@@ -394,12 +370,6 @@ const BlogsSection = () => {
 
         <motion.div
           variants={filtersVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{
-            once: true,
-            amount: 0.2,
-          }}
           className="mt-20"
         >
           {/* Section label */}
@@ -562,12 +532,6 @@ const BlogsSection = () => {
             <motion.div
               key={`${searchQuery}-${selectedCategory}-${sortOrder}`}
               variants={cardsContainerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{
-                once: true,
-                amount: 0.08,
-              }}
               className="
                 mt-8
                 grid
@@ -580,7 +544,6 @@ const BlogsSection = () => {
               {filteredBlogs.map((post) => (
                 <motion.div
                   key={post.id}
-                  variants={cardVariants}
                   whileHover={{
                     y: -6,
                   }}
