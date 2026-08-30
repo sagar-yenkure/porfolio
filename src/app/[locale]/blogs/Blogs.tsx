@@ -19,6 +19,7 @@ import FeaturedBlog from "@/components/FeaturedBlog";
 import { categories } from "@/content";
 import BlogCard from "@/components/BlogCard";
 import { Search } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 
 /* ============================================================
    ANIMATIONS
@@ -87,6 +88,8 @@ const cardsContainerVariants = {
 ============================================================ */
 
 const BlogsSection = () => {
+  const t = useTranslations("BlogsPage")
+  const locale = useLocale();
   const [filteredBlogs, setFilteredBlogs] = useState<Article[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -150,6 +153,11 @@ const BlogsSection = () => {
         views: blogs[blogs.length - 1].views ?? 0,
       }
       : undefined;
+
+  const localizedCategories = categories.map((category) => ({
+    value: category.value,
+    name: locale === "jp" ? category.jp : category.en,
+  }));
 
   return (
     <section
@@ -307,10 +315,10 @@ const BlogsSection = () => {
               lg:text-6xl
             "
           >
-            Latest tech
+            {t("title")}
             <br />
             <span className="text-muted-foreground/40">
-              blogs & insights.
+              {t("subtitle")}
             </span>
           </h2>
 
@@ -327,9 +335,7 @@ const BlogsSection = () => {
               md:text-base
             "
           >
-            Explore in-depth articles on software development, engineering,
-            modern technologies, tutorials, and lessons learned while building
-            digital products.
+            {t("description")}
           </p>
         </motion.div>
 
@@ -376,87 +382,62 @@ const BlogsSection = () => {
 
           <div className="mb-6 flex items-center justify-between">
             <div>
-              <span
-                className="
-                  text-[9px]
-                  uppercase
-                  tracking-[0.2em]
-                  text-muted-foreground/40
-                "
-              >
-                Explore articles
-              </span>
-
               <h3 className="mt-1 text-lg font-medium tracking-tight">
-                All posts
+                {t("allPosts")}
               </h3>
             </div>
-
-            <span
-              className="
-                hidden
-                text-[9px]
-                uppercase
-                tracking-[0.2em]
-                text-muted-foreground/30
-
-                sm:block
-              "
-            >
-              {String(filteredBlogs.length).padStart(2, "0")} Articles
-            </span>
           </div>
 
           {/* Controls */}
 
           <div
             className="
-              flex
-              flex-col
-              gap-3
-              rounded-2xl
-              border
-              border-border/50
-              bg-background/50
-              p-3
-              backdrop-blur-xl
+      flex
+      flex-col
+      gap-3
+      rounded-2xl
+      border
+      border-border/50
+      bg-background/50
+      p-3
+      backdrop-blur-xl
 
-              md:flex-row
-              md:items-center
-            "
+      md:flex-row
+      md:items-center
+    "
           >
             {/* Search */}
 
             <div className="relative flex-1">
               <Search
                 className="
-                  pointer-events-none
-                  absolute
-                  left-3
-                  top-1/2
-                  h-4
-                  w-4
-                  -translate-y-1/2
-                  text-muted-foreground/50
-                "
+          pointer-events-none
+          absolute
+          left-3
+          top-1/2
+          h-4
+          w-4
+          -translate-y-1/2
+          text-muted-foreground/50
+        "
               />
 
               <Input
                 type="search"
-                placeholder="Search articles..."
+                placeholder={t("searchPlaceholder")}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="
-                  h-11
-                  border-border/40
-                  bg-background/50
-                  pl-9
-                  transition-all
-                  duration-300
+          h-11
+          border-border/40
+          bg-background/50
+          pl-9
+          transition-all
+          duration-300
 
-                  focus-visible:border-primary/40
-                  focus-visible:ring-primary/10
-                "
+          focus-visible:border-primary/40
+          focus-visible:ring-primary/10
+        "
               />
             </div>
 
@@ -468,19 +449,19 @@ const BlogsSection = () => {
             >
               <SelectTrigger
                 className="
-                  h-11
-                  w-full
-                  border-border/40
-                  bg-background/50
+          h-11
+          w-full
+          border-border/40
+          bg-background/50
 
-                  md:w-[190px]
-                "
+          md:w-[190px]
+        "
               >
-                <SelectValue placeholder="Category" />
+                <SelectValue placeholder={t("categoryPlaceholder")} />
               </SelectTrigger>
 
               <SelectContent>
-                {categories.map((category) => (
+                {localizedCategories.map((category) => (
                   <SelectItem
                     key={category.value}
                     value={category.value}
@@ -499,24 +480,24 @@ const BlogsSection = () => {
             >
               <SelectTrigger
                 className="
-                  h-11
-                  w-full
-                  border-border/40
-                  bg-background/50
+          h-11
+          w-full
+          border-border/40
+          bg-background/50
 
-                  md:w-[150px]
-                "
+          md:w-[150px]
+        "
               >
-                <SelectValue placeholder="Sort" />
+                <SelectValue placeholder={t("sortPlaceholder")} />
               </SelectTrigger>
 
               <SelectContent>
                 <SelectItem value="latest">
-                  Latest
+                  {t("latest")}
                 </SelectItem>
 
                 <SelectItem value="oldest">
-                  Oldest
+                  {t("oldest")}
                 </SelectItem>
               </SelectContent>
             </Select>

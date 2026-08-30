@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { useLocale, useTranslations } from "next-intl";
 import ProjectCard from "./ProjectCard";
 import { Project, projectsList } from "@/constants/Projects";
 
@@ -21,6 +22,7 @@ const cardVariants = {
     rotateX: 3,
     scale: 0.98,
   },
+
   visible: {
     opacity: 1,
     y: 0,
@@ -34,7 +36,24 @@ const cardVariants = {
 };
 
 const Projects = () => {
-  const webApps = projectsList.filter(
+  const locale = useLocale();
+  const t = useTranslations("Projects");
+
+  /*
+   * Select project data based on current locale
+   *
+   * en -> projectsList.en
+   * jp -> projectsList.jp
+   */
+  const projects =
+    locale === "jp"
+      ? projectsList.jp
+      : projectsList.en;
+
+  /*
+   * Only show Web Applications
+   */
+  const webApps = projects.filter(
     (project) => project.category === "Web Application"
   );
 
@@ -131,7 +150,11 @@ const Projects = () => {
           className="
             absolute
             inset-0
-            bg-[radial-gradient(circle_at_center,transparent_20%,var(--section-bg)_92%)]
+            bg-[radial-gradient(
+              circle_at_center,
+              transparent_20%,
+              var(--section-bg)_92%
+            )]
           "
         />
       </div>
@@ -141,6 +164,7 @@ const Projects = () => {
       ===================================================== */}
 
       <div className="relative z-10 mx-auto max-w-7xl">
+
         {/* ===================================================
             HEADER
         =================================================== */}
@@ -162,11 +186,15 @@ const Projects = () => {
             duration: 0.8,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="mb-12 md:mb-16 lg:mb-20 max-w-3xl"
+          className="
+            mb-12
+            max-w-3xl
+
+            md:mb-16
+
+            lg:mb-20
+          "
         >
-          {/* Eyebrow */}
-
-
           {/* Heading */}
 
           <h2
@@ -182,11 +210,12 @@ const Projects = () => {
               lg:text-6xl
             "
           >
-            Things I&apos;ve
+            {t("heading")}
+
             <br />
 
             <span className="text-muted-foreground/40">
-              built on the web.
+              {t("headingAccent")}
             </span>
           </h2>
 
@@ -203,9 +232,7 @@ const Projects = () => {
               md:text-base
             "
           >
-            A selection of projects where engineering,
-            design and interaction come together to
-            create useful digital experiences.
+            {t("description")}
           </p>
         </motion.div>
 
@@ -238,6 +265,8 @@ const Projects = () => {
             pb-4
           "
         >
+          {/* Left */}
+
           <span
             className="
               text-[13px]
@@ -246,8 +275,10 @@ const Projects = () => {
               text-muted-foreground
             "
           >
-            Featured projects
+            {t("featuredProjects")}
           </span>
+
+          {/* Right */}
 
           <span
             className="
@@ -258,7 +289,8 @@ const Projects = () => {
               text-foreground
             "
           >
-            {String(webApps.length).padStart(2, "0")} Projects
+            {String(webApps.length).padStart(2, "0")}{" "}
+            {t("projects")}
           </span>
         </motion.div>
 
@@ -284,17 +316,22 @@ const Projects = () => {
             lg:grid-cols-3
           "
         >
-          {webApps.map((project: Project, index: number) => (
-            <motion.div
-              key={`${project.title}-${index}`}
-              variants={cardVariants}
-              style={{
-                perspective: 1200,
-              }}
-            >
-              <ProjectCard project={project} index={index} />
-            </motion.div>
-          ))}
+          {webApps.map(
+            (project: Project, index: number) => (
+              <motion.div
+                key={`${project.title}-${index}`}
+                variants={cardVariants}
+                style={{
+                  perspective: 1200,
+                }}
+              >
+                <ProjectCard
+                  project={project}
+                  index={index}
+                />
+              </motion.div>
+            )
+          )}
         </motion.div>
       </div>
     </section>

@@ -1,0 +1,153 @@
+{
+  "Navbar": {
+    "Home": "ホーム",
+    "Experience": "経歴",
+    "Projects": "プロジェクト",
+    "Contact": "お問い合わせ",
+    "Blogs": "ブログ"
+  },
+  "Metadata": {
+    "Root": {
+      "title": "Sagar Yenkure - 素晴らしいプロダクトを共に構築しましょう",
+      "description": "Sagar Yenkureのポートフォリオへようこそ。情熱的なソフトウェアエンジニアとして、プロジェクトやブログ、技術の軌跡をご紹介します。",
+      "keywords": "ポートフォリオ, ソフトウェアエンジニア, Web開発者, フルスタックエンジニア, ブログ"
+    },
+    "Blogs": {
+      "title": "Sagar Yenkureの技術ブログ | Web開発、プログラミング＆インサイト",
+      "description": "Sagar Yenkureによるソフトウェア開発、Web技術、フルスタックエンジニアリングの技術ブログをご覧ください。",
+      "keywords": "技術ブログ, チュートリアル, ソフトウェア開発, 問題解決, Web開発"
+    },
+    "Meet": {
+      "title": "Sagar Yenkureとのミーティングを予約する",
+      "description": "ソフトウェアエンジニアSagar Yenkureとの1対1のミーティングを予約できます。ご都合の良い時間をお選びください！",
+      "keywords": "ミーティング予約, 通話予約, Sagar Yenkure, ソフトウェアエンジニア, 技術相談, ポートフォリオ"
+    }
+  },
+  "Hero": {
+    "Greeting": "こんにちは、私は",
+    "Title": "ソフトウェアエンジニア",
+    "Description": "クリーンなエンジニアリング、思慮深いインタラクション、そしてスケーラブルなアーキテクチャを通じて、モダンなWeb体験を構築しています。",
+    "LetsTalk": "お問い合わせ",
+    "Resume": "履歴書"
+  },
+  "3dCards": {
+    "Title": "次に何を<i>作ろうか？</i>"
+  },
+  "Grid": {
+    "eyebrow": "一緒に何かを作りましょう",
+    "title": "開発について何かご質問はありますか？",
+    "description": "アイデアやプロジェクト、技術的な課題があれば、お気軽にご連絡ください。いつでも一緒に面白いものを作ることを楽しみにしています。",
+    "bookMeeting": "ミーティングを予約する",
+    "availability": "面白いプロジェクトを募集中"
+  },
+  "Skills": {
+    "title": "私が使うツール",
+    "titleHighlight": "Webを構築するために。",
+    "description": "スケーラブルなデジタル体験を設計、開発、提供するために使用しているテクノロジーです。",
+    "technologies": "テクノロジー",
+    "categories": {
+      "frontend": {
+        "label": "フロントエンド",
+        "number": "01",
+        "description": "インターフェース、インタラクション、Web体験"
+      },
+      "backend": {
+        "label": "バックエンド",
+        "number": "02",
+        "description": "API、サービス、アプリケーションアーキテクチャ"
+      },
+      "devops": {
+        "label": "DevOps & ツール",
+        "number": "03",
+        "description": "インフラ、デプロイ、開発者向けツール"
+      }
+    }
+  },
+  "Work": {
+    "title": "これまでの",
+    "titleHighlight": "歩み。",
+    "description": "Webアプリケーションの構築から本番環境のシステム運用まで、これまでの経験を通して、ソフトウェアエンジニアリングへのアプローチを深めてきました。",
+    "yearsExperience": "経験年数",
+    "careerMilestones": "キャリアの歩み",
+    "moreChapters": "これからも続くストーリー"
+  },
+  "Projects": {
+    "heading": "これまでに",
+    "headingAccent": "Webで作ってきたもの。",
+    "description": "エンジニアリング、デザイン、インタラクションを組み合わせ、役立つデジタル体験を生み出したプロジェクトをご紹介します。",
+    "featuredProjects": "注目のプロジェクト",
+    "projects": "プロジェクト"
+  },
+  "Blogs": {
+    "heading": "これまでに",
+    "headingAccent": "考えてきたこと。",
+    "description": "ソフトウェアエンジニアリング、モダンなWeb開発、AI、アーキテクチャ、そして開発を通して学んだことについてのメモです。",
+    "latestArticle": "最新の記事",
+    "articles": "記事",
+    "readAllArticles": "すべての記事を読む"
+  },
+  "Testimonials": {
+    "heading": "一緒に働いた人々が",
+    "headingAccent": "私との仕事について語ったこと。",
+    "description": "さまざまなプロジェクト、チーム、コラボレーションを通して一緒に働いた方々からのメッセージをご紹介します。"
+  },
+  "Contact": {
+    "heading": "一緒に",
+    "headingHighlight": "何かを作りましょう。",
+    "description": "プロジェクトのアイデアや相談したいこと、開発について話したいことがあれば、お気軽にご連絡ください。",
+    "form": {
+      "eyebrow": "メッセージを送る",
+      "title": "アイデアを聞かせてください",
+      "name": {
+        "label": "お名前",
+        "placeholder": "お名前を入力してください",
+        "required": "お名前は2文字以上で入力してください。"
+      },
+      "email": {
+        "label": "メールアドレス",
+        "placeholder": "your.email@example.com",
+        "invalid": "有効なメールアドレスを入力してください。"
+      },
+      "message": {
+        "label": "メッセージ",
+        "placeholder": "ご相談内容を入力してください",
+        "required": "メッセージは10文字以上で入力してください。"
+      },
+      "submit": "メッセージを送信",
+      "sending": "送信中..."
+    },
+    "toast": {
+      "successTitle": "メッセージを送信しました",
+      "successDescription": "お問い合わせありがとうございます。メッセージを受け取りました。近日中にご返信いたします。",
+      "errorTitle": "問題が発生しました",
+      "errorDescription": "メッセージの送信に失敗しました。しばらくしてからもう一度お試しください。"
+    }
+  },
+  "Footer": {
+    "brandName": "Sagar Yenkureのポートフォリオ",
+    "social": {
+      "twitter": "Twitter",
+      "github": "GitHub",
+      "linkedin": "LinkedIn"
+    },
+    "copyright": {
+      "license": "全著作権所有"
+    }
+  },
+  "Meet": {
+    "title": "つながりましょう。",
+    "subtitle": "都合の良い時間を選んでください。",
+    "description": "技術について話したい方、コラボレーションを検討している方、プロジェクトについて相談したい方、または気軽につながりたい方も、ぜひお気軽にお話ししましょう。"
+  },
+  "BlogsPage": {
+    "title": "最新のテック",
+    "subtitle": "とインサイト。",
+    "description": "ソフトウェア開発、エンジニアリング、最新テクノロジー、チュートリアル、そしてデジタルプロダクトの開発を通じて学んだことについて、詳しく紹介します。",
+    "allPosts": "すべての記事",
+    "searchPlaceholder": "記事を検索...",
+    "categoryPlaceholder": "カテゴリー",
+    "sortPlaceholder": "並び替え",
+    "latest": "新しい順",
+    "oldest": "古い順"
+  }
+}

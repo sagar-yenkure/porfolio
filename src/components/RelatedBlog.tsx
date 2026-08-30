@@ -1,5 +1,5 @@
 import { Card } from "./ui/card";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { getAllBlogsFetch } from "@/lib/sitemapHelper";
 
 const RelatedBlog = () => {

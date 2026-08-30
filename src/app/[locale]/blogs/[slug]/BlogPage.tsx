@@ -7,10 +7,11 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { Calendar, User } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Calendar, User, List, Share2, Check } from "lucide-react";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import formatDateWithOrdinal from "@/hooks/useformatDateWithOrdinal";
@@ -51,6 +52,19 @@ const BlogPage = ({ slug }: BlogPageProps) => {
     offset: ["start start", "end start"],
   });
 
+  const { scrollYProgress: pageScrollProgress } = useScroll();
+
+  const [copiedShareUrl, setCopiedShareUrl] = useState(false);
+
+  const headings = (article?.content || "")
+    .split("\n")
+    .filter((line) => line.startsWith("## "))
+    .map((line) => {
+      const text = line.replace(/^##\s+/, "").trim();
+      const id = text.toLowerCase().trim().replace(/\s+/g, "-").replace(/[^\w\-]+/g, "");
+      return { text, id };
+    });
+
   const heroImageY = useTransform(
     scrollYProgress,
     [0, 1],
@@ -71,6 +85,10 @@ const BlogPage = ({ slug }: BlogPageProps) => {
 
   return (
     <>
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 z-50 origin-left"
+        style={{ scaleX: pageScrollProgress }}
+      />
       <section className="mx-auto flex max-w-7xl flex-col gap-10 px-4 py-8 md:px-6 lg:flex-row lg:px-0">
         {/* =====================================================
             MAIN ARTICLE
@@ -441,6 +459,55 @@ const BlogPage = ({ slug }: BlogPageProps) => {
                 </ReactMarkdown>
               </div>
             </Card>
+
+            {/* Social Share Bar */}
+            <div className="mt-8 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-border/40 bg-card/40 p-6 backdrop-blur-sm">
+              <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
+                <Share2 className="h-4 w-4 text-primary" />
+                <span>Share this article:</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    const url = typeof window !== "undefined" ? window.location.href : "";
+                    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(article.title)}&url=${encodeURIComponent(url)}`, "_blank");
+                  }}
+                  className="gap-2 rounded-xl border-border/40 hover:bg-primary/10 hover:text-primary cursor-pointer"
+                >
+                  <Share2 className="h-3.5 w-3.5" />
+                  Twitter / X
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    const url = typeof window !== "undefined" ? window.location.href : "";
+                    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, "_blank");
+                  }}
+                  className="gap-2 rounded-xl border-border/40 hover:bg-primary/10 hover:text-primary cursor-pointer"
+                >
+                  <Share2 className="h-3.5 w-3.5" />
+                  LinkedIn
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={async () => {
+                    if (typeof window !== "undefined") {
+                      await navigator.clipboard.writeText(window.location.href);
+                      setCopiedShareUrl(true);
+                      setTimeout(() => setCopiedShareUrl(false), 2000);
+                    }
+                  }}
+                  className="gap-2 rounded-xl border-border/40 hover:bg-primary/10 hover:text-primary cursor-pointer"
+                >
+                  {copiedShareUrl ? <Check className="h-3.5 w-3.5 text-green-500" /> : <Share2 className="h-3.5 w-3.5" />}
+                  {copiedShareUrl ? "Copied!" : "Copy Link"}
+                </Button>
+              </div>
+            </div>
           </motion.div>
         </motion.article>
 
@@ -477,6 +544,29 @@ const BlogPage = ({ slug }: BlogPageProps) => {
             lg:w-1/3
           "
         >
+          {/* Table of Contents */}
+          {headings.length > 0 && (
+            <Card className="rounded-2xl border border-border/40 bg-card/40 p-6 shadow-sm backdrop-blur-sm">
+              <div className="mb-4 flex items-center gap-3">
+                <List className="h-4 w-4 text-primary" />
+                <h2 className="text-sm font-semibold uppercase tracking-[0.15em] text-muted-foreground">
+                  Table of Contents
+                </h2>
+              </div>
+              <nav className="flex flex-col gap-2">
+                {headings.map((heading) => (
+                  <a
+                    key={heading.id}
+                    href={`#${heading.id}`}
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors line-clamp-1"
+                  >
+                    {heading.text}
+                  </a>
+                ))}
+              </nav>
+            </Card>
+          )}
+
           {/* Newsletter */}
           <motion.div
             whileHover={{

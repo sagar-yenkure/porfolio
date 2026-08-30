@@ -4,7 +4,7 @@ import { getCalApi } from "@calcom/embed-react";
 import { useEffect } from "react";
 import { Button } from "./ui/button";
 
-const BookingCal = () => {
+const BookingCal = ({ text }: { text: string }) => {
   useEffect(() => {
     (async function () {
       const cal = await getCalApi({ namespace: "sagar-yenkure" });
@@ -21,7 +21,7 @@ const BookingCal = () => {
         data-cal-link="sagar-yenkure/sagar-yenkure"
         data-cal-config='{"layout":"month_view"}'
       >
-        Book a Meeting
+        {text}
       </Button>
     </section>
   );

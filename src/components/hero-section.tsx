@@ -4,11 +4,14 @@ import useDownloadResume from "@/hooks/useDownloadResume";
 import {
   motion,
 } from "framer-motion";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { Button } from "./ui/button";
-import { Loader2, Download } from "lucide-react";
+import { Download } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function Hero() {
+
+  const t = useTranslations("Hero")
 
   const url = process.env.NEXT_PUBLIC_RESUME_URL as string;
   const { downloadResume, isLoading } = useDownloadResume(url);
@@ -268,15 +271,13 @@ export default function Hero() {
               text-muted-foreground
             "
           >
-            <span className="h-px w-6 bg-border" />
-
-            Software Engineer
+            {t("Greeting")}
           </div>
 
           <h1
             className="
               select-none
-              text-[18vw]
+              text-[15vw]
               font-black
               uppercase
               leading-[0.68]
@@ -290,6 +291,21 @@ export default function Hero() {
             <br />
             YENKURE
           </h1>
+
+          <div
+            className="
+              mt-4
+              flex
+              items-center
+              gap-2
+              text-[13px]
+              uppercase
+              tracking-[0.22em]
+              text-muted-foreground
+            "
+          >
+            {t("Title")}
+          </div>
         </motion.div>
 
         {/* ======================================================
@@ -318,10 +334,7 @@ export default function Hero() {
                 md:text-xs
               "
             >
-              I build modern web experiences
-              with clean engineering,
-              thoughtful interaction and
-              scalable architecture.
+              {t("Description")}
             </p>
 
             <div className="mt-5 flex flex-wrap gap-3">
@@ -353,7 +366,7 @@ export default function Hero() {
                   shadow-md
                 "
               >
-                <span className="relative z-10">Let&apos;s  Talk</span>
+                <span className="relative z-10">{t("LetsTalk")}</span>
               </Link>
 
               {/* Resume */}
@@ -394,18 +407,14 @@ export default function Hero() {
                   className="relative z-10"
                   animate={{ opacity: isLoading ? 0.7 : 1 }}
                 >
-                  {isLoading ? "Preparing..." : "Resume"}
+                  {t("Resume")}
                 </motion.span>
 
                 {/* Icon */}
                 <motion.span
                   className="relative z-10 flex items-center justify-center"
                 >
-                  {isLoading ? (
-                    <Loader2 className="h-3.5 w-3.5" />
-                  ) : (
-                    <Download className="h-3.5 w-3.5  group-hover:translate-y-1" />
-                  )}
+                  <Download className="h-3.5 w-3.5  group-hover:translate-y-1" />
                 </motion.span>
               </Button>
             </div>

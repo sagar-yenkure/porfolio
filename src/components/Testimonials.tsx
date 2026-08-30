@@ -8,9 +8,11 @@ import {
   useTransform,
 } from "framer-motion";
 import TestimonialCard from "./TestimonialCard";
+import { useTranslations } from "next-intl";
 import { Testimonial, testimonials } from "@/constants/testimonials";
 
 const Testimonials = () => {
+  const t = useTranslations("Testimonials");
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -169,35 +171,34 @@ const Testimonials = () => {
             opacity: headingOpacity,
           }}
           className="
-            mx-auto
-            mb-16
-            max-w-7xl
-            px-4
-            md:px-8
-          "
+    mx-auto
+    mb-16
+    max-w-7xl
+    px-4
+    md:px-8
+  "
         >
-
           {/* Heading */}
 
           <h2
             className="
-              max-w-4xl
-              text-4xl
-              font-bold
-              leading-[0.95]
-              tracking-[-0.055em]
-              text-foreground
+      max-w-4xl
+      text-4xl
+      font-bold
+      leading-[0.95]
+      tracking-[-0.055em]
+      text-foreground
 
-              md:text-5xl
+      md:text-5xl
 
-              lg:text-6xl
-            "
+      lg:text-6xl
+    "
           >
-            What people
+            {t("heading")}
             <br />
 
             <span className="text-muted-foreground/40">
-              say about working with me.
+              {t("headingAccent")}
             </span>
           </h2>
 
@@ -205,18 +206,16 @@ const Testimonials = () => {
 
           <p
             className="
-              mt-6
-              max-w-2xl
-              text-sm
-              leading-6
-              text-muted-foreground
+      mt-6
+      max-w-2xl
+      text-sm
+      leading-6
+      text-muted-foreground
 
-              md:text-base
-            "
+      md:text-base
+    "
           >
-            A few words from people I&apos;ve worked with
-            across different projects, teams and
-            collaborations.
+            {t("description")}
           </p>
         </motion.div>
 

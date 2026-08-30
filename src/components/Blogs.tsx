@@ -1,15 +1,17 @@
 "use client";
 
 import { motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { ArrowRight } from "lucide-react";
 import { useRef } from "react";
 
 import { getAllBlogsFetch } from "@/lib/sitemapHelper";
 import ServerErrorPage from "./Error";
 import FeaturedBlog from "./FeaturedBlog";
+import { useTranslations } from "next-intl";
 
 const BlogsSection = () => {
+  const t = useTranslations("Blogs");
   const blogs = getAllBlogsFetch();
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -17,10 +19,7 @@ const BlogsSection = () => {
     once: true,
     amount: 0.15,
   });
-
-  /* ==========================================================
-     SUBTLE 3D MOVEMENT
-  ========================================================== */
+  // SUBTLE 3D MOVEMENT
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -92,9 +91,7 @@ const BlogsSection = () => {
         md:px-8
       "
     >
-      {/* ======================================================
-          BACKGROUND
-      ====================================================== */}
+      {/* BACKGROUND */}
 
       <div className="pointer-events-none absolute inset-0">
         {/* Main glow */}
@@ -180,14 +177,9 @@ const BlogsSection = () => {
         />
       </div>
 
-      {/* ======================================================
-          CONTENT
-      ====================================================== */}
-
+      {/* // CONTENT */}
       <div className="relative z-10 mx-auto max-w-7xl">
-        {/* ====================================================
-            HEADER
-        ==================================================== */}
+        {/* // HEADER */}
 
         <motion.div
           initial={{
@@ -206,29 +198,28 @@ const BlogsSection = () => {
             duration: 0.8,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="mb-12 md:mb-16 lg:mb-20 max-w-3xl"
+          className="mb-12 max-w-3xl md:mb-16 lg:mb-20"
         >
-
           {/* Heading */}
 
           <h2
             className="
-              text-4xl
-              font-bold
-              leading-[0.95]
-              tracking-[-0.055em]
-              text-foreground
+        text-4xl
+        font-bold
+        leading-[0.95]
+        tracking-[-0.055em]
+        text-foreground
 
-              md:text-5xl
+        md:text-5xl
 
-              lg:text-6xl
-            "
+        lg:text-6xl
+      "
           >
-            Things I&apos;ve
+            {t("heading")}
             <br />
 
             <span className="text-muted-foreground/40">
-              been thinking about.
+              {t("headingAccent")}
             </span>
           </h2>
 
@@ -236,24 +227,20 @@ const BlogsSection = () => {
 
           <p
             className="
-              mt-6
-              max-w-2xl
-              text-sm
-              leading-6
-              text-muted-foreground
+        mt-6
+        max-w-2xl
+        text-sm
+        leading-6
+        text-muted-foreground
 
-              md:text-base
-            "
+        md:text-base
+      "
           >
-            Notes on software engineering, modern web
-            development, AI, architecture and the things
-            I learn while building.
+            {t("description")}
           </p>
         </motion.div>
 
-        {/* ====================================================
-            BLOG META
-        ==================================================== */}
+        {/* // BLOG META */}
 
         <motion.div
           initial={{
@@ -273,42 +260,40 @@ const BlogsSection = () => {
             duration: 0.7,
           }}
           className="
-            mb-6
-            flex
-            items-center
-            justify-between
-            border-b
-            border-border/60
-            pb-4
-          "
+      mb-6
+      flex
+      items-center
+      justify-between
+      border-b
+      border-border/60
+      pb-4
+    "
         >
           <span
             className="
-              text-[13px]
-              uppercase
-              tracking-[0.2em]
-              text-muted-foreground
-            "
+        text-[13px]
+        uppercase
+        tracking-[0.2em]
+        text-muted-foreground
+      "
           >
-            Latest article
+            {t("latestArticle")}
           </span>
 
           <span
             className="
-              text-[13px]
-              uppercase
-              tracking-[0.2em]
-              text-muted-foreground
-            "
+        text-[13px]
+        uppercase
+        tracking-[0.2em]
+        text-muted-foreground
+      "
           >
             {String(blogs.length).padStart(2, "0")}{" "}
-            Articles
+            {t("articles")}
           </span>
         </motion.div>
 
-        {/* ====================================================
-            FEATURED BLOG
-        ==================================================== */}
+        {/* // FEATURED BLOG */}
 
         {blogs[0] && (
           <motion.div
@@ -337,9 +322,9 @@ const BlogsSection = () => {
               transformPerspective: 1200,
             }}
             className="
-              relative
-              [transform-style:preserve-3d]
-            "
+        relative
+        [transform-style:preserve-3d]
+      "
           >
             {/* Outer glow */}
 
@@ -353,35 +338,35 @@ const BlogsSection = () => {
                 ease: "easeInOut",
               }}
               className="
-                pointer-events-none
-                absolute
-                -inset-8
-                -z-10
-                rounded-[40px]
-                bg-blue-500/[0.05]
-                blur-[70px]
-              "
+          pointer-events-none
+          absolute
+          -inset-8
+          -z-10
+          rounded-[40px]
+          bg-blue-500/[0.05]
+          blur-[70px]
+        "
             />
 
             {/* Featured card */}
 
             <div
               className="
-                relative
-                overflow-hidden
-                rounded-[26px]
-                border
-                border-border/60
-                bg-card
-                text-card-foreground
-                p-1
-                backdrop-blur-xl
+          relative
+          overflow-hidden
+          rounded-[26px]
+          border
+          border-border/60
+          bg-card
+          text-card-foreground
+          p-1
+          backdrop-blur-xl
 
-                transition-all
-                duration-500
+          transition-all
+          duration-500
 
-                hover:border-border
-              "
+          hover:border-border
+        "
             >
               <FeaturedBlog post={blogs[0]} />
 
@@ -389,23 +374,21 @@ const BlogsSection = () => {
 
               <div
                 className="
-                  pointer-events-none
-                  absolute
-                  inset-0
-                  rounded-[26px]
-                  bg-gradient-to-br
-                  from-white/[0.035]
-                  via-transparent
-                  to-blue-500/[0.025]
-                "
+            pointer-events-none
+            absolute
+            inset-0
+            rounded-[26px]
+            bg-gradient-to-br
+            from-white/[0.035]
+            via-transparent
+            to-blue-500/[0.025]
+          "
               />
             </div>
           </motion.div>
         )}
 
-        {/* ====================================================
-            VIEW ALL
-        ==================================================== */}
+        {/* // VIEW ALL */}
 
         <motion.div
           initial={{
@@ -425,10 +408,10 @@ const BlogsSection = () => {
             duration: 0.7,
           }}
           className="
-            mt-10
-            flex
-            justify-center
-          "
+      mt-10
+      flex
+      justify-center
+    "
         >
           <Link href="/blogs">
             <motion.div
@@ -439,31 +422,31 @@ const BlogsSection = () => {
                 scale: 0.97,
               }}
               className="
-                group
-                flex
-                items-center
-                gap-4
-                rounded-full
-                border
-                border-border/60
-                bg-card
-                px-6
-                py-3
-                text-[9px]
-                font-medium
-                uppercase
-                tracking-[0.16em]
-                text-muted-foreground
-                backdrop-blur-md
-                transition-all
-                duration-300
+          group
+          flex
+          items-center
+          gap-4
+          rounded-full
+          border
+          border-border/60
+          bg-card
+          px-6
+          py-3
+          text-[9px]
+          font-medium
+          uppercase
+          tracking-[0.16em]
+          text-muted-foreground
+          backdrop-blur-md
+          transition-all
+          duration-300
 
-                hover:border-border
-                hover:bg-accent
-                hover:text-foreground
-              "
+          hover:border-border
+          hover:bg-accent
+          hover:text-foreground
+        "
             >
-              Read all articles
+              {t("readAllArticles")}
 
               <motion.span
                 animate={{
@@ -477,18 +460,16 @@ const BlogsSection = () => {
               >
                 <ArrowRight
                   className="
-                    h-3.5
-                    w-3.5
-                  "
+              h-3.5
+              w-3.5
+            "
                 />
               </motion.span>
             </motion.div>
           </Link>
         </motion.div>
 
-        {/* ====================================================
-            BOTTOM STATUS
-        ==================================================== */}
+        {/* // BOTTOM STATUS */}
 
         <motion.div
           initial={{
@@ -506,18 +487,17 @@ const BlogsSection = () => {
             duration: 0.8,
           }}
           className="
-            mt-16
-            flex
-            items-center
-            justify-between
-            border-t
-            border-white/[0.05]
-            pt-5
-          "
-        >
-
-        </motion.div>
+      mt-16
+      flex
+      items-center
+      justify-between
+      border-t
+      border-white/[0.05]
+      pt-5
+    "
+        ></motion.div>
       </div>
+
     </section>
   );
 };

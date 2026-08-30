@@ -7,8 +7,17 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import info from "@/constants/info";
 import link from "@/constants/links";
+import { useTranslations } from "next-intl";
 
 const FooterSection = () => {
+  const t = useTranslations("Footer");
+  const Nt = useTranslations("Navbar");
+
+  const navItems = link.map((item) => ({
+    ...item,
+    label: Nt(item.label as string) || item.label,
+  }));
+
   return (
     <motion.div
       className="w-full bg-[var(--section-bg)]"
@@ -23,9 +32,17 @@ const FooterSection = () => {
       <Footer
         logo={
           <motion.div
-            initial={{ rotate: -20, scale: 0.8 }}
-            whileInView={{ rotate: 0, scale: 1 }}
-            viewport={{ once: true }}
+            initial={{
+              rotate: -20,
+              scale: 0.8,
+            }}
+            whileInView={{
+              rotate: 0,
+              scale: 1,
+            }}
+            viewport={{
+              once: true,
+            }}
             transition={{
               duration: 0.6,
               type: "spring",
@@ -39,49 +56,76 @@ const FooterSection = () => {
             <Code2 className="h-10 w-10" />
           </motion.div>
         }
-        brandName="Sagar Yenkure's Portfolio"
+
+        brandName={t("brandName")}
+
         socialLinks={[
           {
             icon: (
               <motion.div
-                whileHover={{ y: -3, scale: 1.12, rotate: -5 }}
-                transition={{ type: "spring", stiffness: 300 }}
+                whileHover={{
+                  y: -3,
+                  scale: 1.12,
+                  rotate: -5,
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 300,
+                }}
               >
                 <FaSquareXTwitter className="h-5 w-5" />
               </motion.div>
             ),
             href: info.twitter,
-            label: "Twitter",
+            label: t("social.twitter"),
           },
+
           {
             icon: (
               <motion.div
-                whileHover={{ y: -3, scale: 1.12, rotate: 5 }}
-                transition={{ type: "spring", stiffness: 300 }}
+                whileHover={{
+                  y: -3,
+                  scale: 1.12,
+                  rotate: 5,
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 300,
+                }}
               >
                 <FaGithub className="h-5 w-5" />
               </motion.div>
             ),
             href: info.github,
-            label: "GitHub",
+            label: t("social.github"),
           },
+
           {
             icon: (
               <motion.div
-                whileHover={{ y: -3, scale: 1.12, rotate: -5 }}
-                transition={{ type: "spring", stiffness: 300 }}
+                whileHover={{
+                  y: -3,
+                  scale: 1.12,
+                  rotate: -5,
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 300,
+                }}
               >
                 <FaLinkedin className="h-5 w-5" />
               </motion.div>
             ),
             href: info.linkedin,
-            label: "LinkedIn",
+            label: t("social.linkedin"),
           },
         ]}
-        mainLinks={link}
+
+        mainLinks={navItems}
+
         copyright={{
           text: `© ${new Date().getFullYear()} Sagar Yenkure`,
-          license: "All rights reserved",
+          license: t("copyright.license"),
         }}
       />
     </motion.div>

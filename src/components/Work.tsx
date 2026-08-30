@@ -2,17 +2,26 @@
 
 import React, { useRef } from "react";
 import { Timeline } from "./ui/timeline";
-import { workData } from "@/constants";
 import useCalculateExperience from "@/hooks/useCalculateExperience";
+import { useLocale, useTranslations } from "next-intl";
+
 import {
   motion,
   useScroll,
   useSpring,
   useTransform,
 } from "framer-motion";
+import { workDataEn, workDataJp } from "@/constants";
 
 const Work = () => {
   const sectionRef = useRef<HTMLElement>(null);
+
+  const t = useTranslations("Work");
+  const locale = useLocale();
+
+  const workData = locale === "jp"
+    ? workDataJp
+    : workDataEn;
 
   const { months, years } = useCalculateExperience(2, 2024);
 
@@ -26,10 +35,6 @@ const Work = () => {
     damping: 25,
     mass: 0.5,
   });
-
-  /* ============================================================
-     HEADER MOTION
-  ============================================================ */
 
   const headerY = useTransform(
     progress,
@@ -48,10 +53,6 @@ const Work = () => {
     [0, 0.3, 1],
     [0.96, 1, 0.97]
   );
-
-  /* ============================================================
-     DECORATIVE ELEMENTS
-  ============================================================ */
 
   const glowY = useTransform(
     progress,
@@ -77,17 +78,12 @@ const Work = () => {
         px-4
         text-foreground
         section-container
-
         md:px-8
       "
     >
-      {/* ========================================================
-          BACKGROUND
-      ======================================================== */}
+      {/* BACKGROUND */}
 
       <div className="pointer-events-none absolute inset-0">
-        {/* Main moving glow */}
-
         <motion.div
           style={{
             x: glowX,
@@ -104,8 +100,6 @@ const Work = () => {
             blur-[140px]
           "
         />
-
-        {/* Secondary glow */}
 
         <motion.div
           animate={{
@@ -128,8 +122,6 @@ const Work = () => {
             blur-[130px]
           "
         />
-
-        {/* Grid */}
 
         <div
           className="
@@ -157,8 +149,6 @@ const Work = () => {
           }}
         />
 
-        {/* Vignette */}
-
         <div
           className="
             absolute
@@ -172,14 +162,10 @@ const Work = () => {
         />
       </div>
 
-      {/* ========================================================
-          CONTENT
-      ======================================================== */}
+      {/* CONTENT */}
 
       <div className="relative z-10 mx-auto max-w-7xl">
-        {/* ======================================================
-            HEADER
-        ====================================================== */}
+        {/* HEADER */}
 
         <motion.div
           style={{
@@ -193,10 +179,6 @@ const Work = () => {
             origin-left
           "
         >
-
-
-          {/* Heading */}
-
           <h2
             className="
               text-4xl
@@ -204,20 +186,17 @@ const Work = () => {
               leading-[0.95]
               tracking-[-0.055em]
               text-foreground
-
               md:text-5xl
-
               lg:text-6xl
             "
           >
-            The journey
+            {t("title")}
             <br />
+
             <span className="text-muted-foreground/40">
-              so far.
+              {t("titleHighlight")}
             </span>
           </h2>
-
-          {/* Description */}
 
           <p
             className="
@@ -226,14 +205,10 @@ const Work = () => {
               text-sm
               leading-6
               text-muted-foreground
-
               md:text-base
             "
           >
-            From building web applications to working
-            on production systems, every role has added
-            another layer to how I approach software
-            engineering.
+            {t("description")}
           </p>
 
           {/* Experience stat */}
@@ -267,17 +242,11 @@ const Work = () => {
                   text-muted-foreground
                 "
               >
-                Years experience
+                {t("yearsExperience")}
               </div>
             </div>
 
-            <div
-              className="
-                h-8
-                w-px
-                bg-border
-              "
-            />
+            <div className="h-8 w-px bg-border" />
 
             <div>
               <div
@@ -300,15 +269,13 @@ const Work = () => {
                   text-muted-foreground
                 "
               >
-                Career milestones
+                {t("careerMilestones")}
               </div>
             </div>
           </div>
         </motion.div>
 
-        {/* ======================================================
-            TIMELINE WRAPPER
-        ====================================================== */}
+        {/* TIMELINE */}
 
         <motion.div
           initial={{
@@ -327,13 +294,8 @@ const Work = () => {
             duration: 1,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="
-            relative
-            mt-4
-          "
+          className="relative mt-4"
         >
-          {/* Timeline ambient glow */}
-
           <div
             className="
               pointer-events-none
@@ -353,9 +315,7 @@ const Work = () => {
           <Timeline data={workData} />
         </motion.div>
 
-        {/* ======================================================
-            BOTTOM MARKER
-        ====================================================== */}
+        {/* BOTTOM MARKER */}
 
         <motion.div
           initial={{
@@ -385,7 +345,7 @@ const Work = () => {
         >
           <span className="h-px w-10 bg-border" />
 
-          More chapters ahead
+          {t("moreChapters")}
 
           <span className="h-px w-10 bg-border" />
         </motion.div>

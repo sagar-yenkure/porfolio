@@ -24,6 +24,7 @@ import { buttonVariants } from "@/components/ui/button";
 
 import info from "@/constants/info";
 import BookingCal from "./BookingCal";
+import { useTranslations } from "next-intl";
 
 /* ============================================================
    SERVICES
@@ -106,6 +107,7 @@ function SocialButton({
 ============================================================ */
 
 export default function SkeletonFour() {
+  const t = useTranslations("Grid")
   const sectionRef = useRef<HTMLDivElement>(null);
 
   /* ==========================================================
@@ -901,15 +903,9 @@ export default function SkeletonFour() {
                 text-muted-foreground
               "
             >
-              <span
-                className="
-                  h-px
-                  w-6
-                  bg-border
-                "
-              />
 
-              Let&apos;s build something
+
+              {t("eyebrow")}
             </motion.div>
 
             {/* Heading */}
@@ -943,9 +939,7 @@ export default function SkeletonFour() {
                 lg:text-5xl
               "
             >
-              Any questions
-              <br />
-              about development?
+              {t("title")}
             </motion.h2>
 
             {/* Description */}
@@ -975,10 +969,7 @@ export default function SkeletonFour() {
                 text-muted-foreground
               "
             >
-              Have an idea, project, or technical
-              challenge? Feel free to reach out. I&apos; m
-              always open to building something
-              interesting together.
+              {t("description")}
             </motion.p>
 
             {/* ==================================================
@@ -1009,7 +1000,7 @@ export default function SkeletonFour() {
                 gap-2
               "
             >
-              <BookingCal />
+              <BookingCal text={t("bookMeeting")} />
 
               <SocialButton
                 label="Connect via Mail"
@@ -1075,10 +1066,7 @@ export default function SkeletonFour() {
                 text-muted-foreground
               "
             >
-
-
-              Open to interesting projects
-
+              {t("availability")}
             </motion.div>
           </motion.div>
         </div>

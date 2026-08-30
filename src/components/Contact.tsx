@@ -5,6 +5,9 @@ import { motion } from "framer-motion";
 import { Send } from "lucide-react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import { useTranslations } from "next-intl";
+import { useState } from "react";
+
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -16,24 +19,17 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useState } from "react";
+
 import sendmail from "@/actions/sendmail";
 import { toast } from "sonner";
 
-const formSchema = z.object({
-  name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
-  }),
-  email: z.string().email({
-    message: "Please enter a valid email.",
-  }),
-  message: z.string().min(10, {
-    message: "Message must be at least 10 characters.",
-  }),
-});
+/* ============================================================
+   ANIMATION VARIANTS
+============================================================ */
 
 const containerVariants = {
   hidden: {},
+
   visible: {
     transition: {
       staggerChildren: 0.15,
@@ -46,9 +42,11 @@ const leftVariants = {
     opacity: 0,
     x: -40,
   },
+
   visible: {
     opacity: 1,
     x: 0,
+
     transition: {
       duration: 0.8,
       ease: [0.22, 1, 0.36, 1],
@@ -62,10 +60,12 @@ const formVariants = {
     x: 50,
     scale: 0.97,
   },
+
   visible: {
     opacity: 1,
     x: 0,
     scale: 1,
+
     transition: {
       duration: 0.8,
       ease: [0.22, 1, 0.36, 1],
@@ -73,11 +73,29 @@ const formVariants = {
   },
 };
 
+
 export default function Contact() {
+  const t = useTranslations("Contact");
+
   const [loading, setLoading] = useState(false);
+
+  const formSchema = z.object({
+    name: z.string().min(2, {
+      message: t("form.name.required"),
+    }),
+
+    email: z.string().email({
+      message: t("form.email.invalid"),
+    }),
+
+    message: z.string().min(10, {
+      message: t("form.message.required"),
+    }),
+  });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+
     defaultValues: {
       name: "",
       email: "",
@@ -85,16 +103,26 @@ export default function Contact() {
     },
   });
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  /* ============================================================
+     SUBMIT
+  ============================================================ */
+
+  async function onSubmit(
+    values: z.infer<typeof formSchema>
+  ) {
     setLoading(true);
 
     try {
+      /* Send email to user */
+
       await sendmail(
         values,
         values.email,
         "Thanks for contacting me!",
         "contactUs"
       );
+
+      /* Send email to admin */
 
       await sendmail(
         values,
@@ -103,16 +131,21 @@ export default function Contact() {
         "contactUsAdmin"
       );
 
-      toast("Message Sent", {
-        description:
-          "Thanks for reaching out! I've received your message and will get back to you shortly.",
+      /* Success toast */
+
+      toast(t("toast.successTitle"), {
+        description: t("toast.successDescription"),
       });
+
+      /* Reset form */
 
       form.reset();
     } catch {
-      toast("Something went wrong", {
-        description:
-          "Oops! Failed to send your message. Please try again in a moment.",
+      /* Error toast */
+
+      toast(t("toast.errorTitle"), {
+        description: t("toast.errorDescription"),
+
         style: {
           background: "red",
           color: "white",
@@ -136,8 +169,13 @@ export default function Contact() {
         md:px-8
       "
     >
-      {/* Background effects */}
+      {/* ====================================================
+          BACKGROUND EFFECTS
+      ==================================================== */}
+
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        {/* Main glow */}
+
         <motion.div
           animate={{
             scale: [1, 1.05, 1],
@@ -162,6 +200,8 @@ export default function Contact() {
           "
         />
 
+        {/* Secondary glow */}
+
         <motion.div
           animate={{
             y: [0, -10, 0],
@@ -184,9 +224,14 @@ export default function Contact() {
           "
         />
 
-        {/* Subtle grid */}
+        {/* Grid */}
+
         <div
-          className="absolute inset-0 opacity-[0.025]"
+          className="
+            absolute
+            inset-0
+            opacity-[0.025]
+          "
           style={{
             backgroundImage: `
               linear-gradient(
@@ -199,16 +244,22 @@ export default function Contact() {
                 transparent 1px
               )
             `,
+
             backgroundSize: "70px 70px",
+
             maskImage:
               "radial-gradient(circle at center, black, transparent 75%)",
+
             WebkitMaskImage:
               "radial-gradient(circle at center, black, transparent 75%)",
           }}
         />
       </div>
 
-      {/* Main container */}
+      {/* ====================================================
+          MAIN CONTAINER
+      ==================================================== */}
+
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -230,15 +281,16 @@ export default function Contact() {
           md:gap-20
         "
       >
-        {/* =====================================================
+        {/* ==================================================
             LEFT SIDE
-        ===================================================== */}
+        ================================================== */}
 
-        <motion.div variants={leftVariants} className="max-w-xl">
-          {/* Small heading */}
-
-
+        <motion.div
+          variants={leftVariants}
+          className="max-w-xl"
+        >
           {/* Main heading */}
+
           <h2
             className="
               text-4xl
@@ -248,17 +300,20 @@ export default function Contact() {
               text-foreground
 
               md:text-5xl
+
               lg:text-6xl
             "
           >
-            Let&apos;s build
+            {t("heading")}
             <br />
+
             <span className="text-muted-foreground/40">
-              something together.
+              {t("headingHighlight")}
             </span>
           </h2>
 
           {/* Description */}
+
           <p
             className="
               mt-7
@@ -270,14 +325,13 @@ export default function Contact() {
               md:text-base
             "
           >
-            Have a project in mind, an idea you want to explore, or simply
-            want to talk about development? Feel free to reach out.
+            {t("description")}
           </p>
         </motion.div>
 
-        {/* =====================================================
+        {/* ==================================================
             RIGHT SIDE — FORM
-        ===================================================== */}
+        ================================================== */}
 
         <motion.div
           variants={formVariants}
@@ -292,6 +346,7 @@ export default function Contact() {
           className="relative"
         >
           {/* Form glow */}
+
           <div
             className="
               pointer-events-none
@@ -307,22 +362,26 @@ export default function Contact() {
           />
 
           {/* Form container */}
-            <div
-              className="
-                relative
-                overflow-hidden
-                rounded-[24px]
-                border
-                border-border
-                bg-card
-                text-card-foreground
-                p-6
-                shadow-2xl
 
-                md:p-8
-              "
-            >
-            {/* Top line */}
+          <div
+            className="
+              relative
+              overflow-hidden
+              rounded-[24px]
+              border
+              border-border
+              bg-card
+              text-card-foreground
+              p-6
+              shadow-2xl
+
+              md:p-8
+            "
+          >
+            {/* ==================================================
+                FORM HEADER
+            ================================================== */}
+
             <div className="mb-7 flex items-center justify-between">
               <div>
                 <p
@@ -333,35 +392,56 @@ export default function Contact() {
                     text-muted-foreground
                   "
                 >
-                  Send a message
+                  {t("form.eyebrow")}
                 </p>
 
-                <h3 className="mt-1 text-lg font-medium tracking-tight text-foreground">
-                  Tell me about your idea
+                <h3
+                  className="
+                    mt-1
+                    text-lg
+                    font-medium
+                    tracking-tight
+                    text-foreground
+                  "
+                >
+                  {t("form.title")}
                 </h3>
               </div>
-
-
             </div>
+
+            {/* ==================================================
+                FORM
+            ================================================== */}
 
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
                 className="space-y-5"
               >
-                {/* Name */}
+                {/* ==================================================
+                    NAME
+                ================================================== */}
+
                 <FormField
                   control={form.control}
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-xs font-medium text-foreground">
-                        Name
+                      <FormLabel
+                        className="
+                          text-xs
+                          font-medium
+                          text-foreground
+                        "
+                      >
+                        {t("form.name.label")}
                       </FormLabel>
 
                       <FormControl>
                         <Input
-                          placeholder="Your name"
+                          placeholder={t(
+                            "form.name.placeholder"
+                          )}
                           {...field}
                           className="
                             mt-1
@@ -383,19 +463,31 @@ export default function Contact() {
                   )}
                 />
 
-                {/* Email */}
+                {/* ==================================================
+                    EMAIL
+                ================================================== */}
+
                 <FormField
                   control={form.control}
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-xs font-medium text-foreground">
-                        Email
+                      <FormLabel
+                        className="
+                          text-xs
+                          font-medium
+                          text-foreground
+                        "
+                      >
+                        {t("form.email.label")}
                       </FormLabel>
 
                       <FormControl>
                         <Input
-                          placeholder="your.email@example.com"
+                          type="email"
+                          placeholder={t(
+                            "form.email.placeholder"
+                          )}
                           {...field}
                           className="
                             mt-1
@@ -417,19 +509,30 @@ export default function Contact() {
                   )}
                 />
 
-                {/* Message */}
+                {/* ==================================================
+                    MESSAGE
+                ================================================== */}
+
                 <FormField
                   control={form.control}
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-xs font-medium text-foreground">
-                        Message
+                      <FormLabel
+                        className="
+                          text-xs
+                          font-medium
+                          text-foreground
+                        "
+                      >
+                        {t("form.message.label")}
                       </FormLabel>
 
                       <FormControl>
                         <Textarea
-                          placeholder="What would you like to discuss?"
+                          placeholder={t(
+                            "form.message.placeholder"
+                          )}
                           {...field}
                           className="
                             mt-1
@@ -452,13 +555,20 @@ export default function Contact() {
                   )}
                 />
 
-                {/* Submit */}
+                {/* ==================================================
+                    SUBMIT BUTTON
+                ================================================== */}
+
                 <motion.div
-                  whileHover={{ scale: 1.01 }}
-                  whileTap={{ scale: 0.98 }}
+                  whileHover={{
+                    scale: 1.01,
+                  }}
+                  whileTap={{
+                    scale: 0.98,
+                  }}
                 >
                   <Button
-                    aria-label="Send Message"
+                    aria-label={t("form.submit")}
                     type="submit"
                     disabled={loading}
                     className="
@@ -468,16 +578,18 @@ export default function Contact() {
                       w-full
                       rounded-xl
                       bg-primary
-                      text-primary-foreground
                       font-semibold
+                      text-primary-foreground
                       shadow-md
-                      hover:bg-primary/90
                       transition-all
                       duration-300
+                      hover:bg-primary/90
                     "
                   >
                     <span className="mr-2">
-                      {loading ? "Sending..." : "Send Message"}
+                      {loading
+                        ? t("form.sending")
+                        : t("form.submit")}
                     </span>
 
                     <Send
@@ -493,7 +605,6 @@ export default function Contact() {
                 </motion.div>
               </form>
             </Form>
-
           </div>
         </motion.div>
       </motion.div>

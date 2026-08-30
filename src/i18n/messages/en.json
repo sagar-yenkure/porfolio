@@ -1,0 +1,153 @@
+{
+  "Navbar": {
+    "Home": "Home",
+    "Experience": "Experience",
+    "Projects": "Projects",
+    "Contact": "Contact",
+    "Blogs": "Blogs"
+  },
+  "Metadata": {
+    "Root": {
+      "title": "Sagar Yenkure - let's build something amazing together",
+      "description": "Welcome to the portfolio of Sagar Yenkure — a passionate Software Engineer. Explore projects, read blogs, and learn more about my journey in tech.",
+      "keywords": "Portfolio, Software Engineer, Web Developer, Full Stack Developer, Tech Enthusiast, Blogs"
+    },
+    "Blogs": {
+      "title": "Tech Blogs by Sagar Yenkure | Web Development, Programming & Insights",
+      "description": "Explore insightful tech blogs on software development, web technologies, and full stack engineering written by Sagar Yenkure.",
+      "keywords": "Tech Blogs, Tutorials, Software Development, Problem Solving, Web Development"
+    },
+    "Meet": {
+      "title": "Book a Meeting with Sagar Yenkure for a new Project",
+      "description": "Schedule a one-on-one meeting with Sagar Yenkure — a passionate Software Engineer. Pick a time that works for you and let's connect!",
+      "keywords": "Book Meeting, Schedule Call, Sagar Yenkure, Software Engineer, Tech Chat, Portfolio Meeting"
+    }
+  },
+  "Hero": {
+    "Greeting": "Hey, Hello, I'm",
+    "Title": "A Software Engineer",
+    "Description": "I build modern web experiences with clean engineering, thoughtful interaction and scalable architecture.",
+    "LetsTalk": "Let's Talk",
+    "Resume": "Resume"
+  },
+  "3dCards": {
+    "Title": "What are we building <i>next?</i>"
+  },
+  "Grid": {
+    "eyebrow": "LET'S BUILD SOMETHING",
+    "title": "Any questions about development?",
+    "description": "Have an idea, project, or technical challenge? Feel free to reach out. I'm always open to building something interesting together.",
+    "bookMeeting": "Book a Meeting",
+    "availability": "OPEN TO INTERESTING PROJECTS"
+  },
+  "Skills": {
+    "title": "Tools I use",
+    "titleHighlight": "to build the web.",
+    "description": "A collection of technologies I work with to design, develop and ship scalable digital experiences.",
+    "technologies": "Technologies",
+    "categories": {
+      "frontend": {
+        "label": "Frontend",
+        "number": "01",
+        "description": "Interfaces, interactions & web experiences"
+      },
+      "backend": {
+        "label": "Backend",
+        "number": "02",
+        "description": "APIs, services & application architecture"
+      },
+      "devops": {
+        "label": "DevOps & Tools",
+        "number": "03",
+        "description": "Infrastructure, deployment & developer tooling"
+      }
+    }
+  },
+  "Work": {
+    "title": "The journey",
+    "titleHighlight": "so far.",
+    "description": "From building web applications to working on production systems, every role has added another layer to how I approach software engineering.",
+    "yearsExperience": "Years experience",
+    "careerMilestones": "Career milestones",
+    "moreChapters": "More chapters ahead"
+  },
+  "Projects": {
+    "heading": "Things I've",
+    "headingAccent": "built on the web.",
+    "description": "A selection of projects where engineering, design and interaction come together to create useful digital experiences.",
+    "featuredProjects": "Featured projects",
+    "projects": "Projects"
+  },
+  "Blogs": {
+    "heading": "Things I've",
+    "headingAccent": "been thinking about.",
+    "description": "Notes on software engineering, modern web development, AI, architecture and the things I learn while building.",
+    "latestArticle": "Latest article",
+    "articles": "Articles",
+    "readAllArticles": "Read all articles"
+  },
+  "Testimonials": {
+    "heading": "What people",
+    "headingAccent": "say about working with me.",
+    "description": "A few words from people I've worked with across different projects, teams and collaborations."
+  },
+  "Contact": {
+    "heading": "Let's build",
+    "headingHighlight": "something together.",
+    "description": "Have a project in mind, an idea you want to explore, or simply want to talk about development? Feel free to reach out.",
+    "form": {
+      "eyebrow": "Send a message",
+      "title": "Tell me about your idea",
+      "name": {
+        "label": "Name",
+        "placeholder": "Your name",
+        "required": "Name must be at least 2 characters."
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "your.email@example.com",
+        "invalid": "Please enter a valid email."
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "What would you like to discuss?",
+        "required": "Message must be at least 10 characters."
+      },
+      "submit": "Send Message",
+      "sending": "Sending..."
+    },
+    "toast": {
+      "successTitle": "Message Sent",
+      "successDescription": "Thanks for reaching out! I've received your message and will get back to you shortly.",
+      "errorTitle": "Something went wrong",
+      "errorDescription": "Oops! Failed to send your message. Please try again in a moment."
+    }
+  },
+  "Footer": {
+    "brandName": "Sagar Yenkure's Portfolio",
+    "social": {
+      "twitter": "Twitter",
+      "github": "GitHub",
+      "linkedin": "LinkedIn"
+    },
+    "copyright": {
+      "license": "All rights reserved"
+    }
+  },
+  "Meet": {
+    "title": "Let's connect.",
+    "subtitle": "Pick a time that works.",
+    "description": "Whether you want to talk tech, explore a collaboration, discuss a project, or simply connect — I'm always happy to have a conversation."
+  },
+  "BlogsPage": {
+    "title": "Latest tech",
+    "subtitle": "& insights.",
+    "description": "Explore in-depth articles on software development, engineering, modern technologies, tutorials, and lessons learned while building digital products.",
+    "allPosts": "All posts",
+    "searchPlaceholder": "Search articles...",
+    "categoryPlaceholder": "Category",
+    "sortPlaceholder": "Sort",
+    "latest": "Latest",
+    "oldest": "Oldest"
+  }
+}

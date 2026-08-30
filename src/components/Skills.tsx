@@ -10,6 +10,8 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import { IconType } from "react-icons/lib";
+import { useTranslations } from "next-intl";
+
 import {
   backendSkills,
   devOpsSkills,
@@ -25,29 +27,21 @@ type Skill = {
 
 type Category = "frontend" | "backend" | "devops";
 
+/* ============================================================
+   CATEGORY DATA
+============================================================ */
+
 const categories: {
   id: Category;
-  label: string;
-  number: string;
-  description: string;
 }[] = [
     {
       id: "frontend",
-      label: "Frontend",
-      number: "01",
-      description: "Interfaces, interactions & web experiences",
     },
     {
       id: "backend",
-      label: "Backend",
-      number: "02",
-      description: "APIs, services & application architecture",
     },
     {
       id: "devops",
-      label: "DevOps & Tools",
-      number: "03",
-      description: "Infrastructure, deployment & developer tooling",
     },
   ];
 
@@ -148,10 +142,8 @@ const SkillCard = ({
           border-border/60
           bg-card
           p-4
-
           transition-all
           duration-500
-
           hover:border-border
           hover:bg-accent
           hover:shadow-md
@@ -282,6 +274,8 @@ const SkillCard = ({
 const SkillsSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
+  const t = useTranslations("Skills");
+
   const isInView = useInView(sectionRef, {
     once: true,
     amount: 0.15,
@@ -296,10 +290,6 @@ const SkillsSection: React.FC = () => {
     devops: devOpsSkills,
   };
 
-  const activeData = categories.find(
-    (category) => category.id === activeCategory
-  )!;
-
   const activeSkills = skillsMap[activeCategory];
 
   return (
@@ -313,7 +303,6 @@ const SkillsSection: React.FC = () => {
         px-4
         text-foreground
         section-container
-
         md:px-8
       "
     >
@@ -437,8 +426,6 @@ const SkillsSection: React.FC = () => {
             max-w-3xl
           "
         >
-          {/* Eyebrow */}
-
           {/* Heading */}
 
           <h2
@@ -448,16 +435,14 @@ const SkillsSection: React.FC = () => {
               leading-[0.95]
               tracking-[-0.055em]
               text-foreground
-
               md:text-5xl
-
               lg:text-6xl
             "
           >
-            Tools I use
+            {t("title")}
             <br />
             <span className="text-muted-foreground/40">
-              to build the web.
+              {t("titleHighlight")}
             </span>
           </h2>
 
@@ -470,13 +455,10 @@ const SkillsSection: React.FC = () => {
               text-sm
               leading-6
               text-muted-foreground
-
               md:text-base
             "
           >
-            A collection of technologies I work with
-            to design, develop and ship scalable
-            digital experiences.
+            {t("description")}
           </p>
         </motion.div>
 
@@ -515,12 +497,15 @@ const SkillsSection: React.FC = () => {
           "
         >
           {categories.map((category) => {
-            const active = activeCategory === category.id;
+            const active =
+              activeCategory === category.id;
 
             return (
               <button
                 key={category.id}
-                onClick={() => setActiveCategory(category.id)}
+                onClick={() =>
+                  setActiveCategory(category.id)
+                }
                 className="
                   relative
                   min-w-[145px]
@@ -531,7 +516,6 @@ const SkillsSection: React.FC = () => {
                   text-left
                   transition-colors
                   duration-300
-
                   sm:min-w-[170px]
                   sm:px-6
                 "
@@ -570,16 +554,16 @@ const SkillsSection: React.FC = () => {
                         tracking-tight
                         transition-colors
                         duration-300
-
                         sm:text-[15px]
-
                         ${active
                           ? "text-foreground"
                           : "text-muted-foreground"
                         }
                       `}
                     >
-                      {category.label}
+                      {t(
+                        `categories.${category.id}.label`
+                      )}
                     </span>
 
                     <span
@@ -588,14 +572,15 @@ const SkillsSection: React.FC = () => {
                         font-bold
                         tracking-[0.15em]
                         transition-colors
-
                         ${active
-                          ? "text-blue-500 font-semibold"
+                          ? "font-semibold text-blue-500"
                           : "text-muted-foreground"
                         }
                       `}
                     >
-                      {category.number}
+                      {t(
+                        `categories.${category.id}.number`
+                      )}
                     </span>
                   </div>
 
@@ -609,16 +594,16 @@ const SkillsSection: React.FC = () => {
                       leading-relaxed
                       transition-colors
                       duration-300
-
                       sm:block
-
                       ${active
-                        ? "text-foreground/80 font-medium"
+                        ? "font-medium text-foreground/80"
                         : "text-muted-foreground"
                       }
                     `}
                   >
-                    {category.description}
+                    {t(
+                      `categories.${category.id}.description`
+                    )}
                   </p>
                 </div>
               </button>
@@ -655,7 +640,6 @@ const SkillsSection: React.FC = () => {
             border-border/60
             bg-card
             p-5
-
             md:p-7
           "
         >
@@ -689,8 +673,6 @@ const SkillsSection: React.FC = () => {
                     duration: 0.25,
                   }}
                 >
-
-
                   <h3
                     className="
                       mt-1
@@ -700,7 +682,9 @@ const SkillsSection: React.FC = () => {
                       text-foreground
                     "
                   >
-                    {activeData.label}
+                    {t(
+                      `categories.${activeCategory}.label`
+                    )}
                   </h3>
                 </motion.div>
               </AnimatePresence>
@@ -715,7 +699,6 @@ const SkillsSection: React.FC = () => {
                 uppercase
                 tracking-[0.18em]
                 text-muted-foreground/40
-
                 sm:flex
               "
             >
@@ -724,7 +707,7 @@ const SkillsSection: React.FC = () => {
                   2,
                   "0"
                 )}{" "}
-                Technologies
+                {t("technologies")}
               </span>
 
               <span className="h-px w-8 bg-border" />
@@ -757,11 +740,8 @@ const SkillsSection: React.FC = () => {
                 grid
                 grid-cols-2
                 gap-3
-
                 sm:grid-cols-3
-
                 md:grid-cols-4
-
                 lg:grid-cols-5
               "
             >

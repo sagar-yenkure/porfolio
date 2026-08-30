@@ -5,12 +5,27 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Code2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./ThemeToggle";
-import Link from "next/link";
+import { Link, usePathname, useRouter } from "@/i18n/routing";
+import { useLocale, useTranslations } from "next-intl";
 import link from "@/constants/links";
 import { NavBar } from "./ui/tubelight-navbar";
+import { LanguageToggle, LangCode } from "./LangToggle";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const locale = useLocale() as LangCode;
+  const router = useRouter();
+  const pathname = usePathname();
+  const t = useTranslations("Navbar");
+
+  const handleLanguageChange = (nextLocale: LangCode) => {
+    router.replace(pathname, { locale: nextLocale });
+  };
+
+  const navItems = link.map((item) => ({
+    ...item,
+    label: t(item.label as string) || item.label,
+  }));
 
   const menuVariants = {
     open: {
@@ -51,12 +66,14 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-4">
-            <NavBar items={link} />
+            <NavBar items={navItems} />
+            <LanguageToggle onChange={handleLanguageChange} value={locale} />
             <ThemeToggle />
           </div>
 
           {/* Mobile Navigation Button */}
           <div className="md:hidden flex items-center gap-4 ">
+            <LanguageToggle onChange={handleLanguageChange} value={locale} />
             <ThemeToggle />
             <Button
               id="toggle-menu"
@@ -89,7 +106,7 @@ const Navbar = () => {
             className="absolute top-0 left-0 h-screen right-0 bg-background/95 backdrop-blur-lg shadow-lg md:hidden"
           >
             <div className="px-4 pt-20 pb-6 space-y-6 flex flex-col">
-              {link.map(({ href, label }) => (
+              {navItems.map(({ href, label }) => (
                 <Button
                   aria-label={`${label} NavBar`}
                   variant="ghost"

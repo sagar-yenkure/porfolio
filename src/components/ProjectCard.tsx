@@ -14,7 +14,6 @@ import { FaGithub } from "react-icons/fa";
 
 import { Project } from "@/constants/Projects";
 import Link from "next/link";
-import { IconType } from "react-icons/lib";
 
 const ProjectCard = ({
   project,
@@ -132,53 +131,48 @@ const ProjectCard = ({
   ========================================================== */
 
   const skillIcons = () =>
-    project.skills?.map(
-      (
-        SkillIcon: IconType,
-        skillIndex: number
-      ) => (
-        <motion.div
-          key={skillIndex}
-          initial={{
-            opacity: 0,
-            scale: 0.8,
-          }}
-          whileInView={{
-            opacity: 1,
-            scale: 1,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            delay: skillIndex * 0.05,
-            duration: 0.4,
-          }}
-          whileHover={{
-            y: -3,
-            scale: 1.08,
-          }}
-          className="
-            flex
-            h-8
-            w-8
-            items-center
-            justify-center
-            rounded-lg
-            border
-            border-border/60
-            bg-background/60
-            text-muted-foreground
-            transition-colors
-            hover:border-border
-            hover:bg-accent
-            hover:text-foreground
-          "
-        >
-          <SkillIcon size={15} />
-        </motion.div>
-      )
-    );
+    project.skills?.map((SkillIcon, skillIndex) => (
+      <motion.div
+        key={skillIndex}
+        initial={{
+          opacity: 0,
+          scale: 0.8,
+        }}
+        whileInView={{
+          opacity: 1,
+          scale: 1,
+        }}
+        viewport={{
+          once: true,
+        }}
+        transition={{
+          delay: skillIndex * 0.05,
+          duration: 0.4,
+        }}
+        whileHover={{
+          y: -3,
+          scale: 1.08,
+        }}
+        className="
+        flex
+        h-8
+        w-8
+        items-center
+        justify-center
+        rounded-lg
+        border
+        border-border/60
+        bg-background/60
+        text-muted-foreground
+        transition-colors
+        hover:border-border
+        hover:bg-accent
+        hover:text-foreground
+      "
+      >
+        <SkillIcon size={15} />
+      </motion.div>
+    ));
 
   return (
     <motion.div
