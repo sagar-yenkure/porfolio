@@ -17,7 +17,7 @@ const sendmail = async (
     const reactComponent = getEmailComponent(templateType, email, data);
 
     const { data: result, error } = await resend.emails.send({
-      from: "Sagar Yenkure <no-reply@sagaryenkure.pro>",
+      from: "Sagar Yenkure <no-reply@sagaryenkure.dev>",
       to: [email],
       cc: ["sagaryenkure4@gmail.com"],
       subject,

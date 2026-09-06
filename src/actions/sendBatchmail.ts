@@ -26,7 +26,7 @@ const sendBatchmail = async (
       const reactComponent = getEmailComponent(templateType, email, data);
 
       return {
-        from: "Sagar Yenkure <no-reply@sagaryenkure.pro>",
+        from: "Sagar Yenkure <no-reply@sagaryenkure.dev>",
         to: [email],
         subject,
         react: reactComponent,
