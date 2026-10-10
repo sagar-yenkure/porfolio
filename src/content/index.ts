@@ -14,6 +14,7 @@ import how_to_use_zustand_with_typescript from "./how_to_use_zustand_with_typesc
 import setup_databases_with_docker_gui from "./setup_databases_with_docker_gui";
 import trpc_nextjs_from_zero_to_fullstack_hero from "./trpc-nextjs-from-zero-to-fullstack-hero";
 import secure_server_actions_in_nextjs from "./secure_server_actions_in_nextjs";
+import javascript_date_vs_temporal from "./data_vs_temporal";
 
 export interface Article {
   id: number;
@@ -73,7 +74,34 @@ export const categories = [
 
 // this is all the tutorial and tech stuff
 const ContentList: Article[] = [
+  // 📅 2027-10-10 –  JavaScript Date vs Temporal: A Better Way to Work with Dates and Times
 
+  {
+    id: 19,
+    title: "JavaScript Date vs Temporal: A Better Way to Work with Dates and Times",
+    titleJp: "JavaScriptのDateとTemporal：日付と時刻をより安全に扱う方法",
+    summary:
+      "Compare JavaScript Date with the Temporal API and learn how to handle calendar dates, time zones, and date arithmetic more clearly.",
+    summaryJp:
+      "JavaScriptのDateとTemporal APIを比較し、日付、タイムゾーン、日付計算をより明確に扱う方法を紹介します。",
+    label: "JavaScript",
+    slug: "javascript-date-vs-temporal",
+    author: "Sagar Yenkure",
+    published: "2026-10-10",
+    image: "/js_temporal.jpeg",
+    tags: [
+      "JavaScript",
+      "Temporal",
+      "Date",
+      "TypeScript",
+      "Web Development"
+    ],
+    content: javascript_date_vs_temporal,
+    views: 0,
+    readTime: 7,
+    keyword:
+      "JavaScript Date vs Temporal, JavaScript Temporal API, Temporal.PlainDate example, JavaScript time zone handling"
+  },
   // 📅 2025-07-21 –  Server Actions + next-safe-action
   {
     id: 1,
