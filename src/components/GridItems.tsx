@@ -6,7 +6,6 @@ import React, { useRef } from "react";
 import {
   motion,
   useMotionValue,
-  useScroll,
   useSpring,
   useTransform,
 } from "framer-motion";
@@ -111,21 +110,6 @@ export default function SkeletonFour() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   /* ==========================================================
-     SCROLL
-  ========================================================== */
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  const progress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 28,
-    mass: 0.4,
-  });
-
-  /* ==========================================================
      MOUSE
   ========================================================== */
 
@@ -158,88 +142,6 @@ export default function SkeletonFour() {
     smoothMouseX,
     [-0.5, 0.5],
     [-12, 12]
-  );
-
-  /* ==========================================================
-     SCROLL ROTATION
-  ========================================================== */
-
-  const scrollRotateX = useTransform(
-    progress,
-    [0, 0.5, 1],
-    [8, 0, -5]
-  );
-
-  const scrollRotateY = useTransform(
-    progress,
-    [0, 0.5, 1],
-    [-8, 0, 8]
-  );
-
-  const visualY = useTransform(
-    progress,
-    [0, 0.35, 0.7, 1],
-    [40, 0, -10, -30]
-  );
-
-  const visualX = useTransform(
-    progress,
-    [0, 0.5, 1],
-    [-8, 0, 12]
-  );
-
-  const visualScale = useTransform(
-    progress,
-    [0, 0.35, 0.7, 1],
-    [0.88, 1, 1.02, 0.95]
-  );
-
-  /* ==========================================================
-     CARD MOTION
-  ========================================================== */
-
-  const cardY = useTransform(
-    progress,
-    [0, 0.25, 0.7, 1],
-    [40, 0, -8, -25]
-  );
-
-  const cardScale = useTransform(
-    progress,
-    [0, 0.25, 0.7, 1],
-    [0.96, 1, 1, 0.97]
-  );
-
-  const cardOpacity = useTransform(
-    progress,
-    [0, 0.12, 0.8, 1],
-    [0, 1, 1, 0.85]
-  );
-
-  /* ==========================================================
-     CONTENT MOTION
-  ========================================================== */
-
-  const contentY = useTransform(
-    progress,
-    [0, 0.4, 0.8, 1],
-    [30, 0, -10, -20]
-  );
-
-  const contentOpacity = useTransform(
-    progress,
-    [0, 0.15, 0.85, 1],
-    [0, 1, 1, 0.8]
-  );
-
-  const combinedRotateX = useTransform(
-    [mouseRotateX, scrollRotateX],
-    ([mouse, scroll]: number[]) => mouse + scroll
-  );
-
-  const combinedRotateY = useTransform(
-    [mouseRotateY, scrollRotateY],
-    ([mouse, scroll]: number[]) => mouse + scroll
   );
 
   /* ==========================================================
@@ -345,9 +247,6 @@ export default function SkeletonFour() {
 
       <motion.div
         style={{
-          y: cardY,
-          scale: cardScale,
-          opacity: cardOpacity,
           transformPerspective: 1400,
         }}
         className="
@@ -393,11 +292,6 @@ export default function SkeletonFour() {
           <motion.div
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            style={{
-              y: visualY,
-              x: visualX,
-              scale: visualScale,
-            }}
             className="
               relative
               flex
@@ -605,8 +499,8 @@ export default function SkeletonFour() {
 
             <motion.div
               style={{
-                rotateX: combinedRotateX,
-                rotateY: combinedRotateY,
+                rotateX: mouseRotateX,
+                rotateY: mouseRotateY,
               }}
               animate={{
                 y: [0, -8, 0, 8, 0],
@@ -791,22 +685,6 @@ export default function SkeletonFour() {
             {services.map((service, index) => (
               <motion.div
                 key={service.label}
-                initial={{
-                  opacity: 0,
-                  scale: 0.8,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  scale: 1,
-                }}
-                viewport={{
-                  once: true,
-                  amount: 0.4,
-                }}
-                transition={{
-                  delay: 0.25 + index * 0.1,
-                  duration: 0.6,
-                }}
                 className={`
                   absolute
                   z-40
@@ -855,11 +733,7 @@ export default function SkeletonFour() {
               RIGHT CONTENT
           ==================================================== */}
 
-          <motion.div
-            style={{
-              y: contentY,
-              opacity: contentOpacity,
-            }}
+          <div
             className="
               flex
               flex-1
@@ -876,22 +750,7 @@ export default function SkeletonFour() {
           >
             {/* Label */}
 
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: 20,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-                amount: 0.3,
-              }}
-              transition={{
-                duration: 0.7,
-              }}
+            <div
               className="
                 mb-5
                 flex
@@ -906,27 +765,11 @@ export default function SkeletonFour() {
 
 
               {t("eyebrow")}
-            </motion.div>
+            </div>
 
             {/* Heading */}
 
-            <motion.h2
-              initial={{
-                opacity: 0,
-                y: 35,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-                amount: 0.3,
-              }}
-              transition={{
-                duration: 0.8,
-                ease: [0.22, 1, 0.36, 1],
-              }}
+            <h2
               className="
                 max-w-[520px]
                 text-3xl
@@ -940,27 +783,11 @@ export default function SkeletonFour() {
               "
             >
               {t("title")}
-            </motion.h2>
+            </h2>
 
             {/* Description */}
 
-            <motion.p
-              initial={{
-                opacity: 0,
-                y: 25,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-                amount: 0.3,
-              }}
-              transition={{
-                delay: 0.15,
-                duration: 0.7,
-              }}
+            <p
               className="
                 mt-5
                 max-w-[420px]
@@ -970,28 +797,13 @@ export default function SkeletonFour() {
               "
             >
               {t("description")}
-            </motion.p>
+            </p>
 
             {/* ==================================================
                 ACTIONS
             ================================================== */}
 
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: 25,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                delay: 0.3,
-                duration: 0.7,
-              }}
+            <div
               className="
                 mt-7
                 flex
@@ -1036,25 +848,13 @@ export default function SkeletonFour() {
               >
                 <FaGithub className="h-4 w-4" />
               </SocialButton>
-            </motion.div>
+            </div>
 
             {/* ==================================================
                 STATUS
             ================================================== */}
 
-            <motion.div
-              initial={{
-                opacity: 0,
-              }}
-              whileInView={{
-                opacity: 1,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                delay: 0.5,
-              }}
+            <div
               className="
                 mt-8
                 flex
@@ -1067,8 +867,8 @@ export default function SkeletonFour() {
               "
             >
               {t("availability")}
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </motion.div>
     </section>

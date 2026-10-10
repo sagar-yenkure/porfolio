@@ -2,12 +2,8 @@
 
 /* eslint-disable react-hooks/rules-of-hooks */
 
-import {
-  motion,
-  useScroll,
-  useTransform,
-} from "framer-motion";
-import { useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -45,15 +41,6 @@ const BlogPage = ({ slug }: BlogPageProps) => {
 
   const article = articles[0];
 
-  const heroRef = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-
-  const { scrollYProgress: pageScrollProgress } = useScroll();
-
   const [copiedShareUrl, setCopiedShareUrl] = useState(false);
 
   const headings = (article?.content || "")
@@ -65,30 +52,8 @@ const BlogPage = ({ slug }: BlogPageProps) => {
       return { text, id };
     });
 
-  const heroImageY = useTransform(
-    scrollYProgress,
-    [0, 1],
-    ["0%", "18%"]
-  );
-
-  const heroContentY = useTransform(
-    scrollYProgress,
-    [0, 1],
-    ["0%", "35%"]
-  );
-
-  const heroOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.8],
-    [1, 0]
-  );
-
   return (
     <>
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 z-50 origin-left"
-        style={{ scaleX: pageScrollProgress }}
-      />
       <section className="mx-auto flex max-w-7xl flex-col gap-10 px-4 py-8 md:px-6 lg:flex-row lg:px-0">
         {/* =====================================================
             MAIN ARTICLE
@@ -114,7 +79,6 @@ const BlogPage = ({ slug }: BlogPageProps) => {
           ================================================== */}
 
           <motion.div
-            ref={heroRef}
             initial={{
               opacity: 0,
               scale: 0.97,
@@ -143,7 +107,6 @@ const BlogPage = ({ slug }: BlogPageProps) => {
             {/* Image */}
             <motion.div
               style={{
-                y: heroImageY,
                 scale: 1.08,
               }}
               className="absolute inset-0"
@@ -194,10 +157,6 @@ const BlogPage = ({ slug }: BlogPageProps) => {
 
             {/* Hero content */}
             <motion.div
-              style={{
-                y: heroContentY,
-                opacity: heroOpacity,
-              }}
               className="
                 absolute
                 inset-x-0
@@ -516,23 +475,6 @@ const BlogPage = ({ slug }: BlogPageProps) => {
         ====================================================== */}
 
         <motion.aside
-          initial={{
-            opacity: 0,
-            x: 30,
-          }}
-          whileInView={{
-            opacity: 1,
-            x: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.1,
-          }}
-          transition={{
-            duration: 0.7,
-            delay: 0.15,
-            ease: [0.22, 1, 0.36, 1],
-          }}
           className="
             flex
             w-full
@@ -583,21 +525,6 @@ const BlogPage = ({ slug }: BlogPageProps) => {
 
           {/* Tags */}
           <motion.div
-            initial={{
-              opacity: 0,
-              y: 20,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              delay: 0.2,
-              duration: 0.5,
-            }}
           >
             <Card
               className="
@@ -659,21 +586,6 @@ const BlogPage = ({ slug }: BlogPageProps) => {
 
           {/* Related blogs */}
           <motion.div
-            initial={{
-              opacity: 0,
-              y: 20,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              delay: 0.3,
-              duration: 0.5,
-            }}
           >
             <RelatedBlog />
           </motion.div>

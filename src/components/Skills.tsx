@@ -404,23 +404,7 @@ const SkillsSection: React.FC = () => {
             HEADER
         ====================================================== */}
 
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 35,
-          }}
-          animate={
-            isInView
-              ? {
-                opacity: 1,
-                y: 0,
-              }
-              : {}
-          }
-          transition={{
-            duration: 0.8,
-            ease: [0.22, 1, 0.36, 1],
-          }}
+        <div
           className="
             mb-14
             max-w-3xl
@@ -460,29 +444,13 @@ const SkillsSection: React.FC = () => {
           >
             {t("description")}
           </p>
-        </motion.div>
+        </div>
 
         {/* ======================================================
             CATEGORY NAV
         ====================================================== */}
 
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 20,
-          }}
-          animate={
-            isInView
-              ? {
-                opacity: 1,
-                y: 0,
-              }
-              : {}
-          }
-          transition={{
-            delay: 0.15,
-            duration: 0.7,
-          }}
+        <div
           className="
             mb-8
             inline-flex
@@ -609,29 +577,13 @@ const SkillsSection: React.FC = () => {
               </button>
             );
           })}
-        </motion.div>
+        </div>
 
         {/* ======================================================
             SKILLS PANEL
         ====================================================== */}
 
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 30,
-          }}
-          animate={
-            isInView
-              ? {
-                opacity: 1,
-                y: 0,
-              }
-              : {}
-          }
-          transition={{
-            delay: 0.25,
-            duration: 0.8,
-          }}
+        <div
           className="
             relative
             overflow-hidden
@@ -754,7 +706,7 @@ const SkillsSection: React.FC = () => {
               ))}
             </motion.div>
           </AnimatePresence>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

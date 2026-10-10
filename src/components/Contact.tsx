@@ -262,12 +262,6 @@ export default function Contact() {
 
       <motion.div
         variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{
-          once: true,
-          amount: 0.2,
-        }}
         className="
           relative
           z-10

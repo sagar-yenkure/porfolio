@@ -15,11 +15,13 @@ interface TestimonialCardProps {
   testimonial: Testimonial;
   index: number;
   reverse?: boolean;
+  fluid?: boolean;
 }
 
 const TestimonialCard = ({
   testimonial,
   index,
+  fluid = false,
 }: TestimonialCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -69,23 +71,6 @@ const TestimonialCard = ({
   return (
     <motion.div
       ref={cardRef}
-      initial={{
-        opacity: 0,
-        y: 30,
-      }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-      }}
-      viewport={{
-        once: true,
-        amount: 0.15,
-      }}
-      transition={{
-        duration: 0.7,
-        delay: Math.min(index * 0.05, 0.3),
-        ease: [0.22, 1, 0.36, 1],
-      }}
       style={{
         rotateX,
         rotateY,
@@ -96,16 +81,13 @@ const TestimonialCard = ({
       whileHover={{
         y: -6,
       }}
-      className="
+      className={`
         group
-        w-[300px]
+        ${fluid ? "w-full" : "w-[calc(100vw-2rem)] max-w-[280px] sm:max-w-[300px] md:w-[390px]"} 
         flex-shrink-0
         cursor-default
-
-        md:w-[390px]
-
         [transform-style:preserve-3d]
-      "
+      `}
     >
       <div
         className="

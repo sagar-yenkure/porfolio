@@ -1,18 +1,12 @@
 "use client";
 
-import React, { useRef } from "react";
-import {
-  motion,
-  useScroll,
-  useSpring,
-  useTransform,
-  MotionValue,
-} from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
+import { motion, MotionValue, useScroll, useSpring, useTransform } from "framer-motion";
 import { CardData } from "@/constants/ThreeCards";
 
 type Position = "left" | "center" | "right";
 
-export default function ThreeDImageSplit({
+function DesktopThreeDImageSplit({
   Text,
   Cards,
   src
@@ -21,176 +15,62 @@ export default function ThreeDImageSplit({
   src: string;
   Cards: CardData[]
 }) {
-  const sectionRef = useRef<HTMLDivElement>(null);
-
+  const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end end"],
   });
-
   const progress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 28,
-    mass: 0.4,
+    stiffness: 70,
+    damping: 30,
+    mass: 0.6,
   });
 
-  const headingY = useTransform(
-    progress,
-    [0, 0.06, 0.12, 0.18],
-    [260, 180, 70, 0]
-  );
-
-  const headingOpacity = useTransform(
-    progress,
-    [0.02, 0.06, 0.12, 0.18],
-    [0, 0.2, 0.75, 1]
-  );
-
-  const containerWidth = useTransform(
-    progress,
-    [0, 0.04, 0.14, 0.24],
-    ["65vw", "65vw", "65vw", "64vw"]
-  );
-
-  const containerHeight = useTransform(
-    progress,
-    [0, 0.04, 0.14, 0.24],
-    ["51vh", "51vh", "49vh", "46vh"]
-  );
-
-
-  const containerY = useTransform(
-    progress,
-    [0, 0.06, 0.16, 0.28],
-    [35, 30, 8, 0]
-  );
-
-  const cardWidth = useTransform(
-    progress,
-    [0, 0.16, 0.26],
-    ["33.333%", "31.5%", "30.5%"]
-  );
-
-
-  const cardHeight = useTransform(
-    progress,
-    [0, 0.16, 0.26],
-    ["100%", "100%", "100%"]
-  );
-
-  const leftPosition = useTransform(
-    progress,
-    [0, 0.14, 0.26],
-    ["0%", "0%", "0%"]
-  );
-
-  const centerPosition = useTransform(
-    progress,
-    [0, 0.14, 0.26],
-    ["33.333%", "32%", "31.5%"]
-  );
-
-  const rightPosition = useTransform(
-    progress,
-    [0, 0.14, 0.26],
-    ["66.666%", "64%", "63%"]
-  );
-
-  const leftX = useTransform(
-    progress,
-    [0.10, 0.16, 0.26, 0.36],
-    [0, 0, -3, -5]
-  );
-
-  const centerX = useTransform(
-    progress,
-    [0.10, 0.16, 0.26],
-    [0, 0, 0]
-  );
-
-  const rightX = useTransform(
-    progress,
-    [0.10, 0.16, 0.26, 0.36],
-    [0, 0, 3, 5]
-  );
-
-  const leftFlip = useTransform(
-    progress,
-    [0.22, 0.34, 0.46],
-    [0, 90, 180]
-  );
-
-  const centerFlip = useTransform(
-    progress,
-    [0.25, 0.37, 0.49],
-    [0, 90, 180]
-  );
-
-  const rightFlip = useTransform(
-    progress,
-    [0.28, 0.40, 0.52],
-    [0, 90, 180]
-  );
-
-  const leftRotateZ = useTransform(
-    progress,
-    [0.35, 0.50, 0.62],
-    [0, -4, -7]
-  );
-
-  const centerRotateZ = useTransform(
-    progress,
-    [0.35, 0.50, 0.62],
-    [0, 0, 0]
-  );
-
-  const rightRotateZ = useTransform(
-    progress,
-    [0.35, 0.50, 0.62],
-    [0, 4, 7]
-  );
-
-  const radius = useTransform(
-    progress,
-    [0, 0.14, 0.22, 0.34],
-    [0, 0, 5, 16]
-  );
-
-  const shadowOpacity = useTransform(
-    progress,
-    [0, 0.16, 0.30, 0.46],
-    [0, 0, 0.18, 0.3]
-  );
+  const containerWidth = "65vw";
+  const containerHeight = "46vh";
+  const containerY = useTransform(progress, [0, 0.25, 0.5], [35, 10, 0]);
+  const cardWidth = "30.5%";
+  const cardHeight = "100%";
+  const leftPosition = "0%";
+  const centerPosition = "31.5%";
+  const rightPosition = "63%";
+  const leftX = useTransform(progress, [0.15, 0.42, 0.78], [0, 0, -5]);
+  const centerX = 0;
+  const rightX = useTransform(progress, [0.15, 0.42, 0.78], [0, 0, 5]);
+  const leftFlip = useTransform(progress, [0.18, 0.42, 0.68], [0, 90, 180]);
+  const centerFlip = useTransform(progress, [0.26, 0.52, 0.78], [0, 90, 180]);
+  const rightFlip = useTransform(progress, [0.34, 0.62, 0.88], [0, 90, 180]);
+  const leftRotateZ = useTransform(progress, [0.48, 0.72, 0.92], [0, -4, -7]);
+  const centerRotateZ = 0;
+  const rightRotateZ = useTransform(progress, [0.48, 0.72, 0.92], [0, 4, 7]);
+  const radius = 16;
+  const shadowOpacity = 0.2;
 
   return (
     <section
       ref={sectionRef}
-      className="relative h-[250vh] max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8 bg-[var(--section-bg)] w-full"
+      className="hidden lg:block relative h-[220vh] max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8 bg-[var(--section-bg)] w-full"
     >
       <div className="sticky top-0 h-screen w-full overflow-hidden">
 
         <div className="relative flex h-full w-full items-center justify-center">
 
           <motion.h2
-            style={{
-              y: headingY,
-              opacity: headingOpacity,
-            }}
             className="
-              pointer-events-none
-              absolute
-              left-1/2
-              top-[12%]
-              z-[2]
-              -translate-x-1/2
-              whitespace-nowrap
-              text-center
-              font-serif
-              text-[clamp(2rem,3.4vw,4rem)]
-              leading-none
-              tracking-[-0.04em]
-              text-foreground
-            "
+                pointer-events-none
+                absolute
+                left-1/2
+                top-[12%]
+                z-[2]
+                -translate-x-1/2
+                whitespace-nowrap
+                text-center
+                font-serif
+                text-[clamp(2rem,3.4vw,4rem)]
+                leading-none
+                tracking-[-0.04em]
+                text-foreground
+              "
           >
             {Text}
           </motion.h2>
@@ -205,9 +85,9 @@ export default function ThreeDImageSplit({
               transformStyle: "preserve-3d",
             }}
             className="
-              relative
-              z-[10]
-            "
+                relative
+                z-[10]
+              "
           >
 
             <motion.div
@@ -283,6 +163,59 @@ export default function ThreeDImageSplit({
   );
 }
 
+export default function ThreeDImageSplit({
+  Text,
+  Cards,
+  src,
+}: {
+  Text: React.ReactNode;
+  src: string;
+  Cards: CardData[];
+}) {
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 1024px)");
+    const updateViewport = () => setIsDesktop(mediaQuery.matches);
+
+    updateViewport();
+    mediaQuery.addEventListener("change", updateViewport);
+
+    return () => mediaQuery.removeEventListener("change", updateViewport);
+  }, []);
+
+  return (
+    <>
+      {isDesktop && (
+        <DesktopThreeDImageSplit Text={Text} Cards={Cards} src={src} />
+      )}
+      <section className="lg:hidden bg-[var(--section-bg)] px-3 py-10 text-foreground sm:px-4 sm:py-16">
+        <div className="mx-auto max-w-lg">
+          <h2 className="mb-6 text-2xl font-semibold leading-tight sm:mb-8 sm:text-3xl">{Text}</h2>
+          <div className="space-y-4">
+            {Cards.map((card) => (
+              <article
+                key={card.number}
+                className="min-h-48 overflow-hidden rounded-xl p-4 sm:min-h-56 sm:rounded-2xl sm:p-6"
+                style={{ background: card.background, color: card.color }}
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <span className="text-xs font-medium uppercase tracking-[0.14em] opacity-65">
+                    {card.number} / {card.label}
+                  </span>
+                  <span aria-hidden="true" className="shrink-0">{card.icon}</span>
+                </div>
+                <h3 className="mt-6 whitespace-pre-line text-2xl font-medium leading-tight sm:mt-8 sm:text-3xl">{card.title}</h3>
+                <p className="mt-3 max-w-sm text-xs leading-5 opacity-75 sm:mt-4 sm:text-sm sm:leading-6">{card.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
 //  FLIP CARD
 
 
@@ -297,8 +230,8 @@ function FlipCard({
   src: string;
   position: Position;
   flip: MotionValue<number>;
-  radius: MotionValue<number>;
-  shadowOpacity: MotionValue<number>;
+  radius: number;
+  shadowOpacity: number;
   card: CardData;
 }) {
   // ==========================================================
@@ -318,10 +251,7 @@ function FlipCard({
   // SHADOW
   // ==========================================================
 
-  const boxShadow = useTransform(
-    shadowOpacity,
-    (value) => `0 25px 70px rgba(0,0,0,${value})`
-  );
+  const boxShadow = `0 25px 70px rgba(0,0,0,${shadowOpacity})`;
 
   // ==========================================================
   // TITLE POSITION

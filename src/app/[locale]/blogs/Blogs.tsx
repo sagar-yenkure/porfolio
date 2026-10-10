@@ -25,21 +25,6 @@ import { useLocale, useTranslations } from "next-intl";
    ANIMATIONS
 ============================================================ */
 
-const headerVariants = {
-  hidden: {
-    opacity: 0,
-    y: 35,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  },
-};
-
 const featuredVariants = {
   hidden: {
     opacity: 0,
@@ -274,14 +259,7 @@ const BlogsSection = () => {
             HEADER
         ====================================================== */}
 
-        <motion.div
-          variants={headerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{
-            once: true,
-            amount: 0.2,
-          }}
+        <div
           className="max-w-3xl"
         >
           {/* Eyebrow */}
@@ -337,7 +315,7 @@ const BlogsSection = () => {
           >
             {t("description")}
           </p>
-        </motion.div>
+        </div>
 
         {/* ======================================================
             FEATURED BLOG
@@ -604,19 +582,7 @@ const BlogsSection = () => {
             BOTTOM
         ====================================================== */}
 
-        <motion.div
-          initial={{
-            opacity: 0,
-          }}
-          whileInView={{
-            opacity: 1,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            duration: 0.8,
-          }}
+        <div
           className="
             mt-16
             flex
@@ -630,7 +596,7 @@ const BlogsSection = () => {
 
 
 
-        </motion.div>
+        </div>
       </div>
     </section>
   );

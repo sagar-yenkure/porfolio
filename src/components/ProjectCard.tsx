@@ -134,21 +134,6 @@ const ProjectCard = ({
     project.skills?.map((SkillIcon, skillIndex) => (
       <motion.div
         key={skillIndex}
-        initial={{
-          opacity: 0,
-          scale: 0.8,
-        }}
-        whileInView={{
-          opacity: 1,
-          scale: 1,
-        }}
-        viewport={{
-          once: true,
-        }}
-        transition={{
-          delay: skillIndex * 0.05,
-          duration: 0.4,
-        }}
         whileHover={{
           y: -3,
           scale: 1.08,

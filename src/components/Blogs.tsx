@@ -181,23 +181,7 @@ const BlogsSection = () => {
       <div className="relative z-10 mx-auto max-w-7xl">
         {/* // HEADER */}
 
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 45,
-          }}
-          animate={
-            isInView
-              ? {
-                opacity: 1,
-                y: 0,
-              }
-              : {}
-          }
-          transition={{
-            duration: 0.8,
-            ease: [0.22, 1, 0.36, 1],
-          }}
+        <div
           className="mb-12 max-w-3xl md:mb-16 lg:mb-20"
         >
           {/* Heading */}
@@ -238,27 +222,11 @@ const BlogsSection = () => {
           >
             {t("description")}
           </p>
-        </motion.div>
+        </div>
 
         {/* // BLOG META */}
 
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 20,
-          }}
-          animate={
-            isInView
-              ? {
-                opacity: 1,
-                y: 0,
-              }
-              : {}
-          }
-          transition={{
-            delay: 0.15,
-            duration: 0.7,
-          }}
+        <div
           className="
       mb-6
       flex
@@ -291,31 +259,12 @@ const BlogsSection = () => {
             {String(blogs.length).padStart(2, "0")}{" "}
             {t("articles")}
           </span>
-        </motion.div>
+        </div>
 
         {/* // FEATURED BLOG */}
 
         {blogs[0] && (
           <motion.div
-            initial={{
-              opacity: 0,
-              y: 60,
-              scale: 0.97,
-            }}
-            animate={
-              isInView
-                ? {
-                  opacity: 1,
-                  y: 0,
-                  scale: 1,
-                }
-                : {}
-            }
-            transition={{
-              delay: 0.2,
-              duration: 0.9,
-              ease: [0.22, 1, 0.36, 1],
-            }}
             style={{
               rotateX,
               rotateY,
@@ -390,23 +339,7 @@ const BlogsSection = () => {
 
         {/* // VIEW ALL */}
 
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 25,
-          }}
-          animate={
-            isInView
-              ? {
-                opacity: 1,
-                y: 0,
-              }
-              : {}
-          }
-          transition={{
-            delay: 0.45,
-            duration: 0.7,
-          }}
+        <div
           className="
       mt-10
       flex
@@ -467,25 +400,11 @@ const BlogsSection = () => {
               </motion.span>
             </motion.div>
           </Link>
-        </motion.div>
+        </div>
 
         {/* // BOTTOM STATUS */}
 
-        <motion.div
-          initial={{
-            opacity: 0,
-          }}
-          animate={
-            isInView
-              ? {
-                opacity: 1,
-              }
-              : {}
-          }
-          transition={{
-            delay: 0.6,
-            duration: 0.8,
-          }}
+        <div
           className="
       mt-16
       flex
@@ -495,7 +414,7 @@ const BlogsSection = () => {
       border-white/[0.05]
       pt-5
     "
-        ></motion.div>
+        ></div>
       </div>
 
     </section>

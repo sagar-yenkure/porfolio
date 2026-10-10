@@ -40,7 +40,8 @@ export default function Hero() {
           flex
           flex-col
           justify-end
-          pb-16
+          pb-8
+          sm:pb-16
           md:pb-20
           [perspective:1400px]
         "
@@ -142,8 +143,8 @@ export default function Hero() {
             left-1/2
             top-[18%]
             z-20
-            h-[260px]
-            w-[260px]
+            h-[180px]
+            w-[180px]
             -translate-x-1/2
             overflow-hidden
             rounded-[28px]
@@ -151,6 +152,8 @@ export default function Hero() {
             border-border/60
             bg-background
             shadow-[0_40px_120px_rgba(0,0,0,.25)]
+            sm:h-[260px]
+            sm:w-[260px]
             md:h-[360px]
             md:w-[360px]
             lg:h-[440px]
@@ -277,12 +280,15 @@ export default function Hero() {
           <h1
             className="
               select-none
-              text-[15vw]
+              text-[13vw]
               font-black
               uppercase
-              leading-[0.68]
-              tracking-[-0.08em]
+              leading-[0.72]
+              tracking-[-0.06em]
               text-foreground
+              sm:text-[15vw]
+              sm:leading-[0.68]
+              sm:tracking-[-0.08em]
               md:text-[13vw]
               lg:text-[11vw]
             "
@@ -317,15 +323,18 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
           className="
-            absolute
-            bottom-[7%]
-            right-[6%]
+            relative
             z-40
+            mt-8
+            sm:absolute
+            sm:bottom-[7%]
+            sm:right-[6%]
+            sm:mt-0
             md:right-[7%]
             lg:right-[8%]
           "
         >
-          <div className="max-w-[300px]">
+          <div className="max-w-full sm:max-w-[300px]">
             <p
               className="
                 text-[10px]

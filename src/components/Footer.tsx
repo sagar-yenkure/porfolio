@@ -21,33 +21,10 @@ const FooterSection = () => {
   return (
     <motion.div
       className="w-full bg-[var(--section-bg)]"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{
-        duration: 0.7,
-        ease: [0.22, 1, 0.36, 1],
-      }}
     >
       <Footer
         logo={
           <motion.div
-            initial={{
-              rotate: -20,
-              scale: 0.8,
-            }}
-            whileInView={{
-              rotate: 0,
-              scale: 1,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              duration: 0.6,
-              type: "spring",
-              stiffness: 180,
-            }}
             whileHover={{
               rotate: 8,
               scale: 1.08,

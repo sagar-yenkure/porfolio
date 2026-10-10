@@ -1,21 +1,13 @@
 "use client";
 
-import React, { useRef } from "react";
 import { Timeline } from "./ui/timeline";
 import useCalculateExperience from "@/hooks/useCalculateExperience";
 import { useLocale, useTranslations } from "next-intl";
 
-import {
-  motion,
-  useScroll,
-  useSpring,
-  useTransform,
-} from "framer-motion";
+import { motion } from "framer-motion";
 import { workDataEn, workDataJp } from "@/constants";
 
 const Work = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-
   const t = useTranslations("Work");
   const locale = useLocale();
 
@@ -25,50 +17,8 @@ const Work = () => {
 
   const { months, years } = useCalculateExperience(2, 2024);
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  const progress = useSpring(scrollYProgress, {
-    stiffness: 70,
-    damping: 25,
-    mass: 0.5,
-  });
-
-  const headerY = useTransform(
-    progress,
-    [0, 0.35, 0.7, 1],
-    [30, 0, -10, -25]
-  );
-
-  const headerOpacity = useTransform(
-    progress,
-    [0, 0.15, 0.8, 1],
-    [0, 1, 1, 0.5]
-  );
-
-  const headerScale = useTransform(
-    progress,
-    [0, 0.3, 1],
-    [0.96, 1, 0.97]
-  );
-
-  const glowY = useTransform(
-    progress,
-    [0, 0.5, 1],
-    [40, -20, -60]
-  );
-
-  const glowX = useTransform(
-    progress,
-    [0, 0.5, 1],
-    [-30, 0, 30]
-  );
-
   return (
     <section
-      ref={sectionRef}
       className="
         relative
         min-h-screen
@@ -84,11 +34,7 @@ const Work = () => {
       {/* BACKGROUND */}
 
       <div className="pointer-events-none absolute inset-0">
-        <motion.div
-          style={{
-            x: glowX,
-            y: glowY,
-          }}
+        <div
           className="
             absolute
             left-[20%]
@@ -167,12 +113,7 @@ const Work = () => {
       <div className="relative z-10 mx-auto max-w-7xl">
         {/* HEADER */}
 
-        <motion.div
-          style={{
-            y: headerY,
-            opacity: headerOpacity,
-            scale: headerScale,
-          }}
+        <div
           className="
             mb-10
             max-w-4xl
@@ -273,27 +214,11 @@ const Work = () => {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* TIMELINE */}
 
         <motion.div
-          initial={{
-            opacity: 0,
-            y: 80,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.08,
-          }}
-          transition={{
-            duration: 1,
-            ease: [0.22, 1, 0.36, 1],
-          }}
           className="relative mt-4"
         >
           <div
@@ -318,19 +243,6 @@ const Work = () => {
         {/* BOTTOM MARKER */}
 
         <motion.div
-          initial={{
-            opacity: 0,
-          }}
-          whileInView={{
-            opacity: 1,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            delay: 0.4,
-            duration: 0.8,
-          }}
           className="
             mt-10
             flex

@@ -29,13 +29,12 @@ export default async function Home() {
           src="https://res.cloudinary.com/dja2zi1g7/image/upload/v1786798690/Guts_Berserk_Moonlight.jpg"
 
         />
-
         <Grid />
         <Skills />
         <Work />
         <Projects />
         <Blogs />
-        <Testimonials />
+        <Testimonials layout="pinterest" />
         <Contact />
       </div>
     </PageTransition>
